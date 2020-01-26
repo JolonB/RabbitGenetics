@@ -2,18 +2,18 @@ package map;
 
 import java.awt.Image;
 
-public class Water extends Terrain {
-	private static final String IMG_NAME = "img/water.png";
+public class Sand extends Terrain {
+	private static final String IMG_NAME = "img/sand.png";
 	private static Image image = null;
 
 	@Override
 	public char toChar() {
-		return 'W';
+		return 'S';
 	}
 
 	@Override
 	public String toString() {
-		return "Water";
+		return "Sand";
 	}
 
 	@Override
@@ -24,9 +24,10 @@ public class Water extends Terrain {
 
 	@Override
 	public Image getImage(int dim) {
-		if (Water.image == null) {
-			Water.image = setImage(IMG_NAME, dim);
+		if (Sand.image == null) {
+			Sand.image = setImage(IMG_NAME, dim);
 		}
-		return Water.image;
+		return Sand.image;
 	}
+
 }

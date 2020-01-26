@@ -1,46 +1,32 @@
 package map;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
-public class Grass implements Terrain {
+public class Grass extends Terrain {
 	private static final String IMG_NAME = "img/grass.png";
 	private static Image image = null;
 
-	public Grass() {
-		setImage();
-	}
-	
-	public void setImage() {
-		if (Grass.image == null) {
-			try {
-				Grass.image = ImageIO.read(new File(IMG_NAME)).getScaledInstance(15, 15, Image.SCALE_FAST);
-			} catch (IOException e) {
-				System.err.println("Could not find file: " + IMG_NAME);
-				e.printStackTrace();
-			}
-		}
-	}
-
+	@Override
 	public char toChar() {
 		return 'G';
 	}
 
+	@Override
 	public String toString() {
 		return "Grass";
 	}
 
 	@Override
 	public void draw(int x, int y) {
-		// TODO Auto-generated method stub
-
+		// TODO implement
+		throw new UnsupportedOperationException("draw not yet implemented");
 	}
 
 	@Override
-	public Image getImage() {
+	public Image getImage(int dim) {
+		if (Grass.image == null) {
+			Grass.image = setImage(IMG_NAME, dim);
+		}
 		return Grass.image;
 	}
 }

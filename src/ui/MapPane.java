@@ -1,12 +1,8 @@
 package ui;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,43 +11,32 @@ import map.Map;
 import map.Terrain;
 
 public class MapPane extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4987675307324245239L;
 	Map map;
 
-	public MapPane() {
-		System.out.println("here");
-		this.setLayout(new GridLayout(10, 10));
-		try {
-			for (int i = 0; i < 10; i++) {
-				for (int j = 0; j < 10; j++) {
-					try {
-						Image img = ImageIO.read(new File("img/sample.png")).getScaledInstance(25, 25,
-								Image.SCALE_FAST);
-						JLabel imgLabel = new JLabel(new ImageIcon(img));
-						this.add(imgLabel);
-						System.out.println("add " + i + " " + j);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			BufferedImage img1 = ImageIO.read(new File("img/sample.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public MapPane(Terrain[][] terrain) {
-		this.map = new Map(terrain);
+	public MapPane(Map map, Dimension dim) {
+		this.map = map;
+		Terrain[][] terrain = map.getTerrainImmutable();
 		int rows = terrain.length;
 		int cols = terrain[0].length;
-		this.setLayout(new GridLayout(rows, cols));
+		int scale = Math.min(dim.height / rows, dim.width / cols);
+		GridLayout gLayout = new GridLayout(rows, cols);
+		gLayout.setHgap(0);
+		gLayout.setVgap(0);
+		this.setLayout(gLayout);
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				Image img = terrain[i][j].getImage();
+				Image img = terrain[i][j].getImage(scale);
 				JLabel imgLabel = new JLabel(new ImageIcon(img));
 				this.add(imgLabel);
 			}
 		}
+
+		this.setSize(scale * cols, scale * rows);
+		System.out.println(this.getSize().toString()); // TODO figure out how to remove weird gaps
 	}
 }
