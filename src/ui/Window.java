@@ -8,8 +8,8 @@ import javax.swing.*;
 import map.Map;
 
 public class Window {
-	public static final int WINDOW_HEIGHT = 500;
-	public static final int MAP_WIDTH = 500;
+	public static final int WINDOW_HEIGHT = 1000;
+	public static final int MAP_WIDTH = 1000;
 	public static final int CONTROL_WIDTH = 200;
 
 	public Window(int rows, int cols, int percentWater) {
@@ -23,15 +23,13 @@ public class Window {
 		frame.setSize(MAP_WIDTH + CONTROL_WIDTH, WINDOW_HEIGHT);
 
 		/* Set up the map and the controls */
-		JPanel map = new MapPane(
-				new Map(Map.generateSimplexMap(rows, cols, percentWater)), new Dimension(MAP_WIDTH, WINDOW_HEIGHT));
+		JPanel map = new MapPane(new Map(Map.generateSimplexMap(rows, cols, percentWater)),
+				new Dimension(MAP_WIDTH, WINDOW_HEIGHT));
 		frame.getContentPane().add(map, BorderLayout.CENTER);
 		JPanel controls = new ControlPane();
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
 
 		/* Display the window */
-		// frame.pack();
 		frame.setVisible(true);
 	}
-
 }
