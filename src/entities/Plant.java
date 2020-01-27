@@ -1,5 +1,5 @@
 package entities;
 
-public interface Plant {
+public abstract class Plant {
 
 }

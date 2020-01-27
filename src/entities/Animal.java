@@ -1,5 +1,7 @@
 package entities;
 
+import java.awt.Point;
+
 public abstract class Animal {
 	/** Desire to eat */
 	double hunger;
@@ -17,4 +19,9 @@ public abstract class Animal {
 	double maxEnergy;
 	/** The range at which an animal can see another entity */
 	double vision;	
+	
+	public Action calculateAction() {
+		// TODO implement
+		throw new UnsupportedOperationException("Not yet implemented");
+	}
 }
