@@ -1,12 +1,9 @@
 package ui;
 
-import java.util.Arrays;
-
 import entities.Entity;
 import entities.EntityParam;
 import map_container.EntityMap;
 import map_container.TerrainMap;
-import terrain.Terrain;
 
 public class Main {
 	private static final int ROWS = 50;

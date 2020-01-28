@@ -1,11 +1,6 @@
 package terrain;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import map_container.MapComponent;
 
 public abstract class Terrain extends MapComponent {

@@ -1,14 +1,13 @@
 package ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 public class ControlPane extends JPanel {
+
+	private static final long serialVersionUID = 1010021733256440598L;
 
 	public ControlPane() {
 		/* Set vertical layout of components */

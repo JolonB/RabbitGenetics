@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 
@@ -15,13 +14,9 @@ import javax.swing.JPanel;
 
 import map_container.MapComponent;
 import map_container.MapContainer;
-import map_container.TerrainMap;
-import terrain.Terrain;
 
 public class MapPane extends JPanel {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 4987675307324245239L;
 	MapContainer map;
 

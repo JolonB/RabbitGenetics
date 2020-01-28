@@ -1,9 +1,5 @@
 package entities;
 
-import java.awt.Point;
-
-import map_container.MapComponent;
-
 public abstract class Animal extends Entity {
 	/** Desire to eat */
 	double hunger;

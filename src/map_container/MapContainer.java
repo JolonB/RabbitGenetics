@@ -1,7 +1,5 @@
 package map_container;
 
-import java.util.Arrays;
-
 public abstract class MapContainer {
 	MapComponent[][] contents;
 

@@ -2,7 +2,6 @@ package map_container;
 
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 

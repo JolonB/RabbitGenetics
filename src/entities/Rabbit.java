@@ -2,8 +2,6 @@ package entities;
 
 import java.awt.Image;
 
-import terrain.Water;
-
 public class Rabbit extends Animal {
 	private static final String IMG_NAME = "img/rabbit.png";
 	private static Image image = null;

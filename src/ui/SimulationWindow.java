@@ -7,6 +7,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class SimulationWindow extends JLayeredPane {
+
+	private static final long serialVersionUID = 6478558435237472529L;
+
 	public SimulationWindow(Dimension dim, JPanel... panels) {
 		if (panels.length == 0) {
 			throw new IllegalArgumentException("Not enough arguments in Simulation Window");
