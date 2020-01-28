@@ -13,21 +13,23 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import map.Map;
-import map.Terrain;
+import map_container.MapComponent;
+import map_container.MapContainer;
+import map_container.TerrainMap;
+import terrain.Terrain;
 
 public class MapPane extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4987675307324245239L;
-	Map map;
+	MapContainer map;
 
-	public MapPane(Map map, Dimension dim) {
+	public MapPane(MapContainer map, Dimension dim) {
 		this.map = map;
-		Terrain[][] terrain = map.getTerrainImmutable();
-		int rows = terrain.length;
-		int cols = terrain[0].length;
+		MapComponent[][] contents = map.getContents();
+		int rows = contents.length;
+		int cols = contents[0].length;
 		int scale = Math.min(dim.height / rows, dim.width / cols);
 		GridBagLayout gLayout = new GridBagLayout();
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -39,7 +41,7 @@ public class MapPane extends JPanel {
 			gbc.gridy = i;
 			for (int j = 0; j < cols; j++) {
 				gbc.gridx = j;
-				Image img = terrain[i][j].getImage(scale);
+				Image img = contents[i][j].getImage(scale);
 				JLabel imgLabel = new JLabel(new ImageIcon(img));
 				this.add(imgLabel, gbc);
 			}

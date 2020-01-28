@@ -1,17 +1,21 @@
-package map;
+package map_container;
 
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 import open_simplex_noise.OpenSimplexNoise;
+import terrain.Grass;
+import terrain.Sand;
+import terrain.Terrain;
+import terrain.Water;
 
-public class Map {
+public class TerrainMap extends MapContainer {
 
-	Terrain[][] terrain;
-	List<Point> grass, sand, water;
+	private List<Point> grass, sand, water;
 
 	static Random rand = new Random();
 
@@ -21,23 +25,8 @@ public class Map {
 	 * @param terrain The layout of the ground.
 	 * @throws Error
 	 */
-	public Map(Terrain[][] terrain) throws Error {
-		int numRows = terrain.length;
-		int numCols = terrain[0].length;
-		if (numRows <= 0) {
-			throw new Error("Number of rows must be equal to or greater than 1. Currently have " + numRows);
-		}
-		if (numCols <= 0) {
-			throw new Error("Number of columns must be equal to or greater than 1. Currently have " + numCols);
-		}
-
-		for (Terrain[] line : terrain) {
-			if (line.length != numCols) {
-				throw new Error("Array must be square. Length 1 = " + numCols + ", length 2 = " + line.length);
-			}
-		}
-
-		this.terrain = terrain;
+	public TerrainMap(Terrain[][] terrain) throws Error {
+		super(terrain);
 		this.storeLand();
 	}
 
@@ -47,10 +36,10 @@ public class Map {
 		water = new ArrayList<>();
 
 		Point p;
-		for (int i = 0; i < this.terrain.length; i++) {
-			for (int j = 0; j < this.terrain[0].length; j++) {
+		for (int i = 0; i < this.contents.length; i++) {
+			for (int j = 0; j < this.contents[0].length; j++) {
 				p = new Point(i, j);
-				switch (this.terrain[i][j].toChar()) {
+				switch (this.contents[i][j].toChar()) {
 				case 'G':
 					grass.add(p);
 					break;
@@ -61,48 +50,26 @@ public class Map {
 					water.add(p);
 					break;
 				default:
-					throw new IllegalArgumentException("Did not expect " + this.terrain[i][j].toChar());
+					throw new IllegalArgumentException("Did not expect " + this.contents[i][j].toChar());
 				}
 			}
 		}
 	}
 
-	/**
-	 * Returns a copy of the terrain array. This array is technically mutable,
-	 * however, any modifications to it will not affect the map.
-	 * 
-	 * @return A copy of the terrain
-	 */
-	public Terrain[][] getTerrainImmutable() {
-		/* Do edge case of null first */
-		if (this.terrain == null) {
-			return null;
-		}
-
-		Terrain[][] newTerrain = new Terrain[this.terrain.length][];
-		for (int i = 0; i < this.terrain.length; i++) {
-			newTerrain[i] = Arrays.copyOf(this.terrain[i], this.terrain[i].length);
-		}
-		return newTerrain;
-	}
-
-	public Terrain[][] getTerrain() {
-		return this.terrain;
-	}
-
 	public void draw() {
-		for (int i = 0; i < this.terrain.length; i++) {
-			for (int j = 0; j < this.terrain[0].length; j++) {
+		for (int i = 0; i < this.contents.length; i++) {
+			for (int j = 0; j < this.contents[0].length; j++) {
 				// TODO draw
+				throw new UnsupportedOperationException("draw not implemented");
 			}
 		}
 	}
 
 	public String toString() {
 		StringBuilder mapString = new StringBuilder();
-		for (int i = 0; i < this.terrain.length; i++) {
-			for (int j = 0; j < this.terrain[0].length; j++) {
-				mapString.append(this.terrain[i][j].toChar());
+		for (int i = 0; i < this.contents.length; i++) {
+			for (int j = 0; j < this.contents[0].length; j++) {
+				mapString.append(this.contents[i][j].toChar());
 			}
 			mapString.append('\n');
 		}
@@ -191,6 +158,18 @@ public class Map {
 		}
 
 		return terrain;
+	}
+
+	public List<Point> getGrass() {
+		return Collections.unmodifiableList(grass);
+	}
+
+	public List<Point> getSand() {
+		return Collections.unmodifiableList(sand);
+	}
+
+	public List<Point> getWater() {
+		return Collections.unmodifiableList(water);
 	}
 
 }

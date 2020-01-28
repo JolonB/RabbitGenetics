@@ -1,19 +1,19 @@
-package map;
+package terrain;
 
 import java.awt.Image;
 
-public class Sand extends Terrain {
-	private static final String IMG_NAME = "img/sand.png";
+public class Water extends Terrain {
+	private static final String IMG_NAME = "img/water.png";
 	private static Image image = null;
 
 	@Override
 	public char toChar() {
-		return 'S';
+		return 'W';
 	}
 
 	@Override
 	public String toString() {
-		return "Sand";
+		return "Water";
 	}
 
 	@Override
@@ -24,10 +24,9 @@ public class Sand extends Terrain {
 
 	@Override
 	public Image getImage(int dim) {
-		if (Sand.image == null) {
-			Sand.image = setImage(IMG_NAME, dim);
+		if (Water.image == null) {
+			Water.image = setImage(IMG_NAME, dim);
 		}
-		return Sand.image;
+		return Water.image;
 	}
-
 }

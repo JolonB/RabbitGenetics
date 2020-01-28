@@ -1,4 +1,4 @@
-package map;
+package map_container;
 
 import java.awt.Image;
 import java.io.File;
@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public abstract class Terrain {
+public abstract class MapComponent extends Object {
 
 	/**
 	 * Sets the image to the one provided by imgName. Returns the Image object.
@@ -27,13 +27,8 @@ public abstract class Terrain {
 		return image;
 	}
 
-	public abstract void draw(int x, int y);
-
-	public String toString() {
-		throw new UnsupportedOperationException("toString has not been implemented");
-	}
+	public abstract Image getImage(int dim);
 
 	public abstract char toChar();
 
-	public abstract Image getImage(int dim);
 }

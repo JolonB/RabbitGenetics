@@ -1,10 +1,11 @@
 package tests;
 
-import map.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import terrain.*;
+import terrain_container.Map;
 
 class MapFillingTests {
 
