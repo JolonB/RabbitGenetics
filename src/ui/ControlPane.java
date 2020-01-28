@@ -1,11 +1,14 @@
 package ui;
 
+import java.util.logging.Logger;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 public class ControlPane extends JPanel {
+	private static final Logger LOGGER = Logger.getLogger(ControlPane.class.getName());
 
 	private static final long serialVersionUID = 1010021733256440598L;
 
@@ -24,7 +27,7 @@ public class ControlPane extends JPanel {
 		this.add(b3);
 		this.add(b4);
 		this.add(sl);
-		
+
 		this.setSize(this.getWidth(), this.getHeight());
 	}
 

@@ -1,11 +1,18 @@
-package ui;
+package main;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import entities.Entity;
 import entities.EntityParam;
 import map_container.EntityMap;
+import map_container.MapComponent;
 import map_container.TerrainMap;
+import ui.Window;
 
 public class Main {
+	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+
 	private static final int ROWS = 50;
 	private static final int COLS = 50;
 	private static final int PERCENT_WATER = 40;
@@ -25,7 +32,7 @@ public class Main {
 	}
 
 	public static void calculateMovement(TerrainMap terrain, EntityMap entities) {
-		Entity[][] ent = (Entity[][]) entities.getContentsImmutable();
+		Entity[][] ent = (Entity[][]) entities.getContents();
 		for (Entity[] line : ent) {
 			for (Entity e : line) {
 				// TODO entity stuff
@@ -34,13 +41,10 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		EntityParam params = new EntityParam() {
-			{
-				numRabbit = NUM_RABBIT;
-				numCabbage = NUM_CABBAGE;
-				numFox = NUM_FOX;
-			}
-		};
+		EntityParam params = new EntityParam();
+		params.numRabbit = NUM_RABBIT;
+		params.numCabbage = NUM_CABBAGE;
+		params.numFox = NUM_FOX;
 
 		TerrainMap terrain = new TerrainMap(TerrainMap.generateSimplexMap(ROWS, COLS, PERCENT_WATER));
 		EntityMap entities = new EntityMap(EntityMap.generateEntityMap(ROWS, COLS, terrain.getGrass(), params));
@@ -50,7 +54,7 @@ public class Main {
 		} else {
 			beginSimulationNoUI(terrain, entities);
 		}
-		System.out.println("done");
+		LOGGER.log(Level.INFO, "done");
 	}
 
 }
