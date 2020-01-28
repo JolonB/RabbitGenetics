@@ -20,18 +20,30 @@ public class Main {
 	private static final int NUM_CABBAGE = 0;
 	private static final int NUM_FOX = 0;
 	private static final boolean UI_ACTIVE = true;
-	/** Updated using the slider in the UI */
-	public static double stepDuration = 3.0;
+	/** Updated using the slider in the UI. In milliseconds */
+	public static long stepDuration = 3000;
+	public static boolean running = true;
 
-	public static void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
+	private static void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
 
 	}
 
-	public static void beginSimulation(TerrainMap terrain, EntityMap entities) {
+	private static void beginSimulation(TerrainMap terrain, EntityMap entities) {
 		Window w = new Window(terrain, entities);
+		long currentTime = getTimeout();
+		while (running) {
+			if (currentTime < System.currentTimeMillis()) {
+				System.out.println("move"); // TODO perform some actions
+				currentTime = getTimeout();
+			}
+		}
+	}
+	
+	private static long getTimeout() {
+		return System.currentTimeMillis() + stepDuration;
 	}
 
-	public static void calculateMovement(TerrainMap terrain, EntityMap entities) {
+	private static void calculateMovement(TerrainMap terrain, EntityMap entities) {
 		Entity[][] ent = (Entity[][]) entities.getContents();
 		for (Entity[] line : ent) {
 			for (Entity e : line) {
