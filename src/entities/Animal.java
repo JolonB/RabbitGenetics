@@ -1,6 +1,10 @@
 package entities;
 
+import java.util.logging.Logger;
+
 public abstract class Animal extends Entity {
+	private static final Logger LOGGER = Logger.getLogger(Animal.class.getName());
+	
 	/** Desire to eat */
 	double hunger;
 	/** Desire to move */

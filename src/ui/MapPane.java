@@ -6,6 +6,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.util.logging.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -16,9 +17,10 @@ import map_container.MapComponent;
 import map_container.MapContainer;
 
 public class MapPane extends JPanel {
+	private static final Logger LOGGER = Logger.getLogger(MapPane.class.getName());
 
 	private static final long serialVersionUID = 4987675307324245239L;
-	MapContainer map;
+	transient MapContainer map;
 
 	public MapPane(MapContainer map, Dimension dim) {
 		this.map = map;

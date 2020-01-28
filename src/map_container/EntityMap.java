@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import entities.Entity;
 import entities.EntityParam;
@@ -11,10 +12,11 @@ import entities.Null;
 import entities.Rabbit;
 
 public class EntityMap extends MapContainer {
+	private static final Logger LOGGER = Logger.getLogger(EntityMap.class.getName());
 
 	static Random rand = new Random();
 
-	public EntityMap(Entity[][] entities) throws Error {
+	public EntityMap(Entity[][] entities) {
 		super(entities);
 	}
 

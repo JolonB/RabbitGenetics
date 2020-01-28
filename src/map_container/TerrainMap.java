@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import open_simplex_noise.OpenSimplexNoise;
 import terrain.Grass;
@@ -14,8 +15,11 @@ import terrain.Terrain;
 import terrain.Water;
 
 public class TerrainMap extends MapContainer {
+	private static final Logger LOGGER = Logger.getLogger(TerrainMap.class.getName());
 
-	private List<Point> grass, sand, water;
+	private List<Point> grass;
+	private List<Point> sand;
+	private List<Point> water;
 
 	static Random rand = new Random();
 
@@ -25,7 +29,7 @@ public class TerrainMap extends MapContainer {
 	 * @param terrain The layout of the ground.
 	 * @throws Error
 	 */
-	public TerrainMap(Terrain[][] terrain) throws Error {
+	public TerrainMap(Terrain[][] terrain) {
 		super(terrain);
 		this.storeLand();
 	}

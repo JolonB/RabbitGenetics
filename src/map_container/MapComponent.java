@@ -3,10 +3,13 @@ package map_container;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
 public abstract class MapComponent extends Object {
+	private static final Logger LOGGER = Logger.getLogger(MapComponent.class.getName());
 
 	/**
 	 * Sets the image to the one provided by imgName. Returns the Image object.
@@ -20,8 +23,7 @@ public abstract class MapComponent extends Object {
 		try {
 			image = ImageIO.read(new File(imgName)).getScaledInstance(dim, dim, Image.SCALE_FAST);
 		} catch (IOException e) {
-			System.err.println("Could not find file: " + imgName);
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, "Could not find file: " + imgName, e);
 		}
 
 		return image;

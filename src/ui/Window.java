@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.logging.Logger;
 
 import javax.swing.*;
 
@@ -10,6 +11,8 @@ import map_container.MapComponent;
 import map_container.TerrainMap;
 
 public class Window {
+	private static final Logger LOGGER = Logger.getLogger(Window.class.getName());
+
 	public static final int WINDOW_HEIGHT = 1000;
 	public static final int MAP_WIDTH = 1000;
 	public static final int CONTROL_WIDTH = 200;
@@ -27,8 +30,9 @@ public class Window {
 
 		/* Set up the map and the controls */
 		JPanel background = new MapPane(terrain, new Dimension(MAP_WIDTH, WINDOW_HEIGHT));
-		JPanel foreground = new MapPane(entities, new Dimension(MAP_WIDTH, WINDOW_HEIGHT)); // TODO sort out transparent images
-		SimulationWindow simWindow = new SimulationWindow(new Dimension(MAP_WIDTH, WINDOW_HEIGHT), background, foreground);
+		JPanel foreground = new MapPane(entities, new Dimension(MAP_WIDTH, WINDOW_HEIGHT));
+		SimulationWindow simWindow = new SimulationWindow(new Dimension(MAP_WIDTH, WINDOW_HEIGHT), background,
+				foreground);
 		frame.getContentPane().add(simWindow, BorderLayout.CENTER);
 		JPanel controls = new ControlPane();
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
@@ -37,7 +41,7 @@ public class Window {
 		frame.setVisible(true);
 	}
 
-	private static void checkMaps(TerrainMap terrain, EntityMap entities) throws ArrayIndexOutOfBoundsException {
+	private static void checkMaps(TerrainMap terrain, EntityMap entities) {
 		MapComponent[][] terrainArray = terrain.getContents();
 		MapComponent[][] entitiesArray = entities.getContents();
 		if (terrainArray.length != entitiesArray.length) {

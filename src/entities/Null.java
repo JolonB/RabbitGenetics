@@ -1,8 +1,11 @@
 package entities;
 
 import java.awt.Image;
+import java.util.logging.Logger;
 
 public class Null extends Entity {
+	private static final Logger LOGGER = Logger.getLogger(Null.class.getName());
+
 	private static final String IMG_NAME = "img/null.png";
 	private static Image image = null;
 
