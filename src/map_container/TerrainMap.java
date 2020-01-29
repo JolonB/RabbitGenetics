@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 
+import entities.Entity;
 import open_simplex_noise.OpenSimplexNoise;
 import terrain.Grass;
 import terrain.Sand;
 import terrain.Terrain;
 import terrain.Water;
 
-public class TerrainMap extends MapContainer {
+public class TerrainMap extends MapContainer<Terrain> {
 	private static final Logger LOGGER = Logger.getLogger(TerrainMap.class.getName());
 
 	private List<Point> grass;
@@ -174,6 +175,16 @@ public class TerrainMap extends MapContainer {
 
 	public List<Point> getWater() {
 		return Collections.unmodifiableList(water);
+	}
+
+	public Terrain[][] getContentsImmutable() {
+		/* Copy array */
+		Terrain[][] newContents = new Terrain[this.contents.length][];
+		for (int i = 0; i < this.contents.length; i++) {
+			newContents[i] = Arrays.copyOf(this.contents[i], this.contents.length);
+		}
+
+		return newContents;
 	}
 
 }

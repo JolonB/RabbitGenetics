@@ -3,6 +3,7 @@ package entities;
 import java.awt.Image;
 import java.util.logging.Logger;
 
+import entities.Action.Act;
 import terrain.Terrain;
 
 public class Null extends Entity {
@@ -25,7 +26,6 @@ public class Null extends Entity {
 
 	@Override
 	public char toChar() {
-		// TODO Auto-generated method stub
 		return 'n';
 	}
 
@@ -36,7 +36,10 @@ public class Null extends Entity {
 	@Override
 	public Action calculateAction(Terrain[][] terrain) {
 		// TODO Auto-generated method stub
-		return null;
+		this.act.nextAction = Act.NOTHING;
+		this.act.x = this.act.entity.getX();
+		this.act.y = this.act.entity.getY();
+		return this.act;
 	}
 
 }

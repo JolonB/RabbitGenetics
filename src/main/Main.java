@@ -56,8 +56,8 @@ public class Main {
 	}
 
 	private static Action[][] calculateMovement(TerrainMap terrain, EntityMap entities) {
-		Terrain[][] terrainArray = (Terrain[][]) terrain.getContentsImmutable();
-		Entity[][] oldEntities = (Entity[][]) entities.getContentsImmutable();
+		Terrain[][] terrainArray = terrain.getContentsImmutable();
+		Entity[][] oldEntities = entities.getContentsImmutable();
 		int rows = terrainArray.length;
 		int cols = terrainArray[0].length;
 
@@ -67,6 +67,8 @@ public class Main {
 			for (int j = 0; j < cols; j++) {
 				newEntities[i][j] = new Null(i, j);
 				actions[i][j] = oldEntities[i][j].calculateAction(terrainArray);
+
+				System.out.println(actions[i][j].toString());
 			}
 		}
 
@@ -91,8 +93,10 @@ public class Main {
 					break;
 				case DIE:
 					break;
+				case NOTHING:
+					break;
 				default:
-					throw new UnsupportedOperationException("Action must be EAT, BREED, MOVE, or DIE.");
+					throw new UnsupportedOperationException("Action must be EAT, BREED, MOVE, DIE, or NOTHING.");
 				}
 			}
 		}

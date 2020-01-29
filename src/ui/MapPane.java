@@ -22,7 +22,7 @@ public class MapPane extends JPanel {
 	private static final long serialVersionUID = 4987675307324245239L;
 	transient MapContainer map;
 
-	public MapPane(MapContainer map, Dimension dim) {
+	public MapPane(MapContainer<? extends MapComponent> map, Dimension dim) {
 		this.map = map;
 		MapComponent[][] contents = map.getContents();
 		int rows = contents.length;

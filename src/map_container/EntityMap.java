@@ -2,6 +2,7 @@ package map_container;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
@@ -11,7 +12,7 @@ import entities.EntityParam;
 import entities.Null;
 import entities.Rabbit;
 
-public class EntityMap extends MapContainer {
+public class EntityMap extends MapContainer<Entity> {
 	private static final Logger LOGGER = Logger.getLogger(EntityMap.class.getName());
 
 	static Random rand = new Random();
@@ -66,6 +67,16 @@ public class EntityMap extends MapContainer {
 			}
 		}
 		return generateEntityMap(rows, cols, points, params);
+	}
+
+	public Entity[][] getContentsImmutable() {
+		/* Copy array */
+		Entity[][] newContents = new Entity[this.contents.length][];
+		for (int i = 0; i < this.contents.length; i++) {
+			newContents[i] = Arrays.copyOf(this.contents[i], this.contents.length);
+		}
+
+		return newContents;
 	}
 
 }

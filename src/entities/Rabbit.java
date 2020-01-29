@@ -34,6 +34,10 @@ public class Rabbit extends Animal {
 		return 'r';
 	}
 
+	public String toString() {
+		return "Rabbit";
+	}
+
 	@Override
 	public Action calculateAction(Terrain[][] terrain) {
 		// TODO Auto-generated method stub

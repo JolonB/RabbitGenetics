@@ -13,9 +13,8 @@ public abstract class Entity extends MapComponent {
 	public Point position;
 
 	public Entity(int x, int y) {
-		act = new Action();
+		act = new Action(this);
 		this.position = new Point(x, y);
-		act.entity = this;
 	}
 
 	public void setPos(int x, int y) {

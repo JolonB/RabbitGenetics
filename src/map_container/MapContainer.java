@@ -1,14 +1,17 @@
 package map_container;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-public abstract class MapContainer {
-	private static final Logger LOGGER = Logger.getLogger(MapContainer.class.getName());
-	
-	MapComponent[][] contents;
+import terrain.Terrain;
 
-	public MapContainer(MapComponent[][] contents) {
+public abstract class MapContainer<T> {
+	private static final Logger LOGGER = Logger.getLogger(MapContainer.class.getName());
+
+	T[][] contents;
+
+	public MapContainer(T[][] contents) {
 		if (contents == null) {
 			throw new NullPointerException("Need to provide a contents array");
 		}
@@ -23,7 +26,7 @@ public abstract class MapContainer {
 					"Number of columns must be equal to or greater than 1. Currently have " + numCols);
 		}
 
-		for (MapComponent[] line : contents) {
+		for (T[] line : contents) {
 			if (line.length != numCols) {
 				throw new ArrayIndexOutOfBoundsException(
 						"Array must be rectangular. Length 1 = " + numCols + ", length 2 = " + line.length);
@@ -33,7 +36,7 @@ public abstract class MapContainer {
 		this.contents = contents;
 	}
 
-	public MapComponent[][] getContents() {
+	public T[][] getContents() {
 		return this.contents;
 	}
 
@@ -41,15 +44,12 @@ public abstract class MapContainer {
 	 * Returns a copy of the map array. This array is technically mutable, however,
 	 * any modifications to it will not affect the map.
 	 * 
+	 * @param class1
+	 * 
+	 * @param class1
+	 * @return
+	 * 
 	 * @return A copy of the contents of the map
 	 */
-	public MapComponent[][] getContentsImmutable() {
-		/* Copy array */
-		MapComponent[][] newContents = new MapComponent[this.contents.length][];
-		for (int i = 0; i < this.contents.length; i++) {
-			newContents[i] = Arrays.copyOf(this.contents[i], this.contents.length);
-		}
-
-		return newContents;
-	}
+	public abstract T[][] getContentsImmutable();
 }
