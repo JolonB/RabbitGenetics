@@ -3,9 +3,16 @@ package entities;
 import java.awt.Image;
 import java.util.logging.Logger;
 
+import entities.Action.Act;
+import terrain.Terrain;
+
 public class Rabbit extends Animal {
+	public Rabbit(int x, int y) {
+		super(x, y);
+	}
+
 	private static final Logger LOGGER = Logger.getLogger(Rabbit.class.getName());
-	
+
 	private static final String IMG_NAME = "img/rabbit.png";
 	private static Image image = null;
 
@@ -25,6 +32,16 @@ public class Rabbit extends Animal {
 	@Override
 	public char toChar() {
 		return 'r';
+	}
+
+	@Override
+	public Action calculateAction(Terrain[][] terrain) {
+		// TODO Auto-generated method stub
+		act.nextAction = Act.MOVE;
+		act.x = position.x + 1;
+		act.y = position.y + 1;
+
+		return act;
 	}
 
 }

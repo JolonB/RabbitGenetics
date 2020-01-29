@@ -9,6 +9,7 @@ import javax.swing.*;
 import map_container.EntityMap;
 import map_container.MapComponent;
 import map_container.TerrainMap;
+import wrapper.NumberWrapper;
 
 public class Window {
 	private static final Logger LOGGER = Logger.getLogger(Window.class.getName());
@@ -17,12 +18,12 @@ public class Window {
 	public static final int MAP_WIDTH = 1000;
 	public static final int CONTROL_WIDTH = 200;
 
-	public Window(TerrainMap terrain, EntityMap entities) {
+	public Window(TerrainMap terrain, EntityMap entities, NumberWrapper timer) {
 		checkMaps(terrain, entities);
-		createAndShowGUI(terrain, entities);
+		createAndShowGUI(terrain, entities, timer);
 	}
 
-	private static void createAndShowGUI(TerrainMap terrain, EntityMap entities) {
+	private static void createAndShowGUI(TerrainMap terrain, EntityMap entities, NumberWrapper timer) {
 		/* Create and set up the window */
 		JFrame frame = new JFrame("Rabbit Breeding");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,7 +35,7 @@ public class Window {
 		SimulationWindow simWindow = new SimulationWindow(new Dimension(MAP_WIDTH, WINDOW_HEIGHT), background,
 				foreground);
 		frame.getContentPane().add(simWindow, BorderLayout.CENTER);
-		JPanel controls = new ControlPane();
+		JPanel controls = new ControlPane(timer);
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
 
 		/* Display the window */

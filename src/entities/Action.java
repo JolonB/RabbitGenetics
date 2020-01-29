@@ -1,11 +1,14 @@
 package entities;
 
 public class Action {
-	enum Act {
-		EAT, BREED, MOVE
+	public enum Act {
+		EAT, BREED, MOVE, DIE
 	}
 
-	Act nextAction;
-	int x;
-	int y;
+	public Entity entity;
+	public Act nextAction;
+	public int x;
+	int oldX;
+	public int y;
+	int oldY;
 }

@@ -3,8 +3,12 @@ package entities;
 import java.util.logging.Logger;
 
 public abstract class Animal extends Entity {
+	public Animal(int x, int y) {
+		super(x, y);
+	}
+
 	private static final Logger LOGGER = Logger.getLogger(Animal.class.getName());
-	
+
 	/** Desire to eat */
 	double hunger;
 	/** Desire to move */
@@ -20,10 +24,5 @@ public abstract class Animal extends Entity {
 	/** The maximum energy before no more energy can be gained */
 	double maxEnergy;
 	/** The range at which an animal can see another entity */
-	double vision;	
-	
-	public Action calculateAction() {
-		// TODO implement
-		throw new UnsupportedOperationException("Not yet implemented");
-	}
+	double vision;
 }

@@ -3,7 +3,13 @@ package entities;
 import java.awt.Image;
 import java.util.logging.Logger;
 
+import terrain.Terrain;
+
 public class Null extends Entity {
+	public Null(int x, int y) {
+		super(x, y);
+	}
+
 	private static final Logger LOGGER = Logger.getLogger(Null.class.getName());
 
 	private static final String IMG_NAME = "img/null.png";
@@ -25,6 +31,12 @@ public class Null extends Entity {
 
 	public String toString() {
 		return "Null";
+	}
+
+	@Override
+	public Action calculateAction(Terrain[][] terrain) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

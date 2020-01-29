@@ -20,13 +20,17 @@ public class EntityMap extends MapContainer {
 		super(entities);
 	}
 
+	public void setEntities(Entity[][] entities) {
+		this.contents = entities;
+	}
+
 	public static Entity[][] generateEntityMap(int rows, int cols, List<Point> grass, EntityParam params) {
 		List<Point> grassCopy = new ArrayList<>(grass);
 
 		Entity[][] entities = new Entity[rows][cols];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				entities[i][j] = new Null();
+				entities[i][j] = new Null(i, j);
 			}
 		}
 
@@ -36,19 +40,19 @@ public class EntityMap extends MapContainer {
 			randIndex = rand.nextInt(grassCopy.size());
 			p = grassCopy.get(randIndex);
 			grassCopy.remove(randIndex);
-			entities[p.x][p.y] = new Rabbit();
+			entities[p.x][p.y] = new Rabbit(p.x, p.y);
 		}
 //		for (int i = 0; i < params.numCabbage; i++) {
 //			randIndex = rand.nextInt(grassCopy.size());
 //			p = grassCopy.get(randIndex);
 //			grassCopy.remove(randIndex);
-//			entities[p.x][p.y] = new Cabbage(); 
+//			entities[p.x][p.y] = new Cabbage(p.x, p.y); 
 //		}
 //		for (int i = 0; i < params.numFox; i++) {
 //			randIndex = rand.nextInt(grassCopy.size());
 //			p = grassCopy.get(randIndex);
 //			grassCopy.remove(randIndex);
-//			entities[p.x][p.y] = new Fox(); 
+//			entities[p.x][p.y] = new Fox(p.x, p.y); 
 //		}
 
 		return entities;
