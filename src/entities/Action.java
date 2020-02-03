@@ -1,6 +1,11 @@
 package entities;
 
+import java.util.logging.Logger;
+
 public class Action {
+	@SuppressWarnings("unused")
+	private static final Logger LOGGER = Logger.getLogger(Action.class.getName());
+
 	public enum Act {
 		EAT, BREED, MOVE, DIE, NOTHING
 	}

@@ -17,10 +17,11 @@ import map_container.MapComponent;
 import map_container.MapContainer;
 
 public class MapPane extends JPanel {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(MapPane.class.getName());
 
 	private static final long serialVersionUID = 4987675307324245239L;
-	transient MapContainer map;
+	transient MapContainer<?> map;
 
 	public MapPane(MapContainer<? extends MapComponent> map, Dimension dim) {
 		this.map = map;

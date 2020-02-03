@@ -3,10 +3,7 @@ package entities;
 import java.util.logging.Logger;
 
 public abstract class Animal extends Entity {
-	public Animal(int x, int y) {
-		super(x, y);
-	}
-
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Animal.class.getName());
 
 	/** Desire to eat */
@@ -25,4 +22,8 @@ public abstract class Animal extends Entity {
 	double maxEnergy;
 	/** The range at which an animal can see another entity */
 	double vision;
+	
+	public Animal(int x, int y) {
+		super(x, y);
+	}
 }

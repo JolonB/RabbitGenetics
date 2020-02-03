@@ -7,10 +7,11 @@ import map_container.MapComponent;
 import terrain.Terrain;
 
 public abstract class Entity extends MapComponent {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Entity.class.getName());
 
 	public final Action act;
-	public Point position;
+	private Point position;
 
 	public Entity(int x, int y) {
 		act = new Action(this);

@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 
-import entities.Entity;
 import open_simplex_noise.OpenSimplexNoise;
 import terrain.Grass;
 import terrain.Sand;
@@ -16,6 +15,7 @@ import terrain.Terrain;
 import terrain.Water;
 
 public class TerrainMap extends MapContainer<Terrain> {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(TerrainMap.class.getName());
 
 	private List<Point> grass;

@@ -9,6 +9,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class SimulationWindow extends JLayeredPane {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(SimulationWindow.class.getName());
 
 	private static final long serialVersionUID = 6478558435237472529L;

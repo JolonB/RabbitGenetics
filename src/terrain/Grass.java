@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.util.logging.Logger;
 
 public class Grass extends Terrain {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Grass.class.getName());
 	
 	private static final String IMG_NAME = "img/grass.png";

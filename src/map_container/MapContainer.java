@@ -1,12 +1,9 @@
 package map_container;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.logging.Logger;
 
-import terrain.Terrain;
-
 public abstract class MapContainer<T> {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(MapContainer.class.getName());
 
 	T[][] contents;

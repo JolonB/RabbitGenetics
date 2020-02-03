@@ -7,11 +7,12 @@ import entities.Action.Act;
 import terrain.Terrain;
 
 public class Null extends Entity {
+	@SuppressWarnings("unused")
+	private static final Logger LOGGER = Logger.getLogger(Animal.class.getName());
+
 	public Null(int x, int y) {
 		super(x, y);
 	}
-
-	private static final Logger LOGGER = Logger.getLogger(Null.class.getName());
 
 	private static final String IMG_NAME = "img/null.png";
 	private static Image image = null;
