@@ -13,6 +13,7 @@ import entities.Null;
 import entities.Rabbit;
 
 public class EntityMap extends MapContainer<Entity> {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(EntityMap.class.getName());
 
 	static Random rand = new Random();

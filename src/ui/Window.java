@@ -12,6 +12,7 @@ import map_container.TerrainMap;
 import wrapper.NumberWrapper;
 
 public class Window {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Window.class.getName());
 
 	public static final int WINDOW_HEIGHT = 1000;

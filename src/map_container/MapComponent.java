@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 public abstract class MapComponent extends Object {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(MapComponent.class.getName());
 
 	/**

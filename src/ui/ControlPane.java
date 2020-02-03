@@ -9,6 +9,7 @@ import javax.swing.JSlider;
 import wrapper.NumberWrapper;
 
 public class ControlPane extends JPanel {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(ControlPane.class.getName());
 
 	private static final long serialVersionUID = 1010021733256440598L;

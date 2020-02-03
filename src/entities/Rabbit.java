@@ -7,10 +7,7 @@ import entities.Action.Act;
 import terrain.Terrain;
 
 public class Rabbit extends Animal {
-	public Rabbit(int x, int y) {
-		super(x, y);
-	}
-
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Rabbit.class.getName());
 
 	private static final String IMG_NAME = "img/rabbit.png";
@@ -20,6 +17,10 @@ public class Rabbit extends Animal {
 	double breedingEnergy;
 	/** Desire to reproduce */
 	double horniness;
+
+	public Rabbit(int x, int y) {
+		super(x, y);
+	}
 
 	@Override
 	public Image getImage(int dim) {
@@ -42,8 +43,8 @@ public class Rabbit extends Animal {
 	public Action calculateAction(Terrain[][] terrain) {
 		// TODO Auto-generated method stub
 		act.nextAction = Act.MOVE;
-		act.x = position.x + 1;
-		act.y = position.y + 1;
+		act.x = this.getX() + 1;
+		act.y = this.getY() + 1;
 
 		return act;
 	}

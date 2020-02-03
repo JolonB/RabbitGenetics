@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.logging.Logger;
+
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -7,6 +9,8 @@ import javax.swing.event.ChangeListener;
 import wrapper.NumberWrapper;
 
 public class SliderListener implements ChangeListener {
+	@SuppressWarnings("unused")
+	private static final Logger LOGGER = Logger.getLogger(SliderListener.class.getName());
 
 	NumberWrapper n;
 

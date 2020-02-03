@@ -1,7 +1,5 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,13 +8,13 @@ import entities.Entity;
 import entities.EntityParam;
 import entities.Null;
 import map_container.EntityMap;
-import map_container.MapComponent;
 import map_container.TerrainMap;
 import terrain.Terrain;
 import ui.Window;
 import wrapper.NumberWrapper;
 
 public class Main {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
 	private static final int ROWS = 50;
