@@ -29,28 +29,41 @@ public class Main {
 	public static boolean running = true;
 
 	private static void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
-
+		long currentTime = getTimeout(STEP_DURATION);
+		while (running) {
+			if (currentTime < System.currentTimeMillis()) {
+				calculateMovement(terrain, entities);
+				currentTime = getTimeout(STEP_DURATION);
+			}
+		}
 	}
 
 	private static void beginSimulation(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
+		NumberWrapper timeStart = new NumberWrapper(0);
 		Window w = new Window(terrain, entities, stepDuration);
 
-		long currentTime = getTimeout(stepDuration);
+		getTimeout(stepDuration, timeStart);
 		while (running) {
-			if (currentTime < System.currentTimeMillis()) {
-				calculateMovement(terrain, entities);
-				currentTime = getTimeout(stepDuration);
-			}
+
 		}
+	}
+
+	private static EntityMap doCalculate(TerrainMap terrain, EntityMap entities, NumberWrapper timeStart,
+			NumberWrapper stepDuration) { //TODO rename current time to timeoutTime?
+		if (timeStart.compareTo(System.currentTimeMillis()) < 0) { /* If timeStart is less than current time */
+			calculateMovement(terrain, entities);
+			getTimeout(stepDuration, timeStart);
+		}
+		return null;
 	}
 
 	private static long getTimeout(long stepDuration) {
 		return System.currentTimeMillis() + stepDuration;
 	}
 
-	private static long getTimeout(NumberWrapper stepDuration) {
-		return System.currentTimeMillis() + stepDuration.getValueLong();
+	private static void getTimeout(NumberWrapper stepDuration, NumberWrapper timeStart) {
+		timeStart.setValue(System.currentTimeMillis() + stepDuration.getValueLong());
 	}
 
 	private static Action[][] calculateMovement(TerrainMap terrain, EntityMap entities) {

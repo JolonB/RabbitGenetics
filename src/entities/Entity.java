@@ -48,5 +48,7 @@ public abstract class Entity extends MapComponent {
 	}
 
 	public abstract Action calculateAction(Terrain[][] terrain);
+	
+	public abstract boolean performAction(Action action, Entity[][] entities);
 
 }
