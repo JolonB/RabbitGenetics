@@ -7,27 +7,27 @@ public class NumberWrapper extends Wrapper<Number> {
 	}
 
 	public Long getValueLong() {
-		return (Long) this.value;
+		return this.value.longValue();
 	}
 
 	public Integer getValueInteger() {
-		return (Integer) this.value;
+		return this.value.intValue();
 	}
 
 	public Short getValueShort() {
-		return (Short) this.value;
+		return this.value.shortValue();
 	}
 
 	public Byte getValueByte() {
-		return (Byte) this.value;
+		return this.value.byteValue();
 	}
 
 	public Double getValueDouble() {
-		return (Double) this.value;
+		return this.value.doubleValue();
 	}
 
 	public Float getValueFloat() {
-		return (Float) this.value;
+		return this.value.floatValue();
 	}
 
 }
