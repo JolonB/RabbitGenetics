@@ -1,6 +1,6 @@
 package com.rabbit.wrapper;
 
-public class NumberWrapper extends Wrapper<Number> {
+public class NumberWrapper extends Wrapper<Number> implements Comparable<Number> {
 
 	public NumberWrapper(Number value) {
 		super(value);
@@ -28,6 +28,11 @@ public class NumberWrapper extends Wrapper<Number> {
 
 	public Float getValueFloat() {
 		return this.value.floatValue();
+	}
+
+	@Override
+	public int compareTo(Number o) {
+		return this.compareTo(o);
 	}
 
 }
