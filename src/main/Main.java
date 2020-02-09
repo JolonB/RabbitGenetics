@@ -8,6 +8,8 @@ import entities.Entity;
 import entities.EntityParam;
 import entities.Null;
 import map_container.EntityMap;
+import map_container.MapComponent;
+import map_container.MapContainer;
 import map_container.TerrainMap;
 import terrain.Terrain;
 import ui.Window;
@@ -29,41 +31,51 @@ public class Main {
 	public static boolean running = true;
 
 	private static void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
-		long currentTime = getTimeout(STEP_DURATION);
+		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
+		NumberWrapper timeoutUntil = new NumberWrapper();
+
+		EntityMap newEntities;
+		getTimeout(timeoutUntil, stepDuration);
 		while (running) {
-			if (currentTime < System.currentTimeMillis()) {
-				calculateMovement(terrain, entities);
-				currentTime = getTimeout(STEP_DURATION);
-			}
+			newEntities = doCalculate(terrain, entities, timeoutUntil, stepDuration);
+			// TODO make it so this is only printed if newEntities updates (perhaps pass
+			// newEntities as a parameter?
+			System.out.println(MapContainer.toLayeredString((MapContainer) entities, (MapContainer) terrain));
 		}
 	}
 
 	private static void beginSimulation(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
-		NumberWrapper timeStart = new NumberWrapper(0);
+		NumberWrapper timeoutUntil = new NumberWrapper();
 		Window w = new Window(terrain, entities, stepDuration);
 
-		getTimeout(stepDuration, timeStart);
+		EntityMap newEntities;
+		getTimeout(timeoutUntil, stepDuration);
 		while (running) {
-
+			newEntities = doCalculate(terrain, entities, timeoutUntil, stepDuration);
+			// TODO draw newEntities
 		}
 	}
 
-	private static EntityMap doCalculate(TerrainMap terrain, EntityMap entities, NumberWrapper timeStart,
-			NumberWrapper stepDuration) { //TODO rename current time to timeoutTime?
-		if (timeStart.compareTo(System.currentTimeMillis()) < 0) { /* If timeStart is less than current time */
+	private static EntityMap doCalculate(TerrainMap terrain, EntityMap entities, NumberWrapper timeoutUntil,
+			NumberWrapper stepDuration) {
+		if (timeoutUntil.compareNum(System.currentTimeMillis()) < 0) { /* If timeStart is less than current time */
 			calculateMovement(terrain, entities);
-			getTimeout(stepDuration, timeStart);
+			getTimeout(timeoutUntil, stepDuration);
 		}
-		return null;
+		return entities; // TODO calculate the action and return the new entity array
 	}
 
 	private static long getTimeout(long stepDuration) {
 		return System.currentTimeMillis() + stepDuration;
 	}
 
-	private static void getTimeout(NumberWrapper stepDuration, NumberWrapper timeStart) {
-		timeStart.setValue(System.currentTimeMillis() + stepDuration.getValueLong());
+	private static void getTimeout(NumberWrapper timeoutUntil, long stepDuration) {
+		timeoutUntil.setValue(System.currentTimeMillis() + stepDuration);
+	}
+
+	private static void getTimeout(NumberWrapper timeoutUntil, NumberWrapper stepDuration) {
+		timeoutUntil.setValue(System.currentTimeMillis() + stepDuration.getValueLong());
 	}
 
 	private static Action[][] calculateMovement(TerrainMap terrain, EntityMap entities) {
@@ -78,8 +90,6 @@ public class Main {
 			for (int j = 0; j < cols; j++) {
 				newEntities[i][j] = new Null(i, j);
 				actions[i][j] = oldEntities[i][j].calculateAction(terrainArray);
-
-				System.out.println(actions[i][j].toString());
 			}
 		}
 
