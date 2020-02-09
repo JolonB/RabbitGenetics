@@ -70,17 +70,6 @@ public class TerrainMap extends MapContainer<Terrain> {
 		}
 	}
 
-	public String toString() {
-		StringBuilder mapString = new StringBuilder();
-		for (int i = 0; i < this.contents.length; i++) {
-			for (int j = 0; j < this.contents[0].length; j++) {
-				mapString.append(this.contents[i][j].toChar());
-			}
-			mapString.append('\n');
-		}
-		return mapString.toString();
-	}
-
 //	private static final double DIRECT_CONST = 0.003;
 //	private static final double DIAG_CONST = 0.003;
 

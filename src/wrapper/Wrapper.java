@@ -1,6 +1,6 @@
 package wrapper;
 
-public abstract class Wrapper<T> {
+public abstract class Wrapper<T> implements Comparable<Wrapper<T>> {
 
 	T value;
 
