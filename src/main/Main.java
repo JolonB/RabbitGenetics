@@ -8,7 +8,6 @@ import entities.Entity;
 import entities.EntityParam;
 import entities.Null;
 import map_container.EntityMap;
-import map_container.MapComponent;
 import map_container.MapContainer;
 import map_container.TerrainMap;
 import terrain.Terrain;
@@ -28,7 +27,7 @@ public class Main {
 	private static final boolean UI_ACTIVE = false;
 	/** Updated using the slider in the UI. In milliseconds */
 	public static final long STEP_DURATION = 3000;
-	public static boolean running = true;
+	private static boolean running;
 
 	private static void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
@@ -40,12 +39,12 @@ public class Main {
 		getTimeout(timeoutUntil, stepDuration);
 		while (running) {
 			updated = doCalculate(terrain, entities, timeoutUntil, stepDuration, newEntities);
-			// TODO make it so this is only printed if newEntities updates (perhaps pass
-			// newEntities as a parameter?
 			if (updated) {
+				/* Swap EntityMaps */
 				temp = entities;
 				entities = newEntities;
 				newEntities = temp;
+				/* Print map */
 				System.out.println(MapContainer.toLayeredString((MapContainer) entities, (MapContainer) terrain));
 			}
 		}
@@ -155,6 +154,8 @@ public class Main {
 
 		TerrainMap terrain = new TerrainMap(TerrainMap.generateSimplexMap(ROWS, COLS, PERCENT_WATER));
 		EntityMap entities = new EntityMap(EntityMap.generateEntityMap(ROWS, COLS, terrain.getGrass(), params));
+
+		running = true;
 
 		if (UI_ACTIVE) {
 			beginSimulation(terrain, entities);
