@@ -18,23 +18,24 @@ public class EntityMap extends MapContainer<Entity> {
 
 	static Random rand = new Random();
 
+	public EntityMap() {
+		super();
+	}
+
 	public EntityMap(Entity[][] entities) {
 		super(entities);
 	}
 
 	public void setEntities(Entity[][] entities) {
+		validateContents(entities);
+
 		this.contents = entities;
 	}
 
 	public static Entity[][] generateEntityMap(int rows, int cols, List<Point> grass, EntityParam params) {
 		List<Point> grassCopy = new ArrayList<>(grass);
 
-		Entity[][] entities = new Entity[rows][cols];
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				entities[i][j] = new Null(i, j);
-			}
-		}
+		Entity[][] entities = generateEmptyEntityMap(rows, cols);
 
 		int randIndex;
 		Point p;
@@ -68,6 +69,16 @@ public class EntityMap extends MapContainer<Entity> {
 			}
 		}
 		return generateEntityMap(rows, cols, points, params);
+	}
+
+	public static Entity[][] generateEmptyEntityMap(int rows, int cols) {
+		Entity[][] entities = new Entity[rows][cols];
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				entities[i][j] = new Null(i, j);
+			}
+		}
+		return entities;
 	}
 
 	public Entity[][] getContentsImmutable() {
