@@ -43,8 +43,12 @@ public class Rabbit extends Animal {
 	public Action calculateAction(Terrain[][] terrain) {
 		// TODO Auto-generated method stub
 		act.nextAction = Act.MOVE;
+		// TODO calculate next move based on direction currently facing
 		act.x = this.getX() + 1;
 		act.y = this.getY() + 1;
+
+		/* Change the orientation by up to 5 degrees in either direction */
+		orientation += rand.nextInt(11) - 5;
 
 		return act;
 	}
