@@ -8,7 +8,17 @@ public abstract class MapContainer<T extends MapComponent> {
 
 	T[][] contents;
 
+	public MapContainer() {
+		/* Do nothing */
+	}
+
 	public MapContainer(T[][] contents) {
+		validateContents(contents);
+
+		this.contents = contents;
+	}
+
+	public void validateContents(T[][] contents) {
 		if (contents == null) {
 			throw new NullPointerException("Need to provide a contents array");
 		}
@@ -29,8 +39,6 @@ public abstract class MapContainer<T extends MapComponent> {
 						"Array must be rectangular. Length 1 = " + numCols + ", length 2 = " + line.length);
 			}
 		}
-
-		this.contents = contents;
 	}
 
 	public T[][] getContents() {
@@ -64,6 +72,7 @@ public abstract class MapContainer<T extends MapComponent> {
 					c = layers[k].contents[i][j].toChar();
 					k++;
 				} while (c == 'n' && k < layers.length);
+				mapString.append(c);
 				mapString.append(c);
 			}
 			mapString.append('\n');

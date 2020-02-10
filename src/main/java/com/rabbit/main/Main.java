@@ -24,7 +24,7 @@ public class Main {
 	private static final int NUM_RABBIT = 1;
 	private static final int NUM_CABBAGE = 0;
 	private static final int NUM_FOX = 0;
-	private static final boolean UI_ACTIVE = true;
+	private static final boolean UI_ACTIVE = false;
 	/** Updated using the slider in the UI. In milliseconds */
 	public static final long STEP_DURATION = 3000;
 	public static boolean running = true;
@@ -33,13 +33,20 @@ public class Main {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
 		NumberWrapper timeoutUntil = new NumberWrapper();
 
-		EntityMap newEntities;
+		EntityMap newEntities = new EntityMap();
+		EntityMap temp;
+		boolean updated;
 		getTimeout(timeoutUntil, stepDuration);
 		while (running) {
-			newEntities = doCalculate(terrain, entities, timeoutUntil, stepDuration);
+			updated = doCalculate(terrain, entities, timeoutUntil, stepDuration, newEntities);
 			// TODO make it so this is only printed if newEntities updates (perhaps pass
 			// newEntities as a parameter?
-			System.out.println(MapContainer.toLayeredString((MapContainer) entities, (MapContainer) terrain));
+			if (updated) {
+				temp = entities;
+				entities = newEntities;
+				newEntities = temp;
+				System.out.println(MapContainer.toLayeredString((MapContainer) entities, (MapContainer) terrain));
+			}
 		}
 	}
 
@@ -48,21 +55,38 @@ public class Main {
 		NumberWrapper timeoutUntil = new NumberWrapper();
 		Window w = new Window(terrain, entities, stepDuration);
 
-		EntityMap newEntities;
+		EntityMap newEntities = new EntityMap();
+		EntityMap temp;
+		boolean updated;
 		getTimeout(timeoutUntil, stepDuration);
 		while (running) {
-			newEntities = doCalculate(terrain, entities, timeoutUntil, stepDuration);
-			// TODO draw newEntities
+			updated = doCalculate(terrain, entities, timeoutUntil, stepDuration, newEntities);
+			if (updated) {
+				// TODO draw newEntities
+			}
 		}
 	}
 
-	private static EntityMap doCalculate(TerrainMap terrain, EntityMap entities, NumberWrapper timeoutUntil,
-			NumberWrapper stepDuration) {
+	private static boolean doCalculate(TerrainMap terrain, EntityMap entities, NumberWrapper timeoutUntil,
+			NumberWrapper stepDuration, EntityMap newEntities) {
+
 		if (timeoutUntil.compareNum(System.currentTimeMillis()) < 0) { /* If timeStart is less than current time */
-			calculateMovement(terrain, entities);
+			int rows = entities.getContents().length;
+			int cols = entities.getContents()[0].length;
+
+			/* Calculate actions */
+			Action[][] actions = calculateMovement(terrain, entities);
+
+			/* Parse actions into new entity map */
+			newEntities.setEntities(EntityMap.generateEmptyEntityMap(rows, cols));
+			parseActions(actions, newEntities.getContents());
+
+			/* Calculate new timeout */
 			getTimeout(timeoutUntil, stepDuration);
+
+			return true;
 		}
-		return entities; // TODO calculate the action and return the new entity array
+		return false;
 	}
 
 	private static long getTimeout(long stepDuration) {
