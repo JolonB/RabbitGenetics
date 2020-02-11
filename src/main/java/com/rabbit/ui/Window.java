@@ -18,6 +18,9 @@ public class Window {
 	public static final int WINDOW_HEIGHT = 1000;
 	public static final int MAP_WIDTH = 1000;
 	public static final int CONTROL_WIDTH = 200;
+	public static MapPane foreground1, foreground2; // TODO fix the mix of static and non-static methods/fields
+
+	private static boolean foreground1Visible = true;
 
 	public Window(TerrainMap terrain, EntityMap entities, NumberWrapper timer) {
 		checkMaps(terrain, entities);
@@ -31,10 +34,15 @@ public class Window {
 		frame.setSize(MAP_WIDTH + CONTROL_WIDTH, WINDOW_HEIGHT);
 
 		/* Set up the map and the controls */
-		JPanel background = new MapPane(terrain, new Dimension(MAP_WIDTH, WINDOW_HEIGHT));
-		JPanel foreground = new MapPane(entities, new Dimension(MAP_WIDTH, WINDOW_HEIGHT));
+		Dimension dim = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
+		int rows = entities.getContents().length;
+		int cols = entities.getContents()[0].length;
+		JPanel background = new MapPane(terrain, dim);
+		foreground1 = new MapPane(entities, dim);
+		foreground2 = new MapPane(new EntityMap(EntityMap.generateEmptyEntityMap(rows, cols)), dim);
 		SimulationWindow simWindow = new SimulationWindow(new Dimension(MAP_WIDTH, WINDOW_HEIGHT), background,
-				foreground);
+				foreground1, foreground2);
+		foreground2.setVisible(false);
 		frame.getContentPane().add(simWindow, BorderLayout.CENTER);
 		JPanel controls = new ControlPane(timer);
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
@@ -54,5 +62,17 @@ public class Window {
 				throw new ArrayIndexOutOfBoundsException("Both arrays must have the same number of columns");
 			}
 		}
+	}
+
+	public static void updateEntities(EntityMap entities) {
+		/* Update the currently inactive MapPane */
+		if (foreground1Visible) {
+			foreground2.updateContents(entities);
+		} else {
+			foreground1.updateContents(entities);
+		}
+		foreground1Visible = !foreground1Visible;
+		foreground1.setVisible(foreground1Visible);
+		foreground2.setVisible(!foreground1Visible);
 	}
 }

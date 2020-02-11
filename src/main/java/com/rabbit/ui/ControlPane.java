@@ -23,7 +23,7 @@ public class ControlPane extends JPanel {
 		JButton b2 = new JButton("2");
 		JButton b3 = new JButton("3");
 		JButton b4 = new JButton("4");
-		JSlider timeSlider = new JSlider(1, 5000, 2000);
+		JSlider timeSlider = new JSlider(1000, 5000, 2000);
 		timeSlider.addChangeListener(new SliderListener(n));
 
 		this.add(b1);

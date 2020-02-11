@@ -24,7 +24,7 @@ public class Main {
 	private static final int NUM_RABBIT = 1;
 	private static final int NUM_CABBAGE = 0;
 	private static final int NUM_FOX = 0;
-	private static final boolean UI_ACTIVE = false;
+	private static final boolean UI_ACTIVE = true;
 	/** Updated using the slider in the UI. In milliseconds */
 	public static final long STEP_DURATION = 3000;
 	private static boolean running;
@@ -62,6 +62,11 @@ public class Main {
 		while (running) {
 			updated = doCalculate(terrain, entities, timeoutUntil, stepDuration, newEntities);
 			if (updated) {
+				/* Swap EntityMaps */
+				temp = entities;
+				entities = newEntities;
+				newEntities = temp;
+				Window.updateEntities(entities);
 				// TODO draw newEntities
 			}
 		}
