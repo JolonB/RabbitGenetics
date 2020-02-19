@@ -1,0 +1,21 @@
+package com.rabbit.terrain;
+
+import java.awt.Image;
+import java.util.logging.Logger;
+
+import com.rabbit.map_container.MapComponent;
+
+public abstract class Terrain extends MapComponent {
+	@SuppressWarnings("unused")
+	private static final Logger LOGGER = Logger.getLogger(Terrain.class.getName());
+
+	public abstract void draw(int x, int y);
+
+	public String toString() {
+		throw new UnsupportedOperationException("toString has not been implemented");
+	}
+
+	public abstract char toChar();
+
+	public abstract Image getImage(int dim);
+}
