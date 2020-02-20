@@ -58,7 +58,7 @@ public abstract class MapContainer<T extends MapComponent> {
 	}
 
 	@SafeVarargs
-	public static String toLayeredString(MapContainer<MapComponent>... layers) {
+	public static String toLayeredString(MapContainer<? extends MapComponent>... layers) {
 		if (!checkArrays(layers)) {
 			throw new ArrayIndexOutOfBoundsException("All arrays must have the same dimensions");
 		}
@@ -81,14 +81,14 @@ public abstract class MapContainer<T extends MapComponent> {
 	}
 
 	@SafeVarargs
-	public static boolean checkArrays(MapContainer<MapComponent>... arrays) {
+	public static boolean checkArrays(MapContainer<? extends MapComponent>... arrays) {
 		if (arrays.length == 0) {
 			throw new IllegalArgumentException("Needs at least one array to verify");
 		}
 
 		int rows = arrays[0].contents.length;
 		int cols = arrays[0].contents[0].length;
-		for (MapContainer<MapComponent> map : arrays) {
+		for (MapContainer<? extends MapComponent> map : arrays) {
 			if (map.contents.length != rows) {
 				return false;
 			}

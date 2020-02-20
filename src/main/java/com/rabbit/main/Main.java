@@ -45,7 +45,7 @@ public class Main {
 				entities = newEntities;
 				newEntities = temp;
 				/* Print map */
-				System.out.println(MapContainer.toLayeredString((MapContainer) entities, (MapContainer) terrain));
+				System.out.println(MapContainer.toLayeredString(entities, terrain));
 			}
 		}
 	}
