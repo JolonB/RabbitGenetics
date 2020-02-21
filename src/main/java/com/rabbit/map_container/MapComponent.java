@@ -42,6 +42,11 @@ public abstract class MapComponent extends Object {
 		return null;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		return this.getClass().equals(o.getClass());
+	}
+
 	public abstract char toChar();
 
 }
