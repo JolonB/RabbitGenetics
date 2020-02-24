@@ -55,3 +55,7 @@ test {
     //     includeTestsMatching '*test*'
     // }
 }
+
+javadoc { 
+    options.addBooleanOption('private', true) 
+}
