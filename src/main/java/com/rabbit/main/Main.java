@@ -11,6 +11,7 @@ import com.rabbit.map_container.EntityMap;
 import com.rabbit.map_container.MapContainer;
 import com.rabbit.map_container.TerrainMap;
 import com.rabbit.terrain.Terrain;
+import com.rabbit.ui.MapPane;
 import com.rabbit.ui.Window;
 import com.rabbit.wrapper.NumberWrapper;
 
@@ -25,8 +26,7 @@ public class Main {
 	private static final int NUM_CABBAGE = 0;
 	private static final int NUM_FOX = 0;
 	private static final boolean UI_ACTIVE = true;
-	/** Updated using the slider in the UI. In milliseconds */
-	public static final long STEP_DURATION = 3000;
+	private static final long STEP_DURATION = 3000;
 	private static boolean running;
 
 	private static void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
@@ -53,25 +53,52 @@ public class Main {
 	private static void beginSimulation(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
 		NumberWrapper timeoutUntil = new NumberWrapper();
-		Window w = new Window(terrain, entities, stepDuration);
+		MapPane background = new MapPane(terrain, Window.getDimensions());
+		MapPane foreground = new MapPane(entities, Window.getDimensions());
+		Window w = new Window(background, foreground, stepDuration);
 
 		EntityMap newEntities = new EntityMap();
 		EntityMap temp;
 		boolean updated;
 		getTimeout(timeoutUntil, stepDuration);
 		while (running) {
-			updated = doCalculate(terrain, entities, timeoutUntil, stepDuration, newEntities);
-			if (updated) {
-				/* Swap EntityMaps */
-				temp = entities;
-				entities = newEntities;
-				newEntities = temp;
-				Window.updateEntities(entities);
-				// TODO draw newEntities
+			// updated = doCalculate(terrain, entities, timeoutUntil, stepDuration,
+			// newEntities);
+			// if (updated) {
+			// /* Swap EntityMaps */
+			// temp = entities;
+			// entities = newEntities;
+			// newEntities = temp; // do this rather than allocating new memory
+			// Window.updateEntities(entities);
+			// // TODO draw newEntities
+			// }
+			/* If the timeout period has elapsed */
+			if (checkTimeout(timeoutUntil, stepDuration)) {
+				/* Show buffer */
+				// TODO show buffer
+				/* Calculate next buffer */
+				newEntities = doCalculate(terrain, entities);
+				// TODO doCalculate
+				/* Update next buffer */
+				// TODO update buffer
 			}
 		}
 	}
 
+	private static EntityMap doCalculate(TerrainMap terrain, EntityMap entities) {
+		int rows = entities.getContents().length;
+		int cols = entities.getContents()[0].length;
+
+		/* Calculate actions */
+		Action[][] actions = calculateMovement(terrain, entities);
+
+		/* Parse actions into new entity map */
+		EntityMap newEntities = new EntityMap(EntityMap.generateEmptyEntityMap(rows, cols));
+		parseActions(actions, newEntities.getContents());
+		return newEntities;
+	}
+
+	@Deprecated
 	private static boolean doCalculate(TerrainMap terrain, EntityMap entities, NumberWrapper timeoutUntil,
 			NumberWrapper stepDuration, EntityMap newEntities) {
 
@@ -104,6 +131,25 @@ public class Main {
 
 	private static void getTimeout(NumberWrapper timeoutUntil, NumberWrapper stepDuration) {
 		timeoutUntil.setValue(System.currentTimeMillis() + stepDuration.getValueLong());
+	}
+
+	/**
+	 * Check whether the timeout period has elapsed. If it has, return true and
+	 * update the timeout. Otherwise, return false.
+	 * 
+	 * @param timeoutUntil The system time (in milliseconds) that indicates the
+	 *                     timeout is done.
+	 * @param stepDuration The duration of the next timeout in milliseconds. For
+	 *                     example, a stepDuration of 1000 means checkTimeout will
+	 *                     return true if called after 1 second has elapsed.
+	 * @return True if the timeout is done. Otherwise return false.
+	 */
+	private static boolean checkTimeout(NumberWrapper timeoutUntil, NumberWrapper stepDuration) {
+		if (timeoutUntil.compareNum(System.currentTimeMillis()) < 0) { /* If timed out */
+			getTimeout(timeoutUntil, stepDuration);
+			return true;
+		}
+		return false;
 	}
 
 	private static Action[][] calculateMovement(TerrainMap terrain, EntityMap entities) {

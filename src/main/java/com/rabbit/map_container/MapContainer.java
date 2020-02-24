@@ -1,6 +1,9 @@
 package com.rabbit.map_container;
 
+import java.util.Arrays;
 import java.util.logging.Logger;
+
+import java.awt.Dimension;
 
 public abstract class MapContainer<T extends MapComponent> {
 	@SuppressWarnings("unused")
@@ -106,12 +109,19 @@ public abstract class MapContainer<T extends MapComponent> {
 	 * Returns a copy of the map array. This array is technically mutable, however,
 	 * any modifications to it will not affect the map.
 	 * 
-	 * @param class1
-	 * 
-	 * @param class1
-	 * @return
-	 * 
 	 * @return A copy of the contents of the map
 	 */
-	public abstract T[][] getContentsImmutable();
+	public T[][] getContentsImmutable() {
+		@SuppressWarnings("unchecked")
+		T[][] newContents = (T[][]) new MapComponent[this.contents.length][];
+		for (int i = 0; i < this.contents.length; i++) {
+			newContents[i] = Arrays.copyOf(this.contents[i], this.contents.length);
+		}
+		// TODO remove the Terrain/EntityMap implementation of this method
+		return newContents;
+	}
+
+	public Dimension getDimensions() {
+		return new Dimension(this.contents.length, this.contents[0].length);
+	}
 }

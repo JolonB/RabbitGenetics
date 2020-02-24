@@ -48,7 +48,8 @@ public class MapPane extends JPanel {
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 	}
 
-	// TODO improve this method to have a lower cost (only update icons that need to be updated)
+	// TODO improve this method to have a lower cost (only update icons that need to
+	// be updated)
 	public void updateContents(MapContainer<? extends MapComponent> map) {
 		MapComponent[][] currentContents = this.map.getContents();
 		MapComponent[][] newContents = map.getContents();
@@ -57,10 +58,20 @@ public class MapPane extends JPanel {
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				String message = this.getComponent(i * rows + j).toString();
-				System.out.println(message);
-				((JLabel) this.getComponent(i * rows + j)).setIcon(new ImageIcon(newContents[i][j].getImage()));
+				// Only update cell if contents have changed
+				if (!newContents[i][j].equals(currentContents[i][j])) {
+					((JLabel) this.getComponent(i * rows + j)).setIcon(new ImageIcon(newContents[i][j].getImage()));
+				}
 			}
 		}
+		this.map = map;
+	}
+
+	public Dimension getDimensions() {
+		return this.map.getDimensions();
+	}
+
+	public MapComponent[][] getMapContents() {
+		return this.map.getContentsImmutable();
 	}
 }
