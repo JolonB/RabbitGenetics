@@ -20,15 +20,11 @@ public class Window {
 	public static final int MAP_WIDTH = 1000;
 	private static final Dimension dim = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
 	public static final int CONTROL_WIDTH = 200;
-	private MapPane foreground; // TODO fix the mix of static and non-static methods/fields
-	private MapPane background;
+	private SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
 	private NumberWrapper timer;
 
-	private static boolean foreground1Visible = true;
-
 	public Window(MapPane background, MapPane foreground, NumberWrapper timer) {
-		this.background = background;
-		this.foreground = foreground;
+		simWindow = new SimulationWindow(dim, background, foreground);
 		this.timer = timer;
 		checkMaps(background.getMapContents(), foreground.getMapContents());
 		createAndShowGUI();
@@ -41,10 +37,6 @@ public class Window {
 		frame.setSize(MAP_WIDTH + CONTROL_WIDTH, WINDOW_HEIGHT);
 
 		/* Set up the map and the controls */
-		Dimension mapDim = this.background.getDimensions();
-		int rows = mapDim.height;
-		int cols = mapDim.width;
-		SimulationWindow simWindow = new SimulationWindow(dim, background, foreground);
 		frame.getContentPane().add(simWindow, BorderLayout.CENTER);
 		JPanel controls = new ControlPane(timer);
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
@@ -64,12 +56,16 @@ public class Window {
 		}
 	}
 
+	public static void updateForeground(MapPane foreground) {
+
+	}
+
 	public static void updateEntities(EntityMap entities) {
 		/* Update the currently inactive MapPane */
 		// if (foreground1Visible) {
-		// 	foreground2.updateContents(entities);
+		// foreground2.updateContents(entities);
 		// } else {
-		// 	foreground1.updateContents(entities);
+		// foreground1.updateContents(entities);
 		// }
 		// foreground1Visible = !foreground1Visible;
 		// foreground1.setVisible(foreground1Visible);
