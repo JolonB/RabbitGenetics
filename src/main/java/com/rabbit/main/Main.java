@@ -35,18 +35,14 @@ public class Main {
 		NumberWrapper timeoutUntil = new NumberWrapper();
 
 		EntityMap newEntities = new EntityMap();
-		EntityMap temp;
-		boolean updated;
 		getTimeout(timeoutUntil, stepDuration);
 		while (running) {
-			updated = doCalculate(terrain, entities, timeoutUntil, stepDuration, newEntities);
-			if (updated) {
-				/* Swap EntityMaps */
-				temp = entities;
-				entities = newEntities;
-				newEntities = temp;
+			if (checkTimeout(timeoutUntil, stepDuration)) {
 				/* Print map */
 				System.out.println(MapContainer.toLayeredString(entities, terrain));
+				/* Calculate next buffer */
+				newEntities = doCalculate(terrain, entities);
+				entities = newEntities;
 			}
 		}
 	}
@@ -62,25 +58,15 @@ public class Main {
 		EntityMap newEntities = new EntityMap();
 		getTimeout(timeoutUntil, stepDuration);
 		while (running) {
-			// updated = doCalculate(terrain, entities, timeoutUntil, stepDuration,
-			// newEntities);
-			// if (updated) {
-			// /* Swap EntityMaps */
-			// temp = entities;
-			// entities = newEntities;
-			// newEntities = temp; // do this rather than allocating new memory
-			// Window.updateEntities(entities);
-			// // TODO draw newEntities
-			// }
 			/* If the timeout period has elapsed */
 			if (checkTimeout(timeoutUntil, stepDuration)) {
-				/* Show buffer */
-				// TODO show buffer
+				/* Redraw buffer */
+				w.updateForeground(foreground);
 				/* Calculate next buffer */
 				newEntities = doCalculate(terrain, entities);
-				// TODO doCalculate
 				/* Update next buffer */
 				foreground = new MapPane(newEntities, dim);
+				entities = newEntities;
 			}
 		}
 	}

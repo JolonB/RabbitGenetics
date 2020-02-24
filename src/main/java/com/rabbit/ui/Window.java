@@ -37,8 +37,8 @@ public class Window {
 		frame.setSize(MAP_WIDTH + CONTROL_WIDTH, WINDOW_HEIGHT);
 
 		/* Set up the map and the controls */
-		frame.getContentPane().add(simWindow, BorderLayout.CENTER);
-		JPanel controls = new ControlPane(timer);
+		frame.getContentPane().add(this.simWindow, BorderLayout.CENTER);
+		JPanel controls = new ControlPane(this.timer);
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
 
 		/* Display the window */
@@ -56,8 +56,8 @@ public class Window {
 		}
 	}
 
-	public static void updateForeground(MapPane foreground) {
-
+	public void updateForeground(MapPane foreground) {
+		this.simWindow.updateLayer(dim, foreground, 1);
 	}
 
 	public static void updateEntities(EntityMap entities) {
