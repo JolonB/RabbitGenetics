@@ -1,5 +1,6 @@
 package com.rabbit.main;
 
+import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -8,8 +9,10 @@ import com.rabbit.entities.Entity;
 import com.rabbit.entities.EntityParam;
 import com.rabbit.entities.Null;
 import com.rabbit.map_container.EntityMap;
+import com.rabbit.map_container.MapContainer;
 import com.rabbit.map_container.TerrainMap;
 import com.rabbit.terrain.Terrain;
+import com.rabbit.ui.MapPane;
 import com.rabbit.ui.Window;
 import com.rabbit.wrapper.NumberWrapper;
 
@@ -24,37 +27,115 @@ public class Main {
 	private static final int NUM_CABBAGE = 0;
 	private static final int NUM_FOX = 0;
 	private static final boolean UI_ACTIVE = true;
-	/** Updated using the slider in the UI. In milliseconds */
-	public static final long STEP_DURATION = 3000;
-	public static boolean running = true;
+	private static final long STEP_DURATION = 3000;
+	private static boolean running;
 
 	private static void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
-		while(running) {
-			System.out.println("run");
-			LOGGER.log(Level.SEVERE, "log");
+		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
+		NumberWrapper timeoutUntil = new NumberWrapper();
+
+		EntityMap newEntities = new EntityMap();
+		getTimeout(timeoutUntil, stepDuration);
+		while (running) {
+			if (checkTimeout(timeoutUntil, stepDuration)) {
+				/* Print map */
+				System.out.println(MapContainer.toLayeredString(entities, terrain));
+				/* Calculate next buffer */
+				newEntities = doCalculate(terrain, entities);
+				entities = newEntities;
+			}
 		}
 	}
 
 	private static void beginSimulation(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
-		Window w = new Window(terrain, entities, stepDuration);
+		NumberWrapper timeoutUntil = new NumberWrapper();
+		Dimension dim = Window.getDimensions();
+		MapPane background = new MapPane(terrain, dim);
+		MapPane foreground = new MapPane(entities, dim);
+		Window w = new Window(background, foreground, stepDuration);
 
-		long currentTime = getTimeout(stepDuration);
+		EntityMap newEntities = new EntityMap();
+		getTimeout(timeoutUntil, stepDuration);
 		while (running) {
-			System.out.println("ui run");
-			if (currentTime < System.currentTimeMillis()) {
-				calculateMovement(terrain, entities);
-				currentTime = getTimeout(stepDuration);
+			/* If the timeout period has elapsed */
+			if (checkTimeout(timeoutUntil, stepDuration)) {
+				/* Redraw buffer */
+				w.updateForeground(foreground);
+				/* Calculate next buffer */
+				newEntities = doCalculate(terrain, entities);
+				/* Update next buffer */
+				foreground = new MapPane(newEntities, dim);
+				entities = newEntities;
 			}
 		}
+	}
+
+	private static EntityMap doCalculate(TerrainMap terrain, EntityMap entities) {
+		int rows = entities.getContents().length;
+		int cols = entities.getContents()[0].length;
+
+		/* Calculate actions */
+		Action[][] actions = calculateMovement(terrain, entities);
+
+		/* Parse actions into new entity map */
+		EntityMap newEntities = new EntityMap(EntityMap.generateEmptyEntityMap(rows, cols));
+		parseActions(actions, newEntities.getContents());
+		return newEntities;
+	}
+
+	@Deprecated
+	private static boolean doCalculate(TerrainMap terrain, EntityMap entities, NumberWrapper timeoutUntil,
+			NumberWrapper stepDuration, EntityMap newEntities) {
+
+		if (timeoutUntil.compareNum(System.currentTimeMillis()) < 0) { /* If timeStart is less than current time */
+			int rows = entities.getContents().length;
+			int cols = entities.getContents()[0].length;
+
+			/* Calculate actions */
+			Action[][] actions = calculateMovement(terrain, entities);
+
+			/* Parse actions into new entity map */
+			newEntities.setEntities(EntityMap.generateEmptyEntityMap(rows, cols));
+			parseActions(actions, newEntities.getContents());
+
+			/* Calculate new timeout */
+			getTimeout(timeoutUntil, stepDuration);
+
+			return true;
+		}
+		return false;
 	}
 
 	private static long getTimeout(long stepDuration) {
 		return System.currentTimeMillis() + stepDuration;
 	}
 
-	private static long getTimeout(NumberWrapper stepDuration) {
-		return System.currentTimeMillis() + stepDuration.getValueLong();
+	private static void getTimeout(NumberWrapper timeoutUntil, long stepDuration) {
+		timeoutUntil.setValue(System.currentTimeMillis() + stepDuration);
+	}
+
+	private static void getTimeout(NumberWrapper timeoutUntil, NumberWrapper stepDuration) {
+		timeoutUntil.setValue(System.currentTimeMillis() + stepDuration.getValueLong());
+	}
+
+	/**
+	 * Check whether the timeout period has elapsed. If it has, return true and
+	 * update the timeout. Otherwise, return false.
+	 * 
+	 * @param timeoutUntil The system time (in milliseconds) that indicates the
+	 *                     timeout is done.
+	 * @param stepDuration The duration of the next timeout in milliseconds. For
+	 *                     example, a stepDuration of 1000 means checkTimeout will
+	 *                     return true if called after 1 second has elapsed.
+	 * @return True if the timeout is done. Otherwise return false.
+	 */
+	private static boolean checkTimeout(NumberWrapper timeoutUntil, NumberWrapper stepDuration) {
+		if (timeoutUntil.compareNum(System.currentTimeMillis()) < 0) { /* If timed out */
+			getTimeout(timeoutUntil, stepDuration);
+			return true;
+		}
+		return false;
 	}
 
 	private static Action[][] calculateMovement(TerrainMap terrain, EntityMap entities) {
@@ -69,8 +150,6 @@ public class Main {
 			for (int j = 0; j < cols; j++) {
 				newEntities[i][j] = new Null(i, j);
 				actions[i][j] = oldEntities[i][j].calculateAction(terrainArray);
-
-				System.out.println(actions[i][j].toString());
 			}
 		}
 
@@ -112,6 +191,8 @@ public class Main {
 
 		TerrainMap terrain = new TerrainMap(TerrainMap.generateSimplexMap(ROWS, COLS, PERCENT_WATER));
 		EntityMap entities = new EntityMap(EntityMap.generateEntityMap(ROWS, COLS, terrain.getGrass(), params));
+
+		running = true;
 
 		if (UI_ACTIVE) {
 			beginSimulation(terrain, entities);
