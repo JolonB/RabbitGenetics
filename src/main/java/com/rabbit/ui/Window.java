@@ -2,12 +2,17 @@ package com.rabbit.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import java.util.logging.Logger;
 
 import javax.swing.*;
 
 import com.rabbit.map_container.EntityMap;
 import com.rabbit.map_container.MapComponent;
+import com.rabbit.map_container.MapContainer;
 import com.rabbit.wrapper.NumberWrapper;
 
 public class Window {
@@ -16,10 +21,15 @@ public class Window {
 
 	public static final int WINDOW_HEIGHT = 1000;
 	public static final int MAP_WIDTH = 1000;
-	private static final Dimension DIM = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
 	public static final int CONTROL_WIDTH = 200;
-	private transient final SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
-	private transient final NumberWrapper timer;
+	private static final Dimension DIM = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
+	private static final MouseListener mouseListener = new MouseAdapter() {
+		public void mouseClicked(MouseEvent e) {
+			System.out.println(e.getSource().toString());
+		}
+	};
+	private SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
+	private NumberWrapper timer;
 
 	public Window(MapPane background, MapPane foreground, NumberWrapper timer) {
 		simWindow = new SimulationWindow(DIM, background, foreground);
@@ -58,16 +68,8 @@ public class Window {
 		this.simWindow.updateLayer(DIM, foreground, 1);
 	}
 
-	public static void updateEntities(EntityMap entities) {
-		/* Update the currently inactive MapPane */
-		// if (foreground1Visible) {
-		// foreground2.updateContents(entities);
-		// } else {
-		// foreground1.updateContents(entities);
-		// }
-		// foreground1Visible = !foreground1Visible;
-		// foreground1.setVisible(foreground1Visible);
-		// foreground2.setVisible(!foreground1Visible);
+	public static MapPane newMapPane(MapContainer<? extends MapComponent> map) {
+		return new MapPane(map, DIM, Window.mouseListener);
 	}
 
 	public static Dimension getDimensions() {

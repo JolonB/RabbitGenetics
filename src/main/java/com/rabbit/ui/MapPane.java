@@ -6,11 +6,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.util.logging.Logger;
+import java.awt.event.MouseListener;
 
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.rabbit.map_container.MapComponent;
@@ -23,7 +23,7 @@ public class MapPane extends JPanel {
 	private static final long serialVersionUID = 4987675307324245239L;
 	private transient final MapContainer<?> map;
 
-	public MapPane(MapContainer<? extends MapComponent> map, Dimension dim) {
+	public MapPane(MapContainer<? extends MapComponent> map, Dimension dim, MouseListener ml) {
 		super();
 		this.map = map;
 		MapComponent[][] contents = map.getContents();
@@ -41,7 +41,8 @@ public class MapPane extends JPanel {
 			for (int j = 0; j < cols; j++) {
 				gbc.gridx = j;
 				Image img = contents[i][j].getImage(scale);
-				JLabel imgLabel = new JLabel(new ImageIcon(img));
+				
+				Cell imgLabel = new Cell(contents[i][j], new ImageIcon(img), ml);
 				this.add(imgLabel, gbc);
 			}
 		}

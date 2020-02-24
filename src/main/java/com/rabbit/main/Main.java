@@ -1,6 +1,5 @@
 package com.rabbit.main;
 
-import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -51,9 +50,8 @@ public class Main {
 	private void beginSimulation(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
 		NumberWrapper timeoutUntil = new NumberWrapper();
-		Dimension dim = Window.getDimensions();
-		MapPane background = new MapPane(terrain, dim);
-		MapPane foreground = new MapPane(entities, dim);
+		MapPane background = Window.newMapPane(terrain);
+		MapPane foreground = Window.newMapPane(entities);
 		Window window = new Window(background, foreground, stepDuration);
 
 		updateTimeout(timeoutUntil, stepDuration);
@@ -65,7 +63,7 @@ public class Main {
 				/* Calculate next buffer */
 				entities = doCalculate(terrain, entities);
 				/* Update next buffer */
-				foreground = new MapPane(entities, dim);
+				foreground = Window.newMapPane(entities);
 			}
 		}
 		running = false; // TODO link this to a button
