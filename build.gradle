@@ -94,3 +94,7 @@ test{
         classDumpDir = file("$buildDir/jacoco/classpathdumps") 
     } 
 } 
+
+javadoc { 
+    options.addBooleanOption('private', true) 
+}

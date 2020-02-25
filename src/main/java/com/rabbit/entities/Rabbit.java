@@ -49,4 +49,24 @@ public class Rabbit extends Animal {
 		return act;
 	}
 
+	@Override
+	public boolean performAction(Action action, Entity[][] entities) {
+		switch (action.nextAction) {
+		case MOVE:
+			this.setPos(action.x, action.y);
+			entities[action.x][action.y] = this;
+			return true;
+		case BREED:
+			break;
+		case EAT:
+			break;
+		case DIE:
+			break;
+		case NOTHING:
+			return true;
+		}
+
+		return false;
+	}
+
 }
