@@ -7,8 +7,19 @@ jobs:
     name: code checking
     runs-on: ubuntu-latest
     steps:
-      - uses: sfdx-actions/setup-pmd@v1
       - name: Check out Git repository
         uses: actions/checkout@v2
-      - name: run-pmd
-        run: pmd -d ./src -R category/apex/design.xml -f text
+      - name: Get lynx
+        uses: sudo apt-get install lynx -y
+      - name: Check code
+        run: |
+        ./gradlew pmdMain
+        if [[ $? -eq 1 ]]; then
+          lynx build/reports/pmd/main.html -dump
+        fi
+      - name: Check tests
+        run: |
+        ./gradlew pmdTest
+        if [[ $? -eq 1 ]]; then
+          lynx build/reports/pmd/test.html -dump
+        fi
