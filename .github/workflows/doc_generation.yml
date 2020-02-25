@@ -11,15 +11,19 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
-          - name: Create local changes
-      run: |
-        touch new_file
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m "Add changes" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create local changes
+        run: |
+          git pull
+          git checkout -b javadoc-gen || git checkout javadoc-gen
+          touch new_file
+          git add new_file
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Add changes" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: javadoc-gen

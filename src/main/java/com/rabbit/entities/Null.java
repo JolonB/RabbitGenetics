@@ -8,7 +8,7 @@ import com.rabbit.terrain.Terrain;
 
 public class Null extends Entity {
 	@SuppressWarnings("unused")
-	private static final Logger LOGGER = Logger.getLogger(Animal.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Null.class.getName());
 
 	public Null(int x, int y) {
 		super(x, y);
@@ -41,6 +41,12 @@ public class Null extends Entity {
 		this.act.x = this.act.entity.getX();
 		this.act.y = this.act.entity.getY();
 		return this.act;
+	}
+
+	@Override
+	public boolean performAction(Action action, Entity[][] entities) {
+		/* Do nothing */
+		return true;
 	}
 
 }

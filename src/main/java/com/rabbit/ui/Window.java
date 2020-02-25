@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import com.rabbit.map_container.EntityMap;
 import com.rabbit.map_container.MapComponent;
+import com.rabbit.map_container.MapContainer;
 import com.rabbit.wrapper.NumberWrapper;
 import com.rabbit.map_container.TerrainMap;
 
@@ -17,35 +18,34 @@ public class Window {
 
 	public static final int WINDOW_HEIGHT = 1000;
 	public static final int MAP_WIDTH = 1000;
+	private static final Dimension dim = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
 	public static final int CONTROL_WIDTH = 200;
+	private SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
+	private NumberWrapper timer;
 
-	public Window(TerrainMap terrain, EntityMap entities, NumberWrapper timer) {
-		checkMaps(terrain, entities);
-		createAndShowGUI(terrain, entities, timer);
+	public Window(MapPane background, MapPane foreground, NumberWrapper timer) {
+		simWindow = new SimulationWindow(dim, background, foreground);
+		this.timer = timer;
+		checkMaps(background.getMapContents(), foreground.getMapContents());
+		createAndShowGUI();
 	}
 
-	private static void createAndShowGUI(TerrainMap terrain, EntityMap entities, NumberWrapper timer) {
+	private void createAndShowGUI() {
 		/* Create and set up the window */
 		JFrame frame = new JFrame("Rabbit Breeding");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(MAP_WIDTH + CONTROL_WIDTH, WINDOW_HEIGHT);
 
 		/* Set up the map and the controls */
-		JPanel background = new MapPane(terrain, new Dimension(MAP_WIDTH, WINDOW_HEIGHT));
-		JPanel foreground = new MapPane(entities, new Dimension(MAP_WIDTH, WINDOW_HEIGHT));
-		SimulationWindow simWindow = new SimulationWindow(new Dimension(MAP_WIDTH, WINDOW_HEIGHT), background,
-				foreground);
-		frame.getContentPane().add(simWindow, BorderLayout.CENTER);
-		JPanel controls = new ControlPane(timer);
+		frame.getContentPane().add(this.simWindow, BorderLayout.CENTER);
+		JPanel controls = new ControlPane(this.timer);
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
 
 		/* Display the window */
 		frame.setVisible(true);
 	}
 
-	private static void checkMaps(TerrainMap terrain, EntityMap entities) {
-		MapComponent[][] terrainArray = terrain.getContents();
-		MapComponent[][] entitiesArray = entities.getContents();
+	private static void checkMaps(MapComponent[][] terrainArray, MapComponent[][] entitiesArray) {
 		if (terrainArray.length != entitiesArray.length) {
 			throw new ArrayIndexOutOfBoundsException("Both arrays must have the same number of rows");
 		}
@@ -54,5 +54,25 @@ public class Window {
 				throw new ArrayIndexOutOfBoundsException("Both arrays must have the same number of columns");
 			}
 		}
+	}
+
+	public void updateForeground(MapPane foreground) {
+		this.simWindow.updateLayer(dim, foreground, 1);
+	}
+
+	public static void updateEntities(EntityMap entities) {
+		/* Update the currently inactive MapPane */
+		// if (foreground1Visible) {
+		// foreground2.updateContents(entities);
+		// } else {
+		// foreground1.updateContents(entities);
+		// }
+		// foreground1Visible = !foreground1Visible;
+		// foreground1.setVisible(foreground1Visible);
+		// foreground2.setVisible(!foreground1Visible);
+	}
+
+	public static Dimension getDimensions() {
+		return dim;
 	}
 }
