@@ -1,18 +1,17 @@
-name: code coverage
+name: 50% test coverage
 
 on: [push]
 
 jobs:
   build:
-    name: code coverage
+    name: 50% test coverage
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
+      - name: Prepare gradlew for execution
+        run: chmod +x gradlew
       - name: Generate jacocotest.exec
-        run: |
-        ./gradlew test
-        ls build/jacoco/jacocoTest.exec
+        run: ./gradlew test
       - name: Check coverage
-        run: |
-        ./gradlew jacocoTestCoverageVerification
+        run: ./gradlew jacocoTestCoverageVerification
