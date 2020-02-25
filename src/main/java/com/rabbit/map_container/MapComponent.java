@@ -19,7 +19,7 @@ public abstract class MapComponent extends Object {
 	 * @param dim     The dimension of the image
 	 * @return The image
 	 */
-	public static Image setImage(String imgName, int dim) {
+	protected static Image setImage(String imgName, int dim) {
 		Image image = null;
 		try {
 			image = ImageIO.read(new File(imgName)).getScaledInstance(dim, dim, Image.SCALE_FAST);
@@ -31,6 +31,21 @@ public abstract class MapComponent extends Object {
 	}
 
 	public abstract Image getImage(int dim);
+
+	public Image getImage() {
+		/* This should throw an exception if called at the wrong time */
+		try {
+			return getImage(0);
+		} catch (IllegalArgumentException e) {
+			LOGGER.log(Level.SEVERE, "Image has not been set yet. It should be set in the constructor");
+		}
+		return null;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		return this.getClass().equals(o.getClass());
+	}
 
 	public abstract char toChar();
 

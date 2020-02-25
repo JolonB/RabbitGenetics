@@ -1,8 +1,12 @@
 name: javadoc generation
 
-on: [push]
-  # pull_request:
-  #   types: [opened]
+on: 
+  push:
+    branches:
+      - master
+
+env:
+  USER_NAME: "GitHub Action"
 
 jobs:
   build:
@@ -11,15 +15,23 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
-          - name: Create local changes
-      run: |
-        touch new_file
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m "Add changes" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create local changes
+        run: |
+          git pull
+          # Ignore last commit if it was caused by Github Actions
+          if [[ "$(git log -1 --pretty=format:'%an')" -eq "$USER_NAME" ]]; then
+            exit 0
+          fi
+          chmod +x gradlew
+          ./gradlew javadoc
+          git add build/docs/javadoc/
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "$USER_NAME"
+          git commit -m "Update javadoc" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
