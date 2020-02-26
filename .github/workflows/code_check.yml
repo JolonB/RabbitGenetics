@@ -14,7 +14,7 @@ jobs:
       - name: Prepare gradlew for execution
         run: chmod +x gradlew
       - name: Check code
-        run: ./gradlew pmdMain; if [[ $? -ne 0 ]]; then lynx build/reports/pmd/main.html -dump; fi
+        run: (./gradlew pmdMain) || lynx build/reports/pmd/main.html -dump
       - name: Check tests
         if: success() || failure()
-        run: ./gradlew pmdTest; if [[ $? -ne 0 ]]; then lynx build/reports/pmd/test.html -dump; fi
+        run: (./gradlew pmdTest) || lynx build/reports/pmd/test.html -dump

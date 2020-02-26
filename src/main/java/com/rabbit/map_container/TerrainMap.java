@@ -18,11 +18,11 @@ public class TerrainMap extends MapContainer<Terrain> {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(TerrainMap.class.getName());
 
-	private List<Point> grass;
-	private List<Point> sand;
-	private List<Point> water;
+	private transient List<Point> grass;
+	private transient List<Point> sand;
+	private transient List<Point> water;
 
-	static Random rand = new Random();
+	private static Random rand = new Random();
 
 	/**
 	 * Create a map object. This should not be changed once it is first generated.
@@ -40,19 +40,19 @@ public class TerrainMap extends MapContainer<Terrain> {
 		sand = new ArrayList<>();
 		water = new ArrayList<>();
 
-		Point p;
+		Point point;
 		for (int i = 0; i < this.contents.length; i++) {
 			for (int j = 0; j < this.contents[0].length; j++) {
-				p = new Point(i, j);
+				point = new Point(i, j);
 				switch (this.contents[i][j].toChar()) {
 				case 'G':
-					grass.add(p);
+					grass.add(point);
 					break;
 				case 'S':
-					sand.add(p);
+					sand.add(point);
 					break;
 				case 'W':
-					water.add(p);
+					water.add(point);
 					break;
 				default:
 					throw new IllegalArgumentException("Did not expect " + this.contents[i][j].toChar());
@@ -70,6 +70,7 @@ public class TerrainMap extends MapContainer<Terrain> {
 		}
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder mapString = new StringBuilder();
 		for (int i = 0; i < this.contents.length; i++) {
@@ -81,50 +82,9 @@ public class TerrainMap extends MapContainer<Terrain> {
 		return mapString.toString();
 	}
 
-	// private static final double DIRECT_CONST = 0.003;
-	// private static final double DIAG_CONST = 0.003;
-
-	/**
-	 * No longer supported. Do not use.
-	 * 
-	 * @deprecated
-	 */
-	public static Terrain[][] generateRandomMap(int rows, int cols, int percentWater) throws Error {
-		throw new UnsupportedOperationException(
-				"generateRandomMap contains out of date code and is no longer supported.");
-		/*
-		 * if (rows <= 0) { throw new Error("Number of rows must be greater than 0"); }
-		 * if (cols <= 0) { throw new Error("Number of columns must be greater than 0");
-		 * } if (percentWater < 0 || percentWater > 100) { throw new
-		 * Error("Percentage of water must be between 0 and 100 inclusive"); }
-		 * 
-		 * terrain = new Terrain[rows][cols]; for (int i = 0; i < rows; i++) { for (int
-		 * j = 0; j < cols; j++) { terrain[i][j] = new Grass(10); } } double
-		 * temp_percent; for (int pass = 0; pass < 5; pass++) { percentWater /= pass +
-		 * 1; for (int i = 0; i < rows; i++) { boolean iMin = i > 0; boolean iMax = i <
-		 * rows - 1; for (int j = 0; j < cols; j++) { boolean jMin = j > 0; boolean jMax
-		 * = j < cols - 1; temp_percent = percentWater;
-		 * 
-		 * if (iMin && jMin) { temp_percent += terrain[i - 1][j - 1].toChar() == 'W' ?
-		 * (100 - temp_percent) * DIAG_CONST : 0; } if (iMin && jMax) { temp_percent +=
-		 * terrain[i - 1][j + 1].toChar() == 'W' ? (100 - temp_percent) * DIAG_CONST :
-		 * 0; } if (iMax && jMin) { temp_percent += terrain[i + 1][j - 1].toChar() ==
-		 * 'W' ? (100 - temp_percent) * DIAG_CONST : 0; } if (iMax && jMax) {
-		 * temp_percent += terrain[i + 1][j + 1].toChar() == 'W' ? (100 - temp_percent)
-		 * * DIAG_CONST : 0; } if (iMin) { temp_percent += terrain[i - 1][j].toChar() ==
-		 * 'W' ? (100 - temp_percent) * DIRECT_CONST : 0; } if (jMin) { temp_percent +=
-		 * terrain[i][j - 1].toChar() == 'W' ? (100 - temp_percent) * DIRECT_CONST : 0;
-		 * } if (iMax) { temp_percent += terrain[i + 1][j].toChar() == 'W' ? (100 -
-		 * temp_percent) * DIRECT_CONST : 0; } if (jMax) { temp_percent += terrain[i][j
-		 * + 1].toChar() == 'W' ? (100 - temp_percent) * DIRECT_CONST : 0; } if
-		 * (temp_percent > rand.nextInt(100)) { terrain[i][j] = new Water(10); } } } }
-		 * return terrain;
-		 */
-	}
-
 	public static Terrain[][] generateSimplexMap(int rows, int cols, int waterHeight) {
 		if (waterHeight < 0 || waterHeight > 90) {
-			throw new Error("waterHeight must be between 0 and 90");
+			throw new IllegalArgumentException("waterHeight must be between 0 and 90");
 		}
 		Terrain[][] terrain = new Terrain[rows][cols];
 		double heightMap[][] = new double[rows][cols];
@@ -177,6 +137,7 @@ public class TerrainMap extends MapContainer<Terrain> {
 		return Collections.unmodifiableList(water);
 	}
 
+	@Override
 	public Terrain[][] getContentsImmutable() {
 		/* Copy array */
 		Terrain[][] newContents = new Terrain[this.contents.length][];

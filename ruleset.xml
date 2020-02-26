@@ -14,10 +14,46 @@
     <!-- Your rules will come here -->
     <rule ref="category/java/errorprone.xml">
         <exclude name="DataflowAnomalyAnalysis"/>
+        <!-- <exclude name="ConstructorCallsOverridableMethod"/> Check this occasionally -->
     </rule>
-    <rule ref="category/java/multithreading.xml"/>
-    <rule ref="category/java/design.xml"/>
-    <rule ref="category/java/bestpractices.xml"/>
-    <rule ref="category/java/performance.xml"/>
-    <rule ref="category/java/codestyle.xml"/>
+
+    <rule ref="category/java/multithreading.xml">
+    </rule>
+
+    <rule ref="category/java/design.xml">
+        <exclude name="LoosePackageCoupling"/>
+        <exclude name="LawOfDemeter"/>
+    </rule>
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <properties>
+            <property name="methodReportLevel" value="15" />
+        </properties>
+    </rule>
+
+    <rule ref="category/java/bestpractices.xml">
+        <exclude name="UseVarargs"/>
+        <exclude name="UnusedPrivateField"/> <!-- TODO Remove this later -->
+        <exclude name="SystemPrintln"/> <!-- TODO Remove this later -->
+        <exclude name="AvoidReassigningParameters"/>
+        <exclude name="ArrayIsStoredDirectly"/> <!-- Remove this occasionally to check -->
+        <exclude name="GuardLogStatement"/> <!-- Remove this occasionally to check -->
+        <exclude name="MethodReturnsInternalArray"/> <!-- Check this occasionally -->
+    </rule>
+
+    <rule ref="category/java/performance.xml">
+        <exclude name="RedundantFieldInitializer"/>
+        <exclude name="AvoidInstantiatingObjectsInLoops"/> <!-- TODO probably do need to deal with this one -->
+        <exclude name="AddEmptyString"/> <!-- Remove this occasionally -->
+    </rule>
+
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="CommentDefaultAccessModifier"/>
+        <exclude name="ShortClassName"/>
+        <exclude name="AtLeastOneConstructor"/>
+        <exclude name="OnlyOneReturn"/>
+        <exclude name="UnnecessaryLocalBeforeReturn"/> <!-- TODO Remove this later -->
+        <exclude name="MethodArgumentCouldBeFinal"/> <!-- TODO too many, remove later -->
+        <exclude name="LocalVariableCouldBeFinal"/> <!-- TODO too many, remove later -->
+        <exclude name="UselessParentheses"/> <!-- Remove occasionally. Parentheses can be helpful -->
+    </rule>
 </ruleset>

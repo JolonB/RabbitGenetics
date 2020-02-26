@@ -10,17 +10,17 @@ public class Null extends Entity {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Null.class.getName());
 
-	public Null(int x, int y) {
-		super(x, y);
-	}
-
 	private static final String IMG_NAME = "img/null.png";
 	private static Image image = null;
 
+	public Null() {
+		super(0, 0);
+	}
+
 	@Override
-	public Image getImage(int dim) {
+	public Image getImage(final int dim) {
 		if (Null.image == null) {
-			Null.image = setImage(IMG_NAME, dim);
+			Null.image = getScaledImage(IMG_NAME, dim);
 		}
 		return Null.image;
 	}
@@ -30,21 +30,19 @@ public class Null extends Entity {
 		return 'n';
 	}
 
+	@Override
 	public String toString() {
 		return "Null";
 	}
 
 	@Override
-	public Action calculateAction(Terrain[][] terrain) {
+	public Action calculateAction(final Terrain[][] terrain) {
 		// TODO Auto-generated method stub
-		this.act.nextAction = Act.NOTHING;
-		this.act.x = this.act.entity.getX();
-		this.act.y = this.act.entity.getY();
-		return this.act;
+		return new Action(this, Act.NOTHING, this.getX(), this.getY());
 	}
 
 	@Override
-	public boolean performAction(Action action, Entity[][] entities) {
+	public boolean performAction(final Action action, final Entity[][] entities) {
 		/* Do nothing */
 		return true;
 	}

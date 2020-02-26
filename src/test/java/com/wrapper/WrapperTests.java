@@ -11,17 +11,17 @@ public class WrapperTests {
 	@Test
 	public void testDoubleToByteConversion() {
 		double num = Math.PI;
-		NumberWrapper nw = new NumberWrapper(num);
+		NumberWrapper numWrapper = new NumberWrapper(num);
 
-		assertEquals((byte) nw.getValueByte(), (byte) num);
+		assertEquals((byte) numWrapper.getValueByte(), (byte) num, "Double was not converted to byte correctly");
 	}
 
 	@Test
 	public void testIntToLongConversion() {
 		int num = Integer.MAX_VALUE;
-		NumberWrapper nw = new NumberWrapper(num);
+		NumberWrapper numWrapper = new NumberWrapper(num);
 
-		assertEquals((long) nw.getValueLong(), (long) num);
+		assertEquals((long) numWrapper.getValueLong(), (long) num, "Integer was not converted to a long correctly");
 	}
 
 }

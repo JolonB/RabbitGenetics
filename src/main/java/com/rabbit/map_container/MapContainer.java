@@ -1,6 +1,5 @@
 package com.rabbit.map_container;
 
-import java.util.Arrays;
 import java.util.logging.Logger;
 
 import java.awt.Dimension;
@@ -9,7 +8,7 @@ public abstract class MapContainer<T extends MapComponent> {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(MapContainer.class.getName());
 
-	T[][] contents;
+	protected T[][] contents;
 
 	public MapContainer() {
 		/* Do nothing */
@@ -21,16 +20,16 @@ public abstract class MapContainer<T extends MapComponent> {
 		this.contents = contents;
 	}
 
-	public void validateContents(T[][] contents) {
+	public final void validateContents(T[][] contents) {
 		if (contents == null) {
-			throw new NullPointerException("Need to provide a contents array");
+			throw new IllegalArgumentException("Need to provide a contents array");
 		}
 		int numRows = contents.length;
-		int numCols = contents[0].length;
 		if (numRows <= 0) {
 			throw new ArrayIndexOutOfBoundsException(
 					"Number of rows must be equal to or greater than 1. Currently have " + numRows);
 		}
+		int numCols = contents[0].length;
 		if (numCols <= 0) {
 			throw new ArrayIndexOutOfBoundsException(
 					"Number of columns must be equal to or greater than 1. Currently have " + numCols);
@@ -44,6 +43,16 @@ public abstract class MapContainer<T extends MapComponent> {
 		}
 	}
 
+	public void setContents(T[][] contents) {
+		this.contents = contents;
+	}
+
+	/**
+	 * Returns the contents of the Map. This array is mutable, so only use this if
+	 * the risks are understood.
+	 * 
+	 * @return a 2D array of objects extending MapComponent
+	 */
 	public T[][] getContents() {
 		return this.contents;
 	}
@@ -69,14 +78,14 @@ public abstract class MapContainer<T extends MapComponent> {
 		StringBuilder mapString = new StringBuilder();
 		for (int i = 0; i < layers[0].contents.length; i++) {
 			for (int j = 0; j < layers[0].contents[0].length; j++) {
-				int k = 0;
-				char c;
+				int layer = 0;
+				char componentChar;
 				do {
-					c = layers[k].contents[i][j].toChar();
-					k++;
-				} while (c == 'n' && k < layers.length);
-				mapString.append(c);
-				mapString.append(c);
+					componentChar = layers[layer].contents[i][j].toChar();
+					layer++;
+				} while (componentChar == 'n' && layer < layers.length);
+				mapString.append(componentChar);
+				mapString.append(componentChar);
 			}
 			mapString.append('\n');
 		}
@@ -111,15 +120,7 @@ public abstract class MapContainer<T extends MapComponent> {
 	 * 
 	 * @return A copy of the contents of the map
 	 */
-	public T[][] getContentsImmutable() {
-		@SuppressWarnings("unchecked")
-		T[][] newContents = (T[][]) new MapComponent[this.contents.length][];
-		for (int i = 0; i < this.contents.length; i++) {
-			newContents[i] = Arrays.copyOf(this.contents[i], this.contents.length);
-		}
-		// TODO remove the Terrain/EntityMap implementation of this method
-		return newContents;
-	}
+	public abstract T[][] getContentsImmutable();
 
 	public Dimension getDimensions() {
 		return new Dimension(this.contents.length, this.contents[0].length);

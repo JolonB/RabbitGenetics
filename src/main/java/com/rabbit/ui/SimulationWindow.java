@@ -1,13 +1,10 @@
 package com.rabbit.ui;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.logging.Logger;
 
-import javax.swing.BorderFactory;
 import java.awt.Component;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
 public class SimulationWindow extends JLayeredPane {
 	@SuppressWarnings("unused")
@@ -16,6 +13,7 @@ public class SimulationWindow extends JLayeredPane {
 	private static final long serialVersionUID = 6478558435237472529L;
 
 	public SimulationWindow(Dimension dim, MapPane background, MapPane foreground) {
+		super();
 		background.setBounds(0, 0, dim.width, dim.height);
 		background.setOpaque(false);
 		this.add(background, 0);
@@ -23,20 +21,6 @@ public class SimulationWindow extends JLayeredPane {
 		foreground.setBounds(0, 0, dim.width, dim.height);
 		foreground.setOpaque(false);
 		this.add(foreground, 1); // add foreground in front of background
-	}
-
-	public SimulationWindow(Dimension dim, JPanel... panels) {
-		if (panels.length == 0) {
-			throw new IllegalArgumentException("Not enough arguments in Simulation Window");
-		}
-
-		for (int i = 0; i < panels.length; i++) {
-			panels[i].setBounds(0, 0, dim.width, dim.height);
-			panels[i].setOpaque(false);
-			this.add(panels[i], Integer.valueOf(i));
-		}
-
-		this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 10));
 	}
 
 	private void redraw() {
@@ -58,12 +42,12 @@ public class SimulationWindow extends JLayeredPane {
 	}
 
 	@Override
-	public Component add(Component comp, int index) {
+	public final Component add(Component comp, int index) {
 		return super.add(comp, this.getComponentCount() - index);
 	}
 
 	@Override
-	public void remove(int index) {
+	public final void remove(int index) {
 		super.remove(this.getComponentCount() - 1 - index);
 	}
 }

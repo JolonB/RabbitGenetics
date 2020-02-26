@@ -14,18 +14,18 @@ public class Rabbit extends Animal {
 	private static Image image = null;
 
 	/** Energy lost during breeding */
-	double breedingEnergy;
+	private double breedingEnergy;
 	/** Desire to reproduce */
-	double horniness;
+	private double horniness;
 
-	public Rabbit(int x, int y) {
-		super(x, y);
+	public Rabbit(final int xPos, final int yPos) {
+		super(xPos, yPos);
 	}
 
 	@Override
-	public Image getImage(int dim) {
+	public Image getImage(final int dim) {
 		if (Rabbit.image == null) {
-			Rabbit.image = setImage(IMG_NAME, dim);
+			Rabbit.image = getScaledImage(IMG_NAME, dim);
 		}
 		return Rabbit.image;
 	}
@@ -35,35 +35,33 @@ public class Rabbit extends Animal {
 		return 'r';
 	}
 
+	@Override
 	public String toString() {
 		return "Rabbit";
 	}
 
 	@Override
-	public Action calculateAction(Terrain[][] terrain) {
-		// TODO Auto-generated method stub
-		act.nextAction = Act.MOVE;
-		act.x = this.getX() + 1;
-		act.y = this.getY() + 1;
-
+	public Action calculateAction(final Terrain[][] terrain) {
+		// TODO improve action taking
+		final Action act = new Action(this, Act.MOVE, this.getX() + 1, this.getY() + 1);
 		return act;
 	}
 
 	@Override
-	public boolean performAction(Action action, Entity[][] entities) {
-		switch (action.nextAction) {
-		case MOVE:
-			this.setPos(action.x, action.y);
-			entities[action.x][action.y] = this;
-			return true;
-		case BREED:
-			break;
-		case EAT:
-			break;
-		case DIE:
-			break;
-		case NOTHING:
-			return true;
+	public boolean performAction(final Action action, Entity[][] entities) {
+		switch (action.getAction()) {
+			case MOVE:
+				this.setPos(action.getX(), action.getY());
+				entities[action.getX()][action.getY()] = this;
+				return true;
+			case BREED:
+				break;
+			case EAT:
+				break;
+			case DIE:
+				break;
+			case NOTHING:
+				return true;
 		}
 
 		return false;

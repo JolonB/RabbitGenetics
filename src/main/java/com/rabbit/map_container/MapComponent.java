@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
-public abstract class MapComponent extends Object {
+public abstract class MapComponent {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(MapComponent.class.getName());
 
@@ -19,7 +19,7 @@ public abstract class MapComponent extends Object {
 	 * @param dim     The dimension of the image
 	 * @return The image
 	 */
-	protected static Image setImage(String imgName, int dim) {
+	protected static Image getScaledImage(String imgName, int dim) {
 		Image image = null;
 		try {
 			image = ImageIO.read(new File(imgName)).getScaledInstance(dim, dim, Image.SCALE_FAST);
@@ -37,14 +37,24 @@ public abstract class MapComponent extends Object {
 		try {
 			return getImage(0);
 		} catch (IllegalArgumentException e) {
-			LOGGER.log(Level.SEVERE, "Image has not been set yet. It should be set in the constructor");
+			if (LOGGER.isLoggable(Level.SEVERE)) {
+				LOGGER.log(Level.SEVERE, "Image has not been set yet. It should be set in the constructor");
+			}
 		}
 		return null;
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		return this.getClass().equals(o.getClass());
+	public boolean equals(Object obj) {
+		return this.getClass().equals(obj.getClass());
+	}
+
+	@Override
+	/**
+	 * TODO override this in child classes
+	 */
+	public int hashCode() {
+		return this.toString().hashCode();
 	}
 
 	public abstract char toChar();
