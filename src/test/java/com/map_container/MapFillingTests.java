@@ -2,7 +2,6 @@ package com.map_container;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,7 +12,7 @@ import com.rabbit.terrain.Terrain;
 class MapFillingTests {
 
 	@Test
-	void testAllGround() {
+	public void testAllGround() {
 		int dim = 10;
 		Terrain[][] terrain = new Terrain[dim][dim];
 		for (int i = 0; i < dim; i++) {
@@ -21,28 +20,29 @@ class MapFillingTests {
 				terrain[i][j] = new Grass();
 			}
 		}
-		TerrainMap m = new TerrainMap(terrain);
+		TerrainMap map = new TerrainMap(terrain);
 
-		assertTrue(m.toString().matches("[G\n]+"));
+		assertTrue(map.toString().matches("[G\n]+"), "Map was modified while creating the TerrainMap");
 	}
 
 	@Test
-	void testGeneratingAllGround() {
+	public void testGeneratingAllGround() {
 		int dim = 100;
-		TerrainMap m = new TerrainMap(TerrainMap.generateSimplexMap(dim, dim, 0));
+		TerrainMap map = new TerrainMap(TerrainMap.generateSimplexMap(dim, dim, 0));
 
-		assertTrue(m.toString().matches("[G\n]+"));
+		assertTrue(map.toString().matches("[G\n]+"), "Map does not consist of only grass");
 	}
 
 	@Test
-	void testGeneratingHalfGround() {
+	public void testGeneratingHalfGround() {
 		int dim = 500;
-		TerrainMap m = new TerrainMap(TerrainMap.generateSimplexMap(dim, dim, 50));
-		String terrainString = m.toString();
+		TerrainMap map = new TerrainMap(TerrainMap.generateSimplexMap(dim, dim, 50));
+		String terrainString = map.toString();
 
 		int groundCount = 0;
+		char grassChar = new Grass().toChar();
 		for (int i = 0; i < terrainString.length(); i++) {
-			if (terrainString.charAt(i) == 'G') {
+			if (terrainString.charAt(i) == grassChar) {
 				groundCount++;
 			}
 		}
@@ -54,10 +54,7 @@ class MapFillingTests {
 	}
 
 	@Test
-	void testNullMap() {
-		Throwable t = assertThrows(NullPointerException.class, () -> new TerrainMap(null));
-
-		assertEquals("Need to provide a contents array", t.getMessage());
+	public void testNullMap() {
+		assertThrows(IllegalArgumentException.class, () -> new TerrainMap(null), "Need to provide a contents array");
 	}
-
 }
