@@ -1,0 +1,37 @@
+name: javadoc generation
+
+on: 
+  push:
+    branches:
+      - master
+
+env:
+  USER_NAME: "GitHub Action"
+
+jobs:
+  build:
+    name: javadoc generation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+      - name: Create local changes
+        run: |
+          git pull
+          # Ignore last commit if it was caused by Github Actions
+          if [[ "$(git log -1 --pretty=format:'%an')" -eq "$USER_NAME" ]]; then
+            exit 0
+          fi
+          chmod +x gradlew
+          ./gradlew javadoc
+          git add build/docs/javadoc/
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "$USER_NAME"
+          git commit -m "Update javadoc" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
