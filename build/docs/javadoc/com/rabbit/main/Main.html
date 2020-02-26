@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":41,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
+var methods = {"i0":10,"i1":10,"i2":9,"i3":9,"i4":10,"i5":9,"i6":9,"i7":9};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -156,7 +156,7 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#ROWS">ROWS</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>private static boolean</code></td>
+<td class="colFirst"><code>private boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#running">running</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
@@ -194,18 +194,18 @@ extends java.lang.Object</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>private static void</code></td>
+<td class="colFirst"><code>private void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#beginSimulation-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-">beginSimulation</a></span>(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
                <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>private static void</code></td>
+<td class="colFirst"><code>private void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#beginSimulationNoUI-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-">beginSimulationNoUI</a></span>(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
                    <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</code>&nbsp;</td>
 </tr>
@@ -222,42 +222,23 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>private static <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a></code></td>
+<td class="colFirst"><code>private <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#doCalculate-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-">doCalculate</a></span>(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
            <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>private static boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#doCalculate-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.NumberWrapper-com.rabbit.map_container.EntityMap-">doCalculate</a></span>(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
-           <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities,
-           <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timeoutUntil,
-           <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;stepDuration,
-           <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;newEntities)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>private static long</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#getTimeout-long-">getTimeout</a></span>(long&nbsp;stepDuration)</code>&nbsp;</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>private static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#getTimeout-com.rabbit.wrapper.NumberWrapper-long-">getTimeout</a></span>(<a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timeoutUntil,
-          long&nbsp;stepDuration)</code>&nbsp;</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>private static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#getTimeout-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.NumberWrapper-">getTimeout</a></span>(<a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timeoutUntil,
-          <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;stepDuration)</code>&nbsp;</td>
-</tr>
-<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#main-java.lang.String:A-">main</a></span>(java.lang.String[]&nbsp;args)</code>&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>private static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#parseActions-com.rabbit.entities.Action:A:A-com.rabbit.entities.Entity:A:A-">parseActions</a></span>(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>[][]&nbsp;actions,
             <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;newEntities)</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>private static void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/main/Main.html#updateTimeout-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.NumberWrapper-">updateTimeout</a></span>(<a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timeoutUntil,
+             <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;stepDuration)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -400,7 +381,7 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>running</h4>
-<pre>private static&nbsp;boolean running</pre>
+<pre>private transient&nbsp;boolean running</pre>
 </li>
 </ul>
 </li>
@@ -434,8 +415,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>beginSimulationNoUI</h4>
-<pre>private static&nbsp;void&nbsp;beginSimulationNoUI(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
-                                        <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</pre>
+<pre>private&nbsp;void&nbsp;beginSimulationNoUI(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
+                                 <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</pre>
 </li>
 </ul>
 <a name="beginSimulation-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-">
@@ -444,8 +425,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>beginSimulation</h4>
-<pre>private static&nbsp;void&nbsp;beginSimulation(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
-                                    <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</pre>
+<pre>private&nbsp;void&nbsp;beginSimulation(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
+                             <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</pre>
 </li>
 </ul>
 <a name="doCalculate-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-">
@@ -454,52 +435,18 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>doCalculate</h4>
-<pre>private static&nbsp;<a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;doCalculate(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
-                                     <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</pre>
+<pre>private&nbsp;<a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;doCalculate(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
+                              <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</pre>
 </li>
 </ul>
-<a name="doCalculate-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.NumberWrapper-com.rabbit.map_container.EntityMap-">
+<a name="updateTimeout-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.NumberWrapper-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>doCalculate</h4>
-<pre>@Deprecated
-private static&nbsp;boolean&nbsp;doCalculate(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;terrain,
-                                               <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities,
-                                               <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timeoutUntil,
-                                               <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;stepDuration,
-                                               <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;newEntities)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
-</li>
-</ul>
-<a name="getTimeout-long-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getTimeout</h4>
-<pre>private static&nbsp;long&nbsp;getTimeout(long&nbsp;stepDuration)</pre>
-</li>
-</ul>
-<a name="getTimeout-com.rabbit.wrapper.NumberWrapper-long-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getTimeout</h4>
-<pre>private static&nbsp;void&nbsp;getTimeout(<a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timeoutUntil,
-                               long&nbsp;stepDuration)</pre>
-</li>
-</ul>
-<a name="getTimeout-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.NumberWrapper-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getTimeout</h4>
-<pre>private static&nbsp;void&nbsp;getTimeout(<a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timeoutUntil,
-                               <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;stepDuration)</pre>
+<h4>updateTimeout</h4>
+<pre>private static&nbsp;void&nbsp;updateTimeout(<a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timeoutUntil,
+                                  <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;stepDuration)</pre>
 </li>
 </ul>
 <a name="checkTimeout-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.NumberWrapper-">

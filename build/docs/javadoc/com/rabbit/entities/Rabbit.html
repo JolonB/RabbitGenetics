@@ -143,13 +143,13 @@ extends <a href="../../../com/rabbit/entities/Animal.html" title="class in com.r
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Rabbit.html#breedingEnergy">breedingEnergy</a></span></code>
 <div class="block">Energy lost during breeding</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Rabbit.html#horniness">horniness</a></span></code>
 <div class="block">Desire to reproduce</div>
 </td>
@@ -167,20 +167,6 @@ extends <a href="../../../com/rabbit/entities/Animal.html" title="class in com.r
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Rabbit.html#LOGGER">LOGGER</a></span></code>&nbsp;</td>
 </tr>
 </table>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.com.rabbit.entities.Animal">
-<!--   -->
-</a>
-<h3>Fields inherited from class&nbsp;com.rabbit.entities.<a href="../../../com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></h3>
-<code><a href="../../../com/rabbit/entities/Animal.html#activeness">activeness</a>, <a href="../../../com/rabbit/entities/Animal.html#hunger">hunger</a>, <a href="../../../com/rabbit/entities/Animal.html#idleEnergy">idleEnergy</a>, <a href="../../../com/rabbit/entities/Animal.html#maxEnergy">maxEnergy</a>, <a href="../../../com/rabbit/entities/Animal.html#minEnergy">minEnergy</a>, <a href="../../../com/rabbit/entities/Animal.html#movementEnergy">movementEnergy</a>, <a href="../../../com/rabbit/entities/Animal.html#speed">speed</a>, <a href="../../../com/rabbit/entities/Animal.html#vision">vision</a></code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.com.rabbit.entities.Entity">
-<!--   -->
-</a>
-<h3>Fields inherited from class&nbsp;com.rabbit.entities.<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></h3>
-<code><a href="../../../com/rabbit/entities/Entity.html#act">act</a></code></li>
-</ul>
 </li>
 </ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -195,8 +181,8 @@ extends <a href="../../../com/rabbit/entities/Animal.html" title="class in com.r
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Rabbit.html#Rabbit-int-int-">Rabbit</a></span>(int&nbsp;x,
-      int&nbsp;y)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Rabbit.html#Rabbit-int-int-">Rabbit</a></span>(int&nbsp;xPos,
+      int&nbsp;yPos)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -247,14 +233,14 @@ extends <a href="../../../com/rabbit/entities/Animal.html" title="class in com.r
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.rabbit.map_container.<a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a></h3>
-<code><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#setImage-java.lang.String-int-">setImage</a></code></li>
+<code><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getScaledImage-java.lang.String-int-">getScaledImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#hashCode--">hashCode</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -307,7 +293,7 @@ extends <a href="../../../com/rabbit/entities/Animal.html" title="class in com.r
 <ul class="blockList">
 <li class="blockList">
 <h4>breedingEnergy</h4>
-<pre>double breedingEnergy</pre>
+<pre>private&nbsp;double breedingEnergy</pre>
 <div class="block">Energy lost during breeding</div>
 </li>
 </ul>
@@ -317,7 +303,7 @@ extends <a href="../../../com/rabbit/entities/Animal.html" title="class in com.r
 <ul class="blockListLast">
 <li class="blockList">
 <h4>horniness</h4>
-<pre>double horniness</pre>
+<pre>private&nbsp;double horniness</pre>
 <div class="block">Desire to reproduce</div>
 </li>
 </ul>
@@ -335,8 +321,8 @@ extends <a href="../../../com/rabbit/entities/Animal.html" title="class in com.r
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Rabbit</h4>
-<pre>public&nbsp;Rabbit(int&nbsp;x,
-              int&nbsp;y)</pre>
+<pre>public&nbsp;Rabbit(int&nbsp;xPos,
+              int&nbsp;yPos)</pre>
 </li>
 </ul>
 </li>

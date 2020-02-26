@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -265,10 +265,6 @@ extends javax.swing.JPanel</pre>
 <td class="colFirst"><code><a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a>[][]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/MapPane.html#getMapContents--">getMapContents</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/MapPane.html#updateContents-com.rabbit.map_container.MapContainer-">updateContents</a></span>(<a href="../../../com/rabbit/map_container/MapContainer.html" title="class in com.rabbit.map_container">MapContainer</a>&lt;? extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a>&gt;&nbsp;map)</code>&nbsp;</td>
-</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.javax.swing.JPanel">
@@ -347,7 +343,7 @@ extends javax.swing.JPanel</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>map</h4>
-<pre>private&nbsp;<a href="../../../com/rabbit/map_container/MapContainer.html" title="class in com.rabbit.map_container">MapContainer</a>&lt;?&gt; map</pre>
+<pre>private final transient&nbsp;<a href="../../../com/rabbit/map_container/MapContainer.html" title="class in com.rabbit.map_container">MapContainer</a>&lt;?&gt; map</pre>
 </li>
 </ul>
 </li>
@@ -376,15 +372,6 @@ extends javax.swing.JPanel</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="updateContents-com.rabbit.map_container.MapContainer-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>updateContents</h4>
-<pre>public&nbsp;void&nbsp;updateContents(<a href="../../../com/rabbit/map_container/MapContainer.html" title="class in com.rabbit.map_container">MapContainer</a>&lt;? extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a>&gt;&nbsp;map)</pre>
-</li>
-</ul>
 <a name="getDimensions--">
 <!--   -->
 </a>

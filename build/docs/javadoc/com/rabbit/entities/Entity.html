@@ -137,16 +137,12 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#act">act</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code>private static java.util.logging.Logger</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#LOGGER">LOGGER</a></span></code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>private java.awt.Point</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#position">position</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#pos">pos</a></span></code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -163,8 +159,8 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#Entity-int-int-">Entity</a></span>(int&nbsp;x,
-      int&nbsp;y)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#Entity-int-int-">Entity</a></span>(int&nbsp;xPos,
+      int&nbsp;yPos)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -204,8 +200,8 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#setPos-int-int-">setPos</a></span>(int&nbsp;x,
-      int&nbsp;y)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#setPos-int-int-">setPos</a></span>(int&nbsp;xPos,
+      int&nbsp;yPos)</code>&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -213,11 +209,11 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#setX-int-">setX</a></span>(int&nbsp;x)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#setX-int-">setX</a></span>(int&nbsp;xPos)</code>&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#setY-int-">setY</a></span>(int&nbsp;y)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Entity.html#setY-int-">setY</a></span>(int&nbsp;yPos)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -225,14 +221,14 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.rabbit.map_container.<a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a></h3>
-<code><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage-int-">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#setImage-java.lang.String-int-">setImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#toChar--">toChar</a></code></li>
+<code><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage-int-">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getScaledImage-java.lang.String-int-">getScaledImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#hashCode--">hashCode</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#toChar--">toChar</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -257,22 +253,13 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 <pre>private static final&nbsp;java.util.logging.Logger LOGGER</pre>
 </li>
 </ul>
-<a name="act">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>act</h4>
-<pre>public final&nbsp;<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a> act</pre>
-</li>
-</ul>
-<a name="position">
+<a name="pos">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>position</h4>
-<pre>private&nbsp;java.awt.Point position</pre>
+<h4>pos</h4>
+<pre>private&nbsp;java.awt.Point pos</pre>
 </li>
 </ul>
 </li>
@@ -289,8 +276,8 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Entity</h4>
-<pre>public&nbsp;Entity(int&nbsp;x,
-              int&nbsp;y)</pre>
+<pre>public&nbsp;Entity(int&nbsp;xPos,
+              int&nbsp;yPos)</pre>
 </li>
 </ul>
 </li>
@@ -307,8 +294,8 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 <ul class="blockList">
 <li class="blockList">
 <h4>setPos</h4>
-<pre>public&nbsp;void&nbsp;setPos(int&nbsp;x,
-                   int&nbsp;y)</pre>
+<pre>public&nbsp;void&nbsp;setPos(int&nbsp;xPos,
+                   int&nbsp;yPos)</pre>
 </li>
 </ul>
 <a name="setPos-java.awt.Point-">
@@ -326,7 +313,7 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 <ul class="blockList">
 <li class="blockList">
 <h4>setX</h4>
-<pre>public&nbsp;void&nbsp;setX(int&nbsp;x)</pre>
+<pre>public&nbsp;void&nbsp;setX(int&nbsp;xPos)</pre>
 </li>
 </ul>
 <a name="setY-int-">
@@ -335,7 +322,7 @@ extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="cla
 <ul class="blockList">
 <li class="blockList">
 <h4>setY</h4>
-<pre>public&nbsp;void&nbsp;setY(int&nbsp;y)</pre>
+<pre>public&nbsp;void&nbsp;setY(int&nbsp;yPos)</pre>
 </li>
 </ul>
 <a name="getPos--">

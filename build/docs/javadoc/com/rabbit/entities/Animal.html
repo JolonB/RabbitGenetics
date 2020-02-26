@@ -136,19 +136,19 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#activeness">activeness</a></span></code>
 <div class="block">Desire to move</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#hunger">hunger</a></span></code>
 <div class="block">Desire to eat</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#idleEnergy">idleEnergy</a></span></code>
 <div class="block">Energy lost while stationary</div>
 </td>
@@ -158,43 +158,36 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#LOGGER">LOGGER</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#maxEnergy">maxEnergy</a></span></code>
 <div class="block">The maximum energy before no more energy can be gained</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#minEnergy">minEnergy</a></span></code>
 <div class="block">Energy level at which death occurs</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#movementEnergy">movementEnergy</a></span></code>
 <div class="block">Energy lost during movement</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#speed">speed</a></span></code>
 <div class="block">Minimum activeness</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>(package private) double</code></td>
+<td class="colFirst"><code>private double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#vision">vision</a></span></code>
 <div class="block">The range at which an animal can see another entity</div>
 </td>
 </tr>
 </table>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.com.rabbit.entities.Entity">
-<!--   -->
-</a>
-<h3>Fields inherited from class&nbsp;com.rabbit.entities.<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></h3>
-<code><a href="../../../com/rabbit/entities/Entity.html#act">act</a></code></li>
-</ul>
 </li>
 </ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -209,8 +202,8 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#Animal-int-int-">Animal</a></span>(int&nbsp;x,
-      int&nbsp;y)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#Animal-int-int-">Animal</a></span>(int&nbsp;xPos,
+      int&nbsp;yPos)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -233,14 +226,14 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.rabbit.map_container.<a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a></h3>
-<code><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage-int-">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#setImage-java.lang.String-int-">setImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#toChar--">toChar</a></code></li>
+<code><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage-int-">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getScaledImage-java.lang.String-int-">getScaledImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#hashCode--">hashCode</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#toChar--">toChar</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -271,7 +264,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <ul class="blockList">
 <li class="blockList">
 <h4>hunger</h4>
-<pre>double hunger</pre>
+<pre>private&nbsp;double hunger</pre>
 <div class="block">Desire to eat</div>
 </li>
 </ul>
@@ -281,7 +274,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <ul class="blockList">
 <li class="blockList">
 <h4>activeness</h4>
-<pre>double activeness</pre>
+<pre>private&nbsp;double activeness</pre>
 <div class="block">Desire to move</div>
 </li>
 </ul>
@@ -291,7 +284,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <ul class="blockList">
 <li class="blockList">
 <h4>speed</h4>
-<pre>double speed</pre>
+<pre>private&nbsp;double speed</pre>
 <div class="block">Minimum activeness</div>
 </li>
 </ul>
@@ -301,7 +294,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <ul class="blockList">
 <li class="blockList">
 <h4>movementEnergy</h4>
-<pre>double movementEnergy</pre>
+<pre>private&nbsp;double movementEnergy</pre>
 <div class="block">Energy lost during movement</div>
 </li>
 </ul>
@@ -311,7 +304,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <ul class="blockList">
 <li class="blockList">
 <h4>idleEnergy</h4>
-<pre>double idleEnergy</pre>
+<pre>private&nbsp;double idleEnergy</pre>
 <div class="block">Energy lost while stationary</div>
 </li>
 </ul>
@@ -321,7 +314,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <ul class="blockList">
 <li class="blockList">
 <h4>minEnergy</h4>
-<pre>double minEnergy</pre>
+<pre>private&nbsp;double minEnergy</pre>
 <div class="block">Energy level at which death occurs</div>
 </li>
 </ul>
@@ -331,7 +324,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <ul class="blockList">
 <li class="blockList">
 <h4>maxEnergy</h4>
-<pre>double maxEnergy</pre>
+<pre>private&nbsp;double maxEnergy</pre>
 <div class="block">The maximum energy before no more energy can be gained</div>
 </li>
 </ul>
@@ -341,7 +334,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <ul class="blockListLast">
 <li class="blockList">
 <h4>vision</h4>
-<pre>double vision</pre>
+<pre>private&nbsp;double vision</pre>
 <div class="block">The range at which an animal can see another entity</div>
 </li>
 </ul>
@@ -359,8 +352,8 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Animal</h4>
-<pre>public&nbsp;Animal(int&nbsp;x,
-              int&nbsp;y)</pre>
+<pre>public&nbsp;Animal(int&nbsp;xPos,
+              int&nbsp;yPos)</pre>
 </li>
 </ul>
 </li>

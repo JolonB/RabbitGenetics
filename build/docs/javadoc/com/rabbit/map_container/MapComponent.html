@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":6,"i3":9,"i4":6};
+var methods = {"i0":10,"i1":10,"i2":6,"i3":9,"i4":10,"i5":6};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -169,7 +169,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a></span>(java.lang.Object&nbsp;o)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a></span>(java.lang.Object&nbsp;obj)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.awt.Image</code></td>
@@ -181,12 +181,16 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>protected static java.awt.Image</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/map_container/MapComponent.html#setImage-java.lang.String-int-">setImage</a></span>(java.lang.String&nbsp;imgName,
-        int&nbsp;dim)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/map_container/MapComponent.html#getScaledImage-java.lang.String-int-">getScaledImage</a></span>(java.lang.String&nbsp;imgName,
+              int&nbsp;dim)</code>
 <div class="block">Sets the image to the one provided by imgName.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/map_container/MapComponent.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>abstract char</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/map_container/MapComponent.html#toChar--">toChar</a></span>()</code>&nbsp;</td>
 </tr>
@@ -196,7 +200,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -246,14 +250,14 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="setImage-java.lang.String-int-">
+<a name="getScaledImage-java.lang.String-int-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setImage</h4>
-<pre>protected static&nbsp;java.awt.Image&nbsp;setImage(java.lang.String&nbsp;imgName,
-                                         int&nbsp;dim)</pre>
+<h4>getScaledImage</h4>
+<pre>protected static&nbsp;java.awt.Image&nbsp;getScaledImage(java.lang.String&nbsp;imgName,
+                                               int&nbsp;dim)</pre>
 <div class="block">Sets the image to the one provided by imgName. Returns the Image object.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -288,10 +292,23 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>equals</h4>
-<pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;o)</pre>
+<pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;obj)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a name="hashCode--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hashCode</h4>
+<pre>public&nbsp;int&nbsp;hashCode()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>

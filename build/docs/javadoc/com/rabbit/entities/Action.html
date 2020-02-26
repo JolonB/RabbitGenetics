@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -147,7 +147,7 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></code></td>
+<td class="colFirst"><code>private <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#entity">entity</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -155,24 +155,16 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#LOGGER">LOGGER</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities">Action.Act</a></code></td>
+<td class="colFirst"><code>private int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#newX">newX</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#newY">newY</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private <a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities">Action.Act</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#nextAction">nextAction</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>(package private) int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#oldX">oldX</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>(package private) int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#oldY">oldY</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#x">x</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#y">y</a></span></code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -189,7 +181,10 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#Action-com.rabbit.entities.Entity-">Action</a></span>(<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>&nbsp;entity)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#Action-com.rabbit.entities.Entity-com.rabbit.entities.Action.Act-int-int-">Action</a></span>(<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>&nbsp;entity,
+      <a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities">Action.Act</a>&nbsp;nextAction,
+      int&nbsp;newX,
+      int&nbsp;newY)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -207,6 +202,22 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities">Action.Act</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#getAction--">getAction</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#getEntity--">getEntity</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#getX--">getX</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#getY--">getY</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Action.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
@@ -247,7 +258,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>entity</h4>
-<pre>public final&nbsp;<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a> entity</pre>
+<pre>private final transient&nbsp;<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a> entity</pre>
 </li>
 </ul>
 <a name="nextAction">
@@ -256,43 +267,25 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>nextAction</h4>
-<pre>public&nbsp;<a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities">Action.Act</a> nextAction</pre>
+<pre>private final transient&nbsp;<a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities">Action.Act</a> nextAction</pre>
 </li>
 </ul>
-<a name="x">
+<a name="newX">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>x</h4>
-<pre>public&nbsp;int x</pre>
+<h4>newX</h4>
+<pre>private final transient&nbsp;int newX</pre>
 </li>
 </ul>
-<a name="oldX">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>oldX</h4>
-<pre>int oldX</pre>
-</li>
-</ul>
-<a name="y">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>y</h4>
-<pre>public&nbsp;int y</pre>
-</li>
-</ul>
-<a name="oldY">
+<a name="newY">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>oldY</h4>
-<pre>int oldY</pre>
+<h4>newY</h4>
+<pre>private final transient&nbsp;int newY</pre>
 </li>
 </ul>
 </li>
@@ -303,13 +296,16 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Action-com.rabbit.entities.Entity-">
+<a name="Action-com.rabbit.entities.Entity-com.rabbit.entities.Action.Act-int-int-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Action</h4>
-<pre>public&nbsp;Action(<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>&nbsp;entity)</pre>
+<pre>public&nbsp;Action(<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>&nbsp;entity,
+              <a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities">Action.Act</a>&nbsp;nextAction,
+              int&nbsp;newX,
+              int&nbsp;newY)</pre>
 </li>
 </ul>
 </li>
@@ -320,6 +316,42 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getEntity--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEntity</h4>
+<pre>public&nbsp;<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>&nbsp;getEntity()</pre>
+</li>
+</ul>
+<a name="getAction--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAction</h4>
+<pre>public&nbsp;<a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities">Action.Act</a>&nbsp;getAction()</pre>
+</li>
+</ul>
+<a name="getX--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getX</h4>
+<pre>public&nbsp;int&nbsp;getX()</pre>
+</li>
+</ul>
+<a name="getY--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getY</h4>
+<pre>public&nbsp;int&nbsp;getY()</pre>
+</li>
+</ul>
 <a name="toString--">
 <!--   -->
 </a>
