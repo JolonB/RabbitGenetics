@@ -21,7 +21,7 @@ public class Water extends Terrain {
 	}
 
 	@Override
-	public void draw(int x, int y) {
+	public void draw(int xPos, int yPos) {
 		// TODO implement
 		throw new UnsupportedOperationException("draw not yet implemented");
 	}
@@ -29,7 +29,7 @@ public class Water extends Terrain {
 	@Override
 	public Image getImage(int dim) {
 		if (Water.image == null) {
-			Water.image = setImage(IMG_NAME, dim);
+			Water.image = getScaledImage(IMG_NAME, dim);
 		}
 		return Water.image;
 	}

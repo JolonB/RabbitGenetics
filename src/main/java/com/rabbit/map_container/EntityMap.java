@@ -17,7 +17,7 @@ public class EntityMap extends MapContainer<Entity> {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(EntityMap.class.getName());
 
-	static Random rand = new Random();
+	private static Random rand = new Random();
 
 	public EntityMap() {
 		super();
@@ -27,24 +27,18 @@ public class EntityMap extends MapContainer<Entity> {
 		super(entities);
 	}
 
-	public void setEntities(Entity[][] entities) {
-		validateContents(entities);
-
-		this.contents = entities;
-	}
-
 	public static Entity[][] generateEntityMap(int rows, int cols, List<Point> grass, EntityParam params) {
 		List<Point> grassCopy = new ArrayList<>(grass);
 
 		Entity[][] entities = generateEmptyEntityMap(rows, cols);
 
 		int randIndex;
-		Point p;
+		Point point;
 		for (int i = 0; i < params.numRabbit; i++) {
 			randIndex = rand.nextInt(grassCopy.size());
-			p = grassCopy.get(randIndex);
+			point = grassCopy.get(randIndex);
 			grassCopy.remove(randIndex);
-			entities[p.x][p.y] = new Rabbit(p.x, p.y);
+			entities[point.x][point.y] = new Rabbit(point.x, point.y);
 		}
 //		for (int i = 0; i < params.numCabbage; i++) {
 //			randIndex = rand.nextInt(grassCopy.size());
@@ -74,14 +68,16 @@ public class EntityMap extends MapContainer<Entity> {
 
 	public static Entity[][] generateEmptyEntityMap(int rows, int cols) {
 		Entity[][] entities = new Entity[rows][cols];
+		Null nullEnt = new Null();
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				entities[i][j] = new Null(i, j);
+				entities[i][j] = nullEnt;
 			}
 		}
 		return entities;
 	}
 
+	@Override
 	public Entity[][] getContentsImmutable() {
 		/* Copy array */
 		Entity[][] newContents = new Entity[this.contents.length][];

@@ -21,9 +21,10 @@ public class MapPane extends JPanel {
 	private static final Logger LOGGER = Logger.getLogger(MapPane.class.getName());
 
 	private static final long serialVersionUID = 4987675307324245239L;
-	private MapContainer<?> map;
+	private transient final MapContainer<?> map;
 
 	public MapPane(MapContainer<? extends MapComponent> map, Dimension dim) {
+		super();
 		this.map = map;
 		MapComponent[][] contents = map.getContents();
 		int rows = contents.length;
@@ -46,25 +47,6 @@ public class MapPane extends JPanel {
 		}
 
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-	}
-
-	// TODO improve this method to have a lower cost (only update icons that need to
-	// be updated)
-	public void updateContents(MapContainer<? extends MapComponent> map) {
-		MapComponent[][] currentContents = this.map.getContents();
-		MapComponent[][] newContents = map.getContents();
-		int rows = newContents.length;
-		int cols = newContents[0].length;
-
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				// Only update cell if contents have changed
-				if (!newContents[i][j].equals(currentContents[i][j])) {
-					((JLabel) this.getComponent(i * rows + j)).setIcon(new ImageIcon(newContents[i][j].getImage()));
-				}
-			}
-		}
-		this.map = map;
 	}
 
 	public Dimension getDimensions() {

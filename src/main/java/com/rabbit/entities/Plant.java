@@ -6,7 +6,7 @@ public abstract class Plant extends Entity {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Plant.class.getName());
 
-	public Plant(int x, int y) {
-		super(x, y);
+	public Plant(final int xPos, final int yPos) {
+		super(xPos, yPos);
 	}
 }

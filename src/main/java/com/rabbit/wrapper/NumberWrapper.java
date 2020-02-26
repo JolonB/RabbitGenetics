@@ -35,15 +35,15 @@ public class NumberWrapper extends Wrapper<Number> {
 	}
 
 	@Override
-	public int compareTo(Wrapper<Number> o) {
-		if (!(o instanceof NumberWrapper)) {
+	public int compareTo(Wrapper<Number> obj) {
+		if (!(obj instanceof NumberWrapper)) {
 			throw new IllegalArgumentException("compare to requires a NumberWrapper as a parameter");
 		}
-		NumberWrapper n = (NumberWrapper) o;
-		if (this.value == n.value
-				|| (this.value.intValue() == n.value.intValue() && this.value.doubleValue() == n.value.doubleValue())) {
+		NumberWrapper numWrapper = (NumberWrapper) obj;
+		if (this.value == numWrapper.value
+				|| (this.value.intValue() == numWrapper.value.intValue() && this.value.doubleValue() == numWrapper.value.doubleValue())) {
 			return 0;
-		} else if (this.value.intValue() < n.value.intValue() || this.value.doubleValue() < n.value.doubleValue()) {
+		} else if (this.value.intValue() < numWrapper.value.intValue() || this.value.doubleValue() < numWrapper.value.doubleValue()) {
 			return -1;
 		} else {
 			return 1;
@@ -51,8 +51,7 @@ public class NumberWrapper extends Wrapper<Number> {
 	}
 
 	public int compareNum(Number num) {
-		NumberWrapper n = new NumberWrapper(num);
-		return this.compareTo(n);
+		return this.compareTo(new NumberWrapper(num));
 	}
 
 }

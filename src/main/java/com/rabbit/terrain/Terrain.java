@@ -9,13 +9,16 @@ public abstract class Terrain extends MapComponent {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Terrain.class.getName());
 
-	public abstract void draw(int x, int y);
+	public abstract void draw(int xPos, int yPos);
 
+	@Override
 	public String toString() {
 		throw new UnsupportedOperationException("toString has not been implemented");
 	}
 
+	@Override
 	public abstract char toChar();
 
+	@Override
 	public abstract Image getImage(int dim);
 }

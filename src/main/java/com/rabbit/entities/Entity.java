@@ -10,45 +10,44 @@ public abstract class Entity extends MapComponent {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Entity.class.getName());
 
-	public final Action act;
-	private Point position;
+	private Point pos;
 
-	public Entity(int x, int y) {
-		act = new Action(this);
-		this.position = new Point(x, y);
+	public Entity(final int xPos, final int yPos) {
+		super();
+		this.pos = new Point(xPos, yPos);
 	}
 
-	public void setPos(int x, int y) {
-		this.position.x = x;
-		this.position.y = y;
+	public void setPos(final int xPos, final int yPos) {
+		this.pos.x = xPos;
+		this.pos.y = yPos;
 	}
 
-	public void setPos(Point pos) {
-		this.position = pos;
+	public void setPos(final Point pos) {
+		this.pos = pos;
 	}
 
-	public void setX(int x) {
-		this.position.x = x;
+	public void setX(final int xPos) {
+		this.pos.x = xPos;
 	}
 
-	public void setY(int y) {
-		this.position.y = y;
+	public void setY(final int yPos) {
+		this.pos.y = yPos;
 	}
 
 	public Point getPos() {
-		return this.position;
+		return this.pos;
 	}
 
 	public int getX() {
-		return this.position.x;
+		return this.pos.x;
 	}
 
 	public int getY() {
-		return this.position.y;
+		return this.pos.y;
 	}
 
-	public abstract Action calculateAction(Terrain[][] terrain);
+	public abstract Action calculateAction(final Terrain[][] terrain); // TODO do we need entities here too?
 	
-	public abstract boolean performAction(Action action, Entity[][] entities);
+	public abstract boolean performAction(final Action action, Entity[][] entities);
 
 }

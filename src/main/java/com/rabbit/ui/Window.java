@@ -8,9 +8,7 @@ import javax.swing.*;
 
 import com.rabbit.map_container.EntityMap;
 import com.rabbit.map_container.MapComponent;
-import com.rabbit.map_container.MapContainer;
 import com.rabbit.wrapper.NumberWrapper;
-import com.rabbit.map_container.TerrainMap;
 
 public class Window {
 	@SuppressWarnings("unused")
@@ -18,13 +16,13 @@ public class Window {
 
 	public static final int WINDOW_HEIGHT = 1000;
 	public static final int MAP_WIDTH = 1000;
-	private static final Dimension dim = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
+	private static final Dimension DIM = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
 	public static final int CONTROL_WIDTH = 200;
-	private SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
-	private NumberWrapper timer;
+	private transient final SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
+	private transient final NumberWrapper timer;
 
 	public Window(MapPane background, MapPane foreground, NumberWrapper timer) {
-		simWindow = new SimulationWindow(dim, background, foreground);
+		simWindow = new SimulationWindow(DIM, background, foreground);
 		this.timer = timer;
 		checkMaps(background.getMapContents(), foreground.getMapContents());
 		createAndShowGUI();
@@ -57,7 +55,7 @@ public class Window {
 	}
 
 	public void updateForeground(MapPane foreground) {
-		this.simWindow.updateLayer(dim, foreground, 1);
+		this.simWindow.updateLayer(DIM, foreground, 1);
 	}
 
 	public static void updateEntities(EntityMap entities) {
@@ -73,6 +71,6 @@ public class Window {
 	}
 
 	public static Dimension getDimensions() {
-		return dim;
+		return DIM;
 	}
 }

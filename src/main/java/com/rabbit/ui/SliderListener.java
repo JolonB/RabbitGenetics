@@ -12,15 +12,15 @@ public class SliderListener implements ChangeListener {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(SliderListener.class.getName());
 
-	NumberWrapper n;
+	private transient final NumberWrapper num;
 
-	public SliderListener(NumberWrapper n) {
-		this.n = n;
+	public SliderListener(NumberWrapper num) {
+		this.num = num;
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent event) {
-		n.setValue(Long.valueOf(((JSlider) event.getSource()).getValue()));
+		num.setValue(Long.valueOf(((JSlider) event.getSource()).getValue()));
 	}
 
 }

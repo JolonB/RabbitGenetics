@@ -7,23 +7,23 @@ public abstract class Animal extends Entity {
 	private static final Logger LOGGER = Logger.getLogger(Animal.class.getName());
 
 	/** Desire to eat */
-	double hunger;
+	private double hunger;
 	/** Desire to move */
-	double activeness;
+	private double activeness;
 	/** Minimum activeness */
-	double speed;
+	private double speed;
 	/** Energy lost during movement */
-	double movementEnergy;
+	private double movementEnergy;
 	/** Energy lost while stationary */
-	double idleEnergy;
+	private double idleEnergy;
 	/** Energy level at which death occurs */
-	double minEnergy;
+	private double minEnergy;
 	/** The maximum energy before no more energy can be gained */
-	double maxEnergy;
+	private double maxEnergy;
 	/** The range at which an animal can see another entity */
-	double vision;
+	private double vision;
 	
-	public Animal(int x, int y) {
-		super(x, y);
+	public Animal(final int xPos, final int yPos) {
+		super(xPos, yPos);
 	}
 }

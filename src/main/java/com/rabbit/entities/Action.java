@@ -10,19 +10,37 @@ public class Action {
 		EAT, BREED, MOVE, DIE, NOTHING
 	}
 
-	public final Entity entity;
-	public Act nextAction;
-	public int x;
-	int oldX;
-	public int y;
-	int oldY;
+	private transient final Entity entity;
+	private transient final Act nextAction;
+	private transient final int newX;
+	private transient final int newY;
 
-	public Action(Entity entity) {
+	public Action(final Entity entity, final Act nextAction, final int newX, final int newY) {
 		this.entity = entity;
+		this.nextAction = nextAction;
+		this.newX = newX;
+		this.newY = newY;
 	}
 
+	public Entity getEntity() {
+		return this.entity;
+	}
+
+	public Act getAction() {
+		return this.nextAction;
+	}
+
+	public int getX() {
+		return this.newX;
+	}
+
+	public int getY() {
+		return this.newY;
+	}
+
+	@Override
 	public String toString() {
-		return "[ entity : " + entity.toString() + ", nextAction : " + nextAction.toString() + ", x : " + x + ", y : "
-				+ y + " ]";
+		return "[ entity : " + entity.toString() + ", nextAction : " + nextAction.toString() + ", x : " + newX
+				+ ", y : " + newY + " ]";
 	}
 }
