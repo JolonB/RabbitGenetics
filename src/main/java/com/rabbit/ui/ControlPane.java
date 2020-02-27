@@ -15,7 +15,7 @@ public class ControlPane extends JPanel {
 
 	private static final long serialVersionUID = 1010021733256440598L;
 
-	public ControlPane(NumberWrapper num) {
+	public ControlPane(InfoWindow info, NumberWrapper num) {
 		super();
 		/* Set vertical layout of components */
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -27,6 +27,7 @@ public class ControlPane extends JPanel {
 		JSlider timeSlider = new JSlider(1000, 5000, 2000);
 		timeSlider.addChangeListener(new SliderListener(num));
 
+		this.add(info);
 		this.add(but1);
 		this.add(but2);
 		this.add(but3);

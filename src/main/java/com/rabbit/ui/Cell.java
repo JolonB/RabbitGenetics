@@ -1,12 +1,11 @@
 package com.rabbit.ui;
 
 import java.awt.event.MouseListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import com.rabbit.entities.Entity;
 import com.rabbit.map_container.MapComponent;
 
 public class Cell extends JLabel {
@@ -16,12 +15,19 @@ public class Cell extends JLabel {
      */
     private static final long serialVersionUID = -4267270471630490457L;
 
-    private MapComponent comp;
+    private transient final MapComponent comp;
 
     public Cell(MapComponent comp, ImageIcon img, MouseListener ml) {
         super(img);
         this.comp = comp;
-        this.addMouseListener(ml);
+        /* Only add a mouse listener if it is an entity */
+        if (comp instanceof Entity) {
+            this.addMouseListener(ml);
+        }
+    }
+
+    public MapComponent getComponent() {
+        return this.comp;
     }
 
     @Override

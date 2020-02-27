@@ -1,6 +1,7 @@
 package com.rabbit.stats;
 
-public abstract class PlantStats extends EntityStats {
-    public PlantStats() {
+public class PlantStats extends EntityStats {
+    protected PlantStats() {
+        super();
     }
 }

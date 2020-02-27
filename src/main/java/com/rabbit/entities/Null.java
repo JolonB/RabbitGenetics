@@ -43,8 +43,8 @@ public class Null extends Entity {
 	}
 
 	@Override
-	public boolean performAction(final Action action, final Entity[][] entities) {
-		/* Do nothing */
+	public boolean doMove(final Action action, final Entity[][] entities) {
+		/* Do nothing. This should never be called */
 		return true;
 	}
 

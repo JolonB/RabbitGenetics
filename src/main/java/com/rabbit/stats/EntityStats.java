@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public abstract class EntityStats {
+public class EntityStats {
     protected static final Random RAND = new Random();
 
     /** The amount of time the entity has existed for */
@@ -14,10 +14,18 @@ public abstract class EntityStats {
     /**
      * Generate an entity with randomised stats
      */
-    public EntityStats() {
+    protected EntityStats() {
     }
 
-    public EntityStats(Map<String, Float> stats) {
+    protected EntityStats(Map<String, Float> stats) {
+    }
+
+    protected float randomFloat(float lowerBound, float upperBound) {
+        return lowerBound + RAND.nextFloat() * (upperBound - lowerBound);
+    }
+
+    public void incrementTimeAlive() {
+        this.timeAlive++;
     }
 
     public long getTimeAlive() {

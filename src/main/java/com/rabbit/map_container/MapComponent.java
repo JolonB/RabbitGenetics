@@ -24,7 +24,9 @@ public abstract class MapComponent {
 		try {
 			image = ImageIO.read(new File(imgName)).getScaledInstance(dim, dim, Image.SCALE_FAST);
 		} catch (IOException e) {
-			LOGGER.log(Level.SEVERE, "Could not find file: " + imgName, e);
+			if (LOGGER.isLoggable(Level.SEVERE)) {
+				LOGGER.log(Level.SEVERE, "Could not find file: " + imgName, e);
+			}
 		}
 
 		return image;

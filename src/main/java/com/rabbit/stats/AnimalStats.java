@@ -4,13 +4,15 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public abstract class AnimalStats extends EntityStats {
+public class AnimalStats extends EntityStats {
     /** Desire to eat */
     private float hunger = 1; // newborn animals immediately seek food
     /** Desire to move */
     private float activeness = 1; // newborn animals want to move immediately
     /** The animal's current energy level */
-    private float energy = 1; // begins with full energy, but will
+    private float energy = 1; // begins with full energy, but will immediately be set to maxEnergy
+    /** Rate of change of hunger per step */
+    private final float hungerIncrease;
     /** Minimum activeness. Activeness will drop to this value after movement */
     private final float speed;
     /** Energy lost during movement */
@@ -31,48 +33,29 @@ public abstract class AnimalStats extends EntityStats {
     /**
      * Generate random stats for an animal
      */
-    public AnimalStats() {
+    protected AnimalStats() {
         super();
-        this.speed = RAND.nextFloat();
-        this.movementEnergy = RAND.nextFloat();
-        this.idleEnergy = RAND.nextFloat() * movementEnergy; // energy lost idle must be <= energy lost moving
-        this.maxEnergy = 0.5f + RAND.nextFloat() * 0.5f; // random number from 0.5 to 1.0
-        this.minEnergy = RAND.nextFloat() * 0.5f; // random number from 0.0 to 0.5
-        this.vision = RAND.nextFloat();
-        this.metabolism = RAND.nextFloat();
+        this.hungerIncrease = randomFloat(0.0f, 0.1f);
+        this.speed = randomFloat(0.0f, 1.0f);
+        this.maxEnergy = randomFloat(0.5f, 1.0f); // random number from 0.5 to 1.0
+        this.minEnergy = randomFloat(0.0f, 0.5f); // random number from 0.0 to 0.5
+        this.movementEnergy = randomFloat(minEnergy, maxEnergy) / 10.0f;
+        this.idleEnergy = randomFloat(0.0f, movementEnergy); // energy lost idle must be <= energy lost moving
+        this.vision = randomFloat(0.0f, 1.0f);
+        this.metabolism = randomFloat(0.0f, 1.0f);
         this.generation = 1;
     }
 
-    public AnimalStats(float speed, float movementEnergy, float idleEnergy, float maxEnergy, float minEnergy,
-            float vision, float metabolism, int generation) {
-        super();
-        /* Check all stats. If they are out of bounds, generate a random number */
-        this.speed = (speed <= 1.0 || speed >= 0.0) ? speed : RAND.nextFloat();
-        this.movementEnergy = (movementEnergy <= 1.0 || movementEnergy >= 0.0) ? movementEnergy : RAND.nextFloat();
-        this.idleEnergy = (idleEnergy <= 1.0 || idleEnergy >= 0.0) ? idleEnergy : RAND.nextFloat();
-        this.maxEnergy = (maxEnergy <= 1.0 || maxEnergy >= 0.0) ? maxEnergy : RAND.nextFloat();
-        this.minEnergy = (minEnergy <= maxEnergy || minEnergy >= 0.0) ? minEnergy : RAND.nextFloat() * maxEnergy;
-        this.vision = (vision <= 1.0 || vision >= 0.0) ? vision : RAND.nextFloat();
-        this.metabolism = (metabolism <= 1.0 || metabolism >= 0.0) ? metabolism : RAND.nextFloat();
-        this.generation = generation;
-    }
-
-    public AnimalStats(Map<String, Float> stats, int generation) {
-        this(stats.get("speed"), stats.get("movementEnergy"), stats.get("idleEnergy"), stats.get("maxEnergy"),
-                stats.get("minEnergy"), stats.get("vision"), stats.get("metabolism"), generation, stats);
-    }
-
-    private AnimalStats(float speed, float movementEnergy, float idleEnergy, float maxEnergy, float minEnergy,
-            float vision, float metabolism, int generation, Map<String, Float> stats) {
+    protected AnimalStats(Map<String, Float> stats, int generation) {
         super(stats);
-        /* Check all stats. If they are out of bounds, generate a random number */
-        this.speed = (speed <= 1.0 || speed >= 0.0) ? speed : RAND.nextFloat();
-        this.movementEnergy = (movementEnergy <= 1.0 || movementEnergy >= 0.0) ? movementEnergy : RAND.nextFloat();
-        this.idleEnergy = (idleEnergy <= 1.0 || idleEnergy >= 0.0) ? idleEnergy : RAND.nextFloat();
-        this.maxEnergy = (maxEnergy <= 1.0 || maxEnergy >= 0.0) ? maxEnergy : RAND.nextFloat();
-        this.minEnergy = (minEnergy <= maxEnergy || minEnergy >= 0.0) ? minEnergy : RAND.nextFloat() * maxEnergy;
-        this.vision = (vision <= 1.0 || vision >= 0.0) ? vision : RAND.nextFloat();
-        this.metabolism = (metabolism <= 1.0 || metabolism >= 0.0) ? metabolism : RAND.nextFloat();
+        this.hungerIncrease = stats.get("hungerIncrease");
+        this.speed = stats.get("speed");
+        this.movementEnergy = stats.get("movementEnergy");
+        this.idleEnergy = stats.get("idleEnergy");
+        this.maxEnergy = stats.get("maxEnergy");
+        this.minEnergy = stats.get("minEnergy");
+        this.vision = stats.get("vision");
+        this.metabolism = stats.get("metabolism");
         this.generation = generation;
     }
 
@@ -120,6 +103,29 @@ public abstract class AnimalStats extends EntityStats {
         return this.generation;
     }
 
+    public void increaseEnergy(float increaseBy) {
+        updateEnergy(increaseBy);
+        this.energy = Math.min(this.energy, this.maxEnergy);
+    }
+
+    public void decreaseEnergy(float decreaseBy) {
+        updateEnergy(-decreaseBy);
+        this.energy = Math.max(this.energy, this.minEnergy);
+    }
+
+    private void updateEnergy(float updateBy) {
+        this.energy += updateBy;
+    }
+
+    public void increaseHunger() {
+        this.hunger = Math.min(this.hunger + this.hungerIncrease, 1.0f);
+    }
+
+    public void decreaseActiveness() {
+        this.activeness = this.speed;
+    }
+
+    @Override
     public SortedMap<String, Number> getStats() {
         SortedMap<String, Number> map = super.getStats();
         map.put("Hunger", this.hunger);
@@ -134,11 +140,13 @@ public abstract class AnimalStats extends EntityStats {
      * 
      * @return a map containing all of the fields
      */
+    @Override
     public Map<String, Number> getAllStats() {
         Map<String, Number> map = super.getAllStats();
         map.put("hunger", this.hunger);
         map.put("activeness", this.activeness);
         map.put("energy", this.energy);
+        map.put("hungerIncrease", this.hungerIncrease);
         map.put("speed", this.speed);
         map.put("movementEnergy", this.movementEnergy);
         map.put("idleEnergy", this.idleEnergy);
@@ -158,6 +166,7 @@ public abstract class AnimalStats extends EntityStats {
      */
     public Map<String, Float> getBreedingStats() {
         Map<String, Float> map = new TreeMap<>();
+        map.put("hungerIncrease", this.hungerIncrease);
         map.put("speed", this.speed);
         map.put("movementEnergy", this.movementEnergy);
         map.put("idleEnergy", this.idleEnergy);

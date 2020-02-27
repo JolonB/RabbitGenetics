@@ -6,6 +6,8 @@ import java.util.SortedMap;
 public class RabbitStats extends AnimalStats {
     /** Desire to reproduce */
     private float libido;
+    /** The amount the rabbit's libido increases per step */
+    private final float libidoIncrement;
     /** Energy lost during breeding */
     private final float breedingEnergy;
 
@@ -14,22 +16,14 @@ public class RabbitStats extends AnimalStats {
      */
     public RabbitStats() {
         super();
-        this.breedingEnergy = RAND.nextFloat();
-    }
-
-    public RabbitStats(float breedingEnergy, float speed, float movementEnergy, float idleEnergy, float minEnergy,
-            float maxEnergy, float vision, float metabolism, int generation) {
-        super(speed, movementEnergy, idleEnergy, minEnergy, maxEnergy, vision, metabolism, generation);
-        this.breedingEnergy = (breedingEnergy <= 1.0 || breedingEnergy >= 0.0) ? breedingEnergy : RAND.nextFloat();
+        this.libidoIncrement = randomFloat(0.0f, 0.05f);
+        this.breedingEnergy = randomFloat(getIdleEnergy(), getMaxEnergy()) / 10.0f;
     }
 
     public RabbitStats(Map<String, Float> stats, int generation) {
-        this(stats.get("breedingEnergy"), stats, generation);
-    }
-
-    private RabbitStats(float breedingEnergy, Map<String, Float> stats, int generation) {
         super(stats, generation);
-        this.breedingEnergy = (breedingEnergy <= 1.0 || breedingEnergy >= 0.0) ? breedingEnergy : RAND.nextFloat();
+        this.libidoIncrement = stats.get("libidoIncrement");
+        this.breedingEnergy = stats.get("breedingEnergy");
     }
 
     public float getLibido() {
@@ -40,27 +34,30 @@ public class RabbitStats extends AnimalStats {
         return this.breedingEnergy;
     }
 
+    public void increaseLibido() {
+        this.libido += this.libidoIncrement;
+    }
+
+    @Override
     public SortedMap<String, Number> getStats() {
         SortedMap<String, Number> map = super.getStats();
         map.put("Libido", this.libido);
         return map;
     }
 
+    @Override
     public Map<String, Number> getAllStats() {
         Map<String, Number> map = super.getAllStats();
         map.put("libido", this.libido);
+        map.put("libidoIncrement", this.libidoIncrement);
         map.put("breedingEnergy", this.breedingEnergy);
         return map;
     }
 
-    /**
-     * Returns a map containing all fields relevant to breeding indexed by their
-     * names.
-     * 
-     * @return a map containing all fields relevant to breeding
-     */
+    @Override
     public Map<String, Float> getBreedingStats() {
         Map<String, Float> map = super.getBreedingStats();
+        map.put("libidoIncrement", this.libidoIncrement);
         map.put("breedingEnergy", this.breedingEnergy);
         return map;
     }

@@ -12,10 +12,12 @@ public class NullStats extends EntityStats {
         super();
     }
 
+    @Override
     public SortedMap<String, Number> getStats() {
         return new TreeMap<>(); // Don't bother returning any stats
     }
 
+    @Override
     public Map<String, Number> getAllStats() {
         return new TreeMap<>(); // Don't bother returning any stats
     }

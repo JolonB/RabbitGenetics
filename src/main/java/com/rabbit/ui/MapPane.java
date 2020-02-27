@@ -24,6 +24,7 @@ public class MapPane extends JPanel {
 	private transient final MapContainer<?> map;
 
 	public MapPane(MapContainer<? extends MapComponent> map, Dimension dim, MouseListener ml) {
+		// TODO perhaps create separate EntityMapPane and TerrainMapPane classes
 		super();
 		this.map = map;
 		MapComponent[][] contents = map.getContents();
@@ -41,7 +42,7 @@ public class MapPane extends JPanel {
 			for (int j = 0; j < cols; j++) {
 				gbc.gridx = j;
 				Image img = contents[i][j].getImage(scale);
-				
+
 				Cell imgLabel = new Cell(contents[i][j], new ImageIcon(img), ml);
 				this.add(imgLabel, gbc);
 			}

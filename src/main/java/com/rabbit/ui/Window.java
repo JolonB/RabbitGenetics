@@ -13,7 +13,9 @@ import javax.swing.*;
 import com.rabbit.map_container.EntityMap;
 import com.rabbit.map_container.MapComponent;
 import com.rabbit.map_container.MapContainer;
+import com.rabbit.map_container.TerrainMap;
 import com.rabbit.wrapper.NumberWrapper;
+import com.rabbit.entities.Entity;
 
 public class Window {
 	@SuppressWarnings("unused")
@@ -23,18 +25,21 @@ public class Window {
 	public static final int MAP_WIDTH = 1000;
 	public static final int CONTROL_WIDTH = 200;
 	private static final Dimension DIM = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
-	private static final MouseListener mouseListener = new MouseAdapter() {
-		public void mouseClicked(MouseEvent e) {
-			System.out.println(e.getSource().toString());
+	private final MouseListener mouseListener = new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent event) {
+			info.showInfo(((Cell) event.getSource()).getComponent());
 		}
 	};
-	private SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
-	private NumberWrapper timer;
+	private final SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
+	private final InfoWindow info;
+	private final NumberWrapper timer;
 
-	public Window(MapPane background, MapPane foreground, NumberWrapper timer) {
-		simWindow = new SimulationWindow(DIM, background, foreground);
+	public Window(TerrainMap background, EntityMap foreground, NumberWrapper timer) {
+		this.simWindow = new SimulationWindow(DIM, newMapPane(background), newMapPane(foreground));
+		this.info = new InfoWindow();
 		this.timer = timer;
-		checkMaps(background.getMapContents(), foreground.getMapContents());
+		checkMaps(background.getContentsImmutable(), foreground.getContentsImmutable());
 		createAndShowGUI();
 	}
 
@@ -46,7 +51,7 @@ public class Window {
 
 		/* Set up the map and the controls */
 		frame.getContentPane().add(this.simWindow, BorderLayout.CENTER);
-		JPanel controls = new ControlPane(this.timer);
+		JPanel controls = new ControlPane(this.info, this.timer);
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
 
 		/* Display the window */
@@ -68,8 +73,8 @@ public class Window {
 		this.simWindow.updateLayer(DIM, foreground, 1);
 	}
 
-	public static MapPane newMapPane(MapContainer<? extends MapComponent> map) {
-		return new MapPane(map, DIM, Window.mouseListener);
+	public MapPane newMapPane(MapContainer<? extends MapComponent> map) {
+		return new MapPane(map, DIM, mouseListener);
 	}
 
 	public static Dimension getDimensions() {

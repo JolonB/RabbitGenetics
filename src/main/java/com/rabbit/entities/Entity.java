@@ -1,6 +1,7 @@
 package com.rabbit.entities;
 
 import java.awt.Point;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.rabbit.map_container.MapComponent;
@@ -12,49 +13,53 @@ public abstract class Entity extends MapComponent {
 	private static final Logger LOGGER = Logger.getLogger(Entity.class.getName());
 
 	private final EntityStats stats;
-	private Point position;
+	private Point pos;
 
-	public Entity(final int xPos, final int yPos, EntityStats stats) {
+	protected Entity(final int xPos, final int yPos, EntityStats stats) {
 		super();
 		this.stats = stats;
-		this.position = new Point(xPos, yPos);
+		this.pos = new Point(xPos, yPos);
 	}
 
 	public void setPos(final int xPos, final int yPos) {
-		this.position.x = xPos;
-		this.position.y = yPos;
+		this.pos.x = xPos;
+		this.pos.y = yPos;
 	}
 
 	public void setPos(final Point pos) {
-		this.position = pos;
+		this.pos = pos;
 	}
 
 	public void setX(final int xPos) {
-		this.position.x = xPos;
+		this.pos.x = xPos;
 	}
 
 	public void setY(final int yPos) {
-		this.position.y = yPos;
+		this.pos.y = yPos;
 	}
 
 	public Point getPos() {
-		return this.position;
+		return this.pos;
 	}
 
 	public int getX() {
-		return this.position.x;
+		return this.pos.x;
 	}
 
 	public int getY() {
-		return this.position.y;
+		return this.pos.y;
 	}
 
 	public EntityStats getStats() {
 		return this.stats;
 	}
 
+	public void updateStats() {
+		stats.incrementTimeAlive();
+	}
+
 	public abstract Action calculateAction(final Terrain[][] terrain); // TODO do we need entities here too?
 
-	public abstract boolean performAction(final Action action, Entity[][] entities);
+	public abstract boolean doMove(final Action action, Entity[][] newEntities);
 
 }
