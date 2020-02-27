@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.util.logging.Logger;
 
 import com.rabbit.entities.Action.Act;
+import com.rabbit.stats.NullStats;
 import com.rabbit.terrain.Terrain;
 
 public class Null extends Entity {
@@ -14,7 +15,7 @@ public class Null extends Entity {
 	private static Image image = null;
 
 	public Null() {
-		super(0, 0);
+		super(0, 0, new NullStats());
 	}
 
 	@Override

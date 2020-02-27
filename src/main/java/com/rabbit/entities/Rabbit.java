@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.util.logging.Logger;
 
 import com.rabbit.entities.Action.Act;
+import com.rabbit.stats.RabbitStats;
 import com.rabbit.terrain.Terrain;
 
 public class Rabbit extends Animal {
@@ -13,13 +14,12 @@ public class Rabbit extends Animal {
 	private static final String IMG_NAME = "img/rabbit.png";
 	private static Image image = null;
 
-	/** Energy lost during breeding */
-	private double breedingEnergy;
-	/** Desire to reproduce */
-	private double horniness;
-
 	public Rabbit(final int xPos, final int yPos) {
-		super(xPos, yPos);
+		this(xPos, yPos, new RabbitStats());
+	}
+
+	public Rabbit(final int xPos, final int yPos, RabbitStats stats) {
+		super(xPos, yPos, stats);
 	}
 
 	@Override
