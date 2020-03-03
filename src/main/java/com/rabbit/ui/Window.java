@@ -15,7 +15,6 @@ import com.rabbit.map_container.MapComponent;
 import com.rabbit.map_container.MapContainer;
 import com.rabbit.map_container.TerrainMap;
 import com.rabbit.wrapper.NumberWrapper;
-import com.rabbit.entities.Entity;
 
 public class Window {
 	@SuppressWarnings("unused")
@@ -37,7 +36,7 @@ public class Window {
 
 	public Window(TerrainMap background, EntityMap foreground, NumberWrapper timer) {
 		this.simWindow = new SimulationWindow(DIM, newMapPane(background), newMapPane(foreground));
-		this.info = new InfoWindow();
+		this.info = new InfoWindow(CONTROL_WIDTH);
 		this.timer = timer;
 		checkMaps(background.getContentsImmutable(), foreground.getContentsImmutable());
 		createAndShowGUI();
@@ -71,6 +70,10 @@ public class Window {
 
 	public void updateForeground(MapPane foreground) {
 		this.simWindow.updateLayer(DIM, foreground, 1);
+	}
+
+	public void updateInfo() {
+		this.info.updateInfo();
 	}
 
 	public MapPane newMapPane(MapContainer<? extends MapComponent> map) {

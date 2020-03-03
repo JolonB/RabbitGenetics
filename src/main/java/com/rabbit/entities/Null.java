@@ -48,4 +48,9 @@ public class Null extends Entity {
 		return true;
 	}
 
+	@Override
+	public Image getScaledImage(int dimension) {
+		return Null.image;
+	}
+
 }

@@ -75,6 +75,8 @@ public class Main {
 				entities = doCalculate(terrain, entities);
 				/* Update next buffer */
 				foreground = window.newMapPane(entities);
+				/* Update stats if something is selected */
+				window.updateInfo();
 			}
 		}
 		running = false; // TODO link this to a button

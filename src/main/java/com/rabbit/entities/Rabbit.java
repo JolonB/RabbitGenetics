@@ -31,6 +31,10 @@ public class Rabbit extends Animal {
 		return Rabbit.image;
 	}
 
+	public Image getScaledImage(final int dim) {
+		return super.getScaledImage(IMG_NAME, dim);
+	}
+
 	@Override
 	public char toChar() {
 		return 'r';

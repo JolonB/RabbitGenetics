@@ -1,7 +1,7 @@
 package com.rabbit.entities;
 
+import java.awt.Image;
 import java.awt.Point;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.rabbit.map_container.MapComponent;
@@ -62,4 +62,5 @@ public abstract class Entity extends MapComponent {
 
 	public abstract boolean doMove(final Action action, Entity[][] newEntities);
 
+	public abstract Image getScaledImage(final int dimension);
 }
