@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":10,"i2":9,"i3":9,"i4":10};
+var methods = {"i0":9,"i1":10,"i2":9,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -136,12 +136,20 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#DIM">DIM</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>private <a href="../../../com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#info">info</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>private static java.util.logging.Logger</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#LOGGER">LOGGER</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#MAP_WIDTH">MAP_WIDTH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private java.awt.event.MouseListener</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#mouseListener">mouseListener</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>private <a href="../../../com/rabbit/ui/SimulationWindow.html" title="class in com.rabbit.ui">SimulationWindow</a></code></td>
@@ -170,8 +178,8 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#Window-com.rabbit.ui.MapPane-com.rabbit.ui.MapPane-com.rabbit.wrapper.NumberWrapper-">Window</a></span>(<a href="../../../com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a>&nbsp;background,
-      <a href="../../../com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a>&nbsp;foreground,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#Window-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-com.rabbit.wrapper.NumberWrapper-">Window</a></span>(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;background,
+      <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;foreground,
       <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timer)</code>&nbsp;</td>
 </tr>
 </table>
@@ -203,12 +211,16 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#getDimensions--">getDimensions</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#updateEntities-com.rabbit.map_container.EntityMap-">updateEntities</a></span>(<a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#newMapPane-com.rabbit.map_container.MapContainer-">newMapPane</a></span>(<a href="../../../com/rabbit/map_container/MapContainer.html" title="class in com.rabbit.map_container">MapContainer</a>&lt;? extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a>&gt;&nbsp;map)</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#updateForeground-com.rabbit.ui.MapPane-">updateForeground</a></span>(<a href="../../../com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a>&nbsp;foreground)</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#updateInfo--">updateInfo</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -267,15 +279,6 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a name="DIM">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>DIM</h4>
-<pre>private static final&nbsp;java.awt.Dimension DIM</pre>
-</li>
-</ul>
 <a name="CONTROL_WIDTH">
 <!--   -->
 </a>
@@ -289,13 +292,40 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
+<a name="DIM">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIM</h4>
+<pre>private static final&nbsp;java.awt.Dimension DIM</pre>
+</li>
+</ul>
+<a name="mouseListener">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>mouseListener</h4>
+<pre>private final&nbsp;java.awt.event.MouseListener mouseListener</pre>
+</li>
+</ul>
 <a name="simWindow">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>simWindow</h4>
-<pre>private final transient&nbsp;<a href="../../../com/rabbit/ui/SimulationWindow.html" title="class in com.rabbit.ui">SimulationWindow</a> simWindow</pre>
+<pre>private final&nbsp;<a href="../../../com/rabbit/ui/SimulationWindow.html" title="class in com.rabbit.ui">SimulationWindow</a> simWindow</pre>
+</li>
+</ul>
+<a name="info">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>info</h4>
+<pre>private final&nbsp;<a href="../../../com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a> info</pre>
 </li>
 </ul>
 <a name="timer">
@@ -304,7 +334,7 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>timer</h4>
-<pre>private final transient&nbsp;<a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a> timer</pre>
+<pre>private final&nbsp;<a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a> timer</pre>
 </li>
 </ul>
 </li>
@@ -315,14 +345,14 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Window-com.rabbit.ui.MapPane-com.rabbit.ui.MapPane-com.rabbit.wrapper.NumberWrapper-">
+<a name="Window-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-com.rabbit.wrapper.NumberWrapper-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Window</h4>
-<pre>public&nbsp;Window(<a href="../../../com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a>&nbsp;background,
-              <a href="../../../com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a>&nbsp;foreground,
+<pre>public&nbsp;Window(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;background,
+              <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;foreground,
               <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timer)</pre>
 </li>
 </ul>
@@ -362,13 +392,22 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;void&nbsp;updateForeground(<a href="../../../com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a>&nbsp;foreground)</pre>
 </li>
 </ul>
-<a name="updateEntities-com.rabbit.map_container.EntityMap-">
+<a name="updateInfo--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>updateEntities</h4>
-<pre>public static&nbsp;void&nbsp;updateEntities(<a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;entities)</pre>
+<h4>updateInfo</h4>
+<pre>public&nbsp;void&nbsp;updateInfo()</pre>
+</li>
+</ul>
+<a name="newMapPane-com.rabbit.map_container.MapContainer-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>newMapPane</h4>
+<pre>public&nbsp;<a href="../../../com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a>&nbsp;newMapPane(<a href="../../../com/rabbit/map_container/MapContainer.html" title="class in com.rabbit.map_container">MapContainer</a>&lt;? extends <a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a>&gt;&nbsp;map)</pre>
 </li>
 </ul>
 <a name="getDimensions--">

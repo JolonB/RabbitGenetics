@@ -3,6 +3,7 @@ com.rabbit.entities
 com.rabbit.main
 com.rabbit.map_container
 com.rabbit.rabbit_breeding
+com.rabbit.stats
 com.rabbit.terrain
 com.rabbit.ui
 com.rabbit.wrapper

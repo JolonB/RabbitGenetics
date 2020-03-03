@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -186,19 +186,23 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Null.html#calculateAction-com.rabbit.terrain.Terrain:A:A-">calculateAction</a></span>(<a href="../../../com/rabbit/terrain/Terrain.html" title="class in com.rabbit.terrain">Terrain</a>[][]&nbsp;terrain)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Null.html#doMove-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doMove</a></span>(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
+      <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;entities)</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>java.awt.Image</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Null.html#getImage-int-">getImage</a></span>(int&nbsp;dim)</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Null.html#performAction-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">performAction</a></span>(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
-             <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;entities)</code>&nbsp;</td>
-</tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.awt.Image</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Null.html#getScaledImage-int-">getScaledImage</a></span>(int&nbsp;dimension)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>char</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Null.html#toChar--">toChar</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Null.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
@@ -208,14 +212,14 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.rabbit.entities.<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></h3>
-<code><a href="../../../com/rabbit/entities/Entity.html#getPos--">getPos</a>, <a href="../../../com/rabbit/entities/Entity.html#getX--">getX</a>, <a href="../../../com/rabbit/entities/Entity.html#getY--">getY</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-int-int-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-java.awt.Point-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setX-int-">setX</a>, <a href="../../../com/rabbit/entities/Entity.html#setY-int-">setY</a></code></li>
+<code><a href="../../../com/rabbit/entities/Entity.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/entities/Entity.html#getPos--">getPos</a>, <a href="../../../com/rabbit/entities/Entity.html#getStats--">getStats</a>, <a href="../../../com/rabbit/entities/Entity.html#getX--">getX</a>, <a href="../../../com/rabbit/entities/Entity.html#getY--">getY</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-int-int-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-java.awt.Point-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setX-int-">setX</a>, <a href="../../../com/rabbit/entities/Entity.html#setY-int-">setY</a>, <a href="../../../com/rabbit/entities/Entity.html#updateStats--">updateStats</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.com.rabbit.map_container.MapComponent">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.rabbit.map_container.<a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a></h3>
-<code><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getScaledImage-java.lang.String-int-">getScaledImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#hashCode--">hashCode</a></code></li>
+<code><a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getScaledImage-java.lang.String-int-">getScaledImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#hashCode--">hashCode</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -346,17 +350,30 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 </dl>
 </li>
 </ul>
-<a name="performAction-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">
+<a name="doMove-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>doMove</h4>
+<pre>public&nbsp;boolean&nbsp;doMove(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
+                      <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;entities)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../com/rabbit/entities/Entity.html#doMove-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doMove</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getScaledImage-int-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>performAction</h4>
-<pre>public&nbsp;boolean&nbsp;performAction(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
-                             <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;entities)</pre>
+<h4>getScaledImage</h4>
+<pre>public&nbsp;java.awt.Image&nbsp;getScaledImage(int&nbsp;dimension)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../com/rabbit/entities/Entity.html#performAction-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">performAction</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></code></dd>
+<dd><code><a href="../../../com/rabbit/entities/Entity.html#getScaledImage-int-">getScaledImage</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></code></dd>
 </dl>
 </li>
 </ul>

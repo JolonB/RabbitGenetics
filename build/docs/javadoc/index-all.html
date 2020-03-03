@@ -80,7 +80,7 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities"><span class="typeNameLink">Action.Act</span></a> - Enum in <a href="com/rabbit/entities/package-summary.html">com.rabbit.entities</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#activeness">activeness</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#activeness">activeness</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>
 <div class="block">Desire to move</div>
 </dd>
@@ -88,7 +88,15 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities"><span class="typeNameLink">Animal</span></a> - Class in <a href="com/rabbit/entities/package-summary.html">com.rabbit.entities</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#Animal-int-int-">Animal(int, int)</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#Animal-int-int-com.rabbit.stats.AnimalStats-">Animal(int, int, AnimalStats)</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats"><span class="typeNameLink">AnimalStats</span></a> - Class in <a href="com/rabbit/stats/package-summary.html">com.rabbit.stats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#AnimalStats--">AnimalStats()</a></span> - Constructor for class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>
+<div class="block">Generate random stats for an animal</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#AnimalStats-java.util.Map-int-">AnimalStats(Map&lt;String, Float&gt;, int)</a></span> - Constructor for class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:B">
@@ -100,7 +108,9 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#beginSimulationNoUI-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-">beginSimulationNoUI(TerrainMap, EntityMap)</a></span> - Method in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Rabbit.html#breedingEnergy">breedingEnergy</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Rabbit.html" title="class in com.rabbit.entities">Rabbit</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoWindow.html#BORDER_WIDTH">BORDER_WIDTH</a></span> - Static variable in class com.rabbit.ui.<a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#breedingEnergy">breedingEnergy</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
 <dd>
 <div class="block">Energy lost during breeding</div>
 </dd>
@@ -122,6 +132,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#calculateMovement-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-">calculateMovement(TerrainMap, EntityMap)</a></span> - Static method in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/rabbit/ui/Cell.html" title="class in com.rabbit.ui"><span class="typeNameLink">Cell</span></a> - Class in <a href="com/rabbit/ui/package-summary.html">com.rabbit.ui</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Cell.html#Cell-com.rabbit.map_container.MapComponent-javax.swing.ImageIcon-java.awt.event.MouseListener-">Cell(MapComponent, ImageIcon, MouseListener)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/Cell.html" title="class in com.rabbit.ui">Cell</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/MapContainer.html#checkArrays-com.rabbit.map_container.MapContainer...-">checkArrays(MapContainer&lt;? extends MapComponent&gt;...)</a></span> - Static method in class com.rabbit.map_container.<a href="com/rabbit/map_container/MapContainer.html" title="class in com.rabbit.map_container">MapContainer</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#checkMaps-com.rabbit.map_container.MapComponent:A:A-com.rabbit.map_container.MapComponent:A:A-">checkMaps(MapComponent[][], MapComponent[][])</a></span> - Static method in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
@@ -142,11 +156,15 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/rabbit_breeding/package-summary.html">com.rabbit.rabbit_breeding</a> - package com.rabbit.rabbit_breeding</dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/rabbit/stats/package-summary.html">com.rabbit.stats</a> - package com.rabbit.stats</dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/rabbit/terrain/package-summary.html">com.rabbit.terrain</a> - package com.rabbit.terrain</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/ui/package-summary.html">com.rabbit.ui</a> - package com.rabbit.ui</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/wrapper/package-summary.html">com.rabbit.wrapper</a> - package com.rabbit.wrapper</dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Cell.html#comp">comp</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/Cell.html" title="class in com.rabbit.ui">Cell</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/wrapper/NumberWrapper.html#compareNum-java.lang.Number-">compareNum(Number)</a></span> - Method in class com.rabbit.wrapper.<a href="com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a></dt>
 <dd>&nbsp;</dd>
@@ -158,9 +176,11 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/ui/ControlPane.html" title="class in com.rabbit.ui"><span class="typeNameLink">ControlPane</span></a> - Class in <a href="com/rabbit/ui/package-summary.html">com.rabbit.ui</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/ui/ControlPane.html#ControlPane-com.rabbit.wrapper.NumberWrapper-">ControlPane(NumberWrapper)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/ControlPane.html" title="class in com.rabbit.ui">ControlPane</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/ControlPane.html#ControlPane-com.rabbit.ui.InfoWindow-com.rabbit.wrapper.NumberWrapper-int-">ControlPane(InfoWindow, NumberWrapper, int)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/ControlPane.html" title="class in com.rabbit.ui">ControlPane</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#createAndShowGUI--">createAndShowGUI()</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoWindow.html#currentEntity">currentEntity</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:D">
@@ -168,11 +188,21 @@
 </a>
 <h2 class="title">D</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#decreaseActiveness--">decreaseActiveness()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#decreaseEnergy-float-">decreaseEnergy(float)</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/open_simplex_noise/OpenSimplexNoise.html#DEFAULT_SEED">DEFAULT_SEED</a></span> - Static variable in class com.open_simplex_noise.<a href="com/open_simplex_noise/OpenSimplexNoise.html" title="class in com.open_simplex_noise">OpenSimplexNoise</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#DIM">DIM</a></span> - Static variable in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#doCalculate-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-">doCalculate(TerrainMap, EntityMap)</a></span> - Method in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#doMove-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doMove(Action, Entity[][])</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#doMove-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doMove(Action, Entity[][])</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Null.html#doMove-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doMove(Action, Entity[][])</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Null.html" title="class in com.rabbit.entities">Null</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/TerrainMap.html#draw--">draw()</a></span> - Method in class com.rabbit.map_container.<a href="com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a></dt>
 <dd>&nbsp;</dd>
@@ -190,11 +220,15 @@
 </a>
 <h2 class="title">E</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#energy">energy</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>
+<div class="block">The animal's current energy level</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Action.html#entity">entity</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities"><span class="typeNameLink">Entity</span></a> - Class in <a href="com/rabbit/entities/package-summary.html">com.rabbit.entities</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#Entity-int-int-">Entity(int, int)</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#Entity-int-int-com.rabbit.stats.EntityStats-">Entity(int, int, EntityStats)</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container"><span class="typeNameLink">EntityMap</span></a> - Class in <a href="com/rabbit/map_container/package-summary.html">com.rabbit.map_container</a></dt>
 <dd>&nbsp;</dd>
@@ -205,6 +239,16 @@
 <dt><a href="com/rabbit/entities/EntityParam.html" title="class in com.rabbit.entities"><span class="typeNameLink">EntityParam</span></a> - Class in <a href="com/rabbit/entities/package-summary.html">com.rabbit.entities</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/EntityParam.html#EntityParam--">EntityParam()</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/EntityParam.html" title="class in com.rabbit.entities">EntityParam</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats"><span class="typeNameLink">EntityStats</span></a> - Class in <a href="com/rabbit/stats/package-summary.html">com.rabbit.stats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/EntityStats.html#EntityStats--">EntityStats()</a></span> - Constructor for class com.rabbit.stats.<a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></dt>
+<dd>
+<div class="block">Generate an entity with randomised stats</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/EntityStats.html#EntityStats-java.util.Map-">EntityStats(Map&lt;String, Float&gt;)</a></span> - Constructor for class com.rabbit.stats.<a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.rabbit.map_container.<a href="com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a></dt>
 <dd>&nbsp;</dd>
@@ -242,7 +286,38 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/TerrainMap.html#generateSimplexMap-int-int-int-">generateSimplexMap(int, int, int)</a></span> - Static method in class com.rabbit.map_container.<a href="com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#generation">generation</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>
+<div class="block">The generation of the animal (longest line of ancestors + 1)</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Action.html#getAction--">getAction()</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getActiveness--">getActiveness()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getAllStats--">getAllStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>
+<div class="block">Returns a map containing all of the fields indexed by their names.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/EntityStats.html#getAllStats--">getAllStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></dt>
+<dd>
+<div class="block">Returns a map containing all of the fields indexed by their names.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/NullStats.html#getAllStats--">getAllStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/NullStats.html" title="class in com.rabbit.stats">NullStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#getAllStats--">getAllStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#getAnimalStats--">getAnimalStats()</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#getBreedingEnergy--">getBreedingEnergy()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getBreedingStats--">getBreedingStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>
+<div class="block">Returns a map containing all fields relevant to breeding indexed by their
+ names.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#getBreedingStats--">getBreedingStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Cell.html#getComponent--">getComponent()</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/Cell.html" title="class in com.rabbit.ui">Cell</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/MapContainer.html#getContents--">getContents()</a></span> - Method in class com.rabbit.map_container.<a href="com/rabbit/map_container/MapContainer.html" title="class in com.rabbit.map_container">MapContainer</a></dt>
 <dd>
@@ -262,9 +337,17 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#getDimensions--">getDimensions()</a></span> - Static method in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getEnergy--">getEnergy()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Action.html#getEntity--">getEntity()</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getGeneration--">getGeneration()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/TerrainMap.html#getGrass--">getGrass()</a></span> - Method in class com.rabbit.map_container.<a href="com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getHunger--">getHunger()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getIdleEnergy--">getIdleEnergy()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Null.html#getImage-int-">getImage(int)</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Null.html" title="class in com.rabbit.entities">Null</a></dt>
 <dd>&nbsp;</dd>
@@ -282,16 +365,51 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/terrain/Water.html#getImage-int-">getImage(int)</a></span> - Method in class com.rabbit.terrain.<a href="com/rabbit/terrain/Water.html" title="class in com.rabbit.terrain">Water</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#getLibido--">getLibido()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/MapPane.html#getMapContents--">getMapContents()</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getMaxEnergy--">getMaxEnergy()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getMetabolism--">getMetabolism()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getMinEnergy--">getMinEnergy()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getMovementEnergy--">getMovementEnergy()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#getPos--">getPos()</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Rabbit.html#getRabbitStats--">getRabbitStats()</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Rabbit.html" title="class in com.rabbit.entities">Rabbit</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/TerrainMap.html#getSand--">getSand()</a></span> - Method in class com.rabbit.map_container.<a href="com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#getScaledImage-int-">getScaledImage(int)</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Null.html#getScaledImage-int-">getScaledImage(int)</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Null.html" title="class in com.rabbit.entities">Null</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Rabbit.html#getScaledImage-int-">getScaledImage(int)</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Rabbit.html" title="class in com.rabbit.entities">Rabbit</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/MapComponent.html#getScaledImage-java.lang.String-int-">getScaledImage(String, int)</a></span> - Static method in class com.rabbit.map_container.<a href="com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a></dt>
 <dd>
 <div class="block">Sets the image to the one provided by imgName.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getSpeed--">getSpeed()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#getStats--">getStats()</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getStats--">getStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/EntityStats.html#getStats--">getStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></dt>
+<dd>
+<div class="block">Returns a map containing the fields that may be relevant to show on a user
+ interface.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/NullStats.html#getStats--">getStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/NullStats.html" title="class in com.rabbit.stats">NullStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#getStats--">getStats()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/EntityStats.html#getTimeAlive--">getTimeAlive()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/wrapper/Wrapper.html#getValue--">getValue()</a></span> - Method in class com.rabbit.wrapper.<a href="com/rabbit/wrapper/Wrapper.html" title="class in com.rabbit.wrapper">Wrapper</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/wrapper/NumberWrapper.html#getValueByte--">getValueByte()</a></span> - Method in class com.rabbit.wrapper.<a href="com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a></dt>
@@ -305,6 +423,8 @@
 <dt><span class="memberNameLink"><a href="com/rabbit/wrapper/NumberWrapper.html#getValueLong--">getValueLong()</a></span> - Method in class com.rabbit.wrapper.<a href="com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/wrapper/NumberWrapper.html#getValueShort--">getValueShort()</a></span> - Method in class com.rabbit.wrapper.<a href="com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#getVision--">getVision()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/TerrainMap.html#getWater--">getWater()</a></span> - Method in class com.rabbit.map_container.<a href="com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a></dt>
 <dd>&nbsp;</dd>
@@ -336,13 +456,13 @@
 <dl>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/MapComponent.html#hashCode--">hashCode()</a></span> - Method in class com.rabbit.map_container.<a href="com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Rabbit.html#horniness">horniness</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Rabbit.html" title="class in com.rabbit.entities">Rabbit</a></dt>
-<dd>
-<div class="block">Desire to reproduce</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#hunger">hunger</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#hunger">hunger</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>
 <div class="block">Desire to eat</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#hungerIncrease">hungerIncrease</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>
+<div class="block">Rate of change of hunger per step</div>
 </dd>
 </dl>
 <a name="I:I">
@@ -350,7 +470,7 @@
 </a>
 <h2 class="title">I</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#idleEnergy">idleEnergy</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#idleEnergy">idleEnergy</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>
 <div class="block">Energy lost while stationary</div>
 </dd>
@@ -374,12 +494,46 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/terrain/Water.html#IMG_NAME">IMG_NAME</a></span> - Static variable in class com.rabbit.terrain.<a href="com/rabbit/terrain/Water.html" title="class in com.rabbit.terrain">Water</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoWindow.html#imgSize">imgSize</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoWindow.html#imgWindow">imgWindow</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#increaseEnergy-float-">increaseEnergy(float)</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#increaseHunger--">increaseHunger()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#increaseLibido--">increaseLibido()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/EntityStats.html#incrementTimeAlive--">incrementTimeAlive()</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoListener.html#info">info</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/InfoListener.html" title="class in com.rabbit.ui">InfoListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#info">info</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/rabbit/ui/InfoListener.html" title="class in com.rabbit.ui"><span class="typeNameLink">InfoListener</span></a> - Class in <a href="com/rabbit/ui/package-summary.html">com.rabbit.ui</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoListener.html#InfoListener-com.rabbit.ui.InfoWindow-">InfoListener(InfoWindow)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/InfoListener.html" title="class in com.rabbit.ui">InfoListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui"><span class="typeNameLink">InfoWindow</span></a> - Class in <a href="com/rabbit/ui/package-summary.html">com.rabbit.ui</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoWindow.html#InfoWindow-int-">InfoWindow(int)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:L">
 <!--   -->
 </a>
 <h2 class="title">L</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoWindow.html#labels">labels</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#libido">libido</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>
+<div class="block">Desire to reproduce</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#libidoIncrement">libidoIncrement</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>
+<div class="block">The amount the rabbit's libido increases per step</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Action.html#LOGGER">LOGGER</a></span> - Static variable in class com.rabbit.entities.<a href="com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#LOGGER">LOGGER</a></span> - Static variable in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
@@ -452,17 +606,25 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui"><span class="typeNameLink">MapPane</span></a> - Class in <a href="com/rabbit/ui/package-summary.html">com.rabbit.ui</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/ui/MapPane.html#MapPane-com.rabbit.map_container.MapContainer-java.awt.Dimension-">MapPane(MapContainer&lt;? extends MapComponent&gt;, Dimension)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/MapPane.html#MapPane-com.rabbit.map_container.MapContainer-java.awt.Dimension-java.awt.event.MouseListener-">MapPane(MapContainer&lt;? extends MapComponent&gt;, Dimension, MouseListener)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#maxEnergy">maxEnergy</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#maxEnergy">maxEnergy</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>
 <div class="block">The maximum energy before no more energy can be gained</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#minEnergy">minEnergy</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#metabolism">metabolism</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
+<dd>
+<div class="block">Food to energy conversion efficiency.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#minEnergy">minEnergy</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>
 <div class="block">Energy level at which death occurs</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#movementEnergy">movementEnergy</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoListener.html#mouseClicked-java.awt.event.MouseEvent-">mouseClicked(MouseEvent)</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/InfoListener.html" title="class in com.rabbit.ui">InfoListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#mouseListener">mouseListener</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#movementEnergy">movementEnergy</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>
 <div class="block">Energy lost during movement</div>
 </dd>
@@ -472,6 +634,8 @@
 </a>
 <h2 class="title">N</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#newMapPane-com.rabbit.map_container.MapContainer-">newMapPane(MapContainer&lt;? extends MapComponent&gt;)</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Action.html#newX">newX</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Action.html#newY">newY</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a></dt>
@@ -488,6 +652,12 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Null.html#Null--">Null()</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/Null.html" title="class in com.rabbit.entities">Null</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/rabbit/stats/NullStats.html" title="class in com.rabbit.stats"><span class="typeNameLink">NullStats</span></a> - Class in <a href="com/rabbit/stats/package-summary.html">com.rabbit.stats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/NullStats.html#NullStats--">NullStats()</a></span> - Constructor for class com.rabbit.stats.<a href="com/rabbit/stats/NullStats.html" title="class in com.rabbit.stats">NullStats</a></dt>
+<dd>
+<div class="block">Generate a rabbit with randomised stats</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/SliderListener.html#num">num</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/SliderListener.html" title="class in com.rabbit.ui">SliderListener</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#NUM_CABBAGE">NUM_CABBAGE</a></span> - Static variable in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
@@ -528,15 +698,9 @@
 </a>
 <h2 class="title">P</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#parseActions-com.rabbit.entities.Action:A:A-com.rabbit.entities.Entity:A:A-">parseActions(Action[][], Entity[][])</a></span> - Static method in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#parseActions-java.util.List-com.rabbit.entities.Entity:A:A-">parseActions(List&lt;Action&gt;, Entity[][])</a></span> - Static method in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#PERCENT_WATER">PERCENT_WATER</a></span> - Static variable in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#performAction-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">performAction(Action, Entity[][])</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Null.html#performAction-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">performAction(Action, Entity[][])</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Null.html" title="class in com.rabbit.entities">Null</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Rabbit.html#performAction-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">performAction(Action, Entity[][])</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Rabbit.html" title="class in com.rabbit.entities">Rabbit</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/open_simplex_noise/OpenSimplexNoise.html#perm">perm</a></span> - Variable in class com.open_simplex_noise.<a href="com/open_simplex_noise/OpenSimplexNoise.html" title="class in com.open_simplex_noise">OpenSimplexNoise</a></dt>
 <dd>&nbsp;</dd>
@@ -544,7 +708,11 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/entities/Plant.html" title="class in com.rabbit.entities"><span class="typeNameLink">Plant</span></a> - Class in <a href="com/rabbit/entities/package-summary.html">com.rabbit.entities</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Plant.html#Plant-int-int-">Plant(int, int)</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/Plant.html" title="class in com.rabbit.entities">Plant</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Plant.html#Plant-int-int-com.rabbit.stats.PlantStats-">Plant(int, int, PlantStats)</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/Plant.html" title="class in com.rabbit.entities">Plant</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/rabbit/stats/PlantStats.html" title="class in com.rabbit.stats"><span class="typeNameLink">PlantStats</span></a> - Class in <a href="com/rabbit/stats/package-summary.html">com.rabbit.stats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/PlantStats.html#PlantStats--">PlantStats()</a></span> - Constructor for class com.rabbit.stats.<a href="com/rabbit/stats/PlantStats.html" title="class in com.rabbit.stats">PlantStats</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#pos">pos</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
 <dd>&nbsp;</dd>
@@ -558,9 +726,23 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Rabbit.html#Rabbit-int-int-">Rabbit(int, int)</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/Rabbit.html" title="class in com.rabbit.entities">Rabbit</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Rabbit.html#Rabbit-int-int-com.rabbit.stats.RabbitStats-">Rabbit(int, int, RabbitStats)</a></span> - Constructor for class com.rabbit.entities.<a href="com/rabbit/entities/Rabbit.html" title="class in com.rabbit.entities">Rabbit</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats"><span class="typeNameLink">RabbitStats</span></a> - Class in <a href="com/rabbit/stats/package-summary.html">com.rabbit.stats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#RabbitStats--">RabbitStats()</a></span> - Constructor for class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>
+<div class="block">Generate a rabbit with randomised stats</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/RabbitStats.html#RabbitStats-java.util.Map-int-">RabbitStats(Map&lt;String, Float&gt;, int)</a></span> - Constructor for class com.rabbit.stats.<a href="com/rabbit/stats/RabbitStats.html" title="class in com.rabbit.stats">RabbitStats</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/EntityMap.html#rand">rand</a></span> - Static variable in class com.rabbit.map_container.<a href="com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/TerrainMap.html#rand">rand</a></span> - Static variable in class com.rabbit.map_container.<a href="com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/EntityStats.html#RAND">RAND</a></span> - Static variable in class com.rabbit.stats.<a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/EntityStats.html#randomFloat-float-float-">randomFloat(float, float)</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/SimulationWindow.html#redraw--">redraw()</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/SimulationWindow.html" title="class in com.rabbit.ui">SimulationWindow</a></dt>
 <dd>&nbsp;</dd>
@@ -582,7 +764,11 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/terrain/Sand.html#Sand--">Sand()</a></span> - Constructor for class com.rabbit.terrain.<a href="com/rabbit/terrain/Sand.html" title="class in com.rabbit.terrain">Sand</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Cell.html#serialVersionUID">serialVersionUID</a></span> - Static variable in class com.rabbit.ui.<a href="com/rabbit/ui/Cell.html" title="class in com.rabbit.ui">Cell</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/ControlPane.html#serialVersionUID">serialVersionUID</a></span> - Static variable in class com.rabbit.ui.<a href="com/rabbit/ui/ControlPane.html" title="class in com.rabbit.ui">ControlPane</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoWindow.html#serialVersionUID">serialVersionUID</a></span> - Static variable in class com.rabbit.ui.<a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/MapPane.html#serialVersionUID">serialVersionUID</a></span> - Static variable in class com.rabbit.ui.<a href="com/rabbit/ui/MapPane.html" title="class in com.rabbit.ui">MapPane</a></dt>
 <dd>&nbsp;</dd>
@@ -600,6 +786,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#setY-int-">setY(int)</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoWindow.html#showInfo-com.rabbit.map_container.MapComponent-">showInfo(MapComponent)</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/rabbit/ui/SimulationWindow.html" title="class in com.rabbit.ui"><span class="typeNameLink">SimulationWindow</span></a> - Class in <a href="com/rabbit/ui/package-summary.html">com.rabbit.ui</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/SimulationWindow.html#SimulationWindow-java.awt.Dimension-com.rabbit.ui.MapPane-com.rabbit.ui.MapPane-">SimulationWindow(Dimension, MapPane, MapPane)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/SimulationWindow.html" title="class in com.rabbit.ui">SimulationWindow</a></dt>
@@ -610,9 +798,9 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/SliderListener.html#SliderListener-com.rabbit.wrapper.NumberWrapper-">SliderListener(NumberWrapper)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/SliderListener.html" title="class in com.rabbit.ui">SliderListener</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#speed">speed</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#speed">speed</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>
-<div class="block">Minimum activeness</div>
+<div class="block">Minimum activeness.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/open_simplex_noise/OpenSimplexNoise.html#SQUISH_CONSTANT_2D">SQUISH_CONSTANT_2D</a></span> - Static variable in class com.open_simplex_noise.<a href="com/open_simplex_noise/OpenSimplexNoise.html" title="class in com.open_simplex_noise">OpenSimplexNoise</a></dt>
 <dd>&nbsp;</dd>
@@ -621,6 +809,8 @@
 <dt><span class="memberNameLink"><a href="com/open_simplex_noise/OpenSimplexNoise.html#SQUISH_CONSTANT_4D">SQUISH_CONSTANT_4D</a></span> - Static variable in class com.open_simplex_noise.<a href="com/open_simplex_noise/OpenSimplexNoise.html" title="class in com.open_simplex_noise">OpenSimplexNoise</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/SliderListener.html#stateChanged-javax.swing.event.ChangeEvent-">stateChanged(ChangeEvent)</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/SliderListener.html" title="class in com.rabbit.ui">SliderListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#stats">stats</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#STEP_DURATION">STEP_DURATION</a></span> - Static variable in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
 <dd>&nbsp;</dd>
@@ -647,6 +837,10 @@
 <dt><span class="memberNameLink"><a href="com/rabbit/map_container/TerrainMap.html#TerrainMap-com.rabbit.terrain.Terrain:A:A-">TerrainMap(Terrain[][])</a></span> - Constructor for class com.rabbit.map_container.<a href="com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a></dt>
 <dd>
 <div class="block">Create a map object.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/EntityStats.html#timeAlive">timeAlive</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></dt>
+<dd>
+<div class="block">The amount of time the entity has existed for</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#timer">timer</a></span> - Variable in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
 <dd>&nbsp;</dd>
@@ -684,6 +878,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/terrain/Water.html#toString--">toString()</a></span> - Method in class com.rabbit.terrain.<a href="com/rabbit/terrain/Water.html" title="class in com.rabbit.terrain">Water</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Cell.html#toString--">toString()</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/Cell.html" title="class in com.rabbit.ui">Cell</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/wrapper/Wrapper.html#toString--">toString()</a></span> - Method in class com.rabbit.wrapper.<a href="com/rabbit/wrapper/Wrapper.html" title="class in com.rabbit.wrapper">Wrapper</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -694,11 +890,21 @@
 <dl>
 <dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#UI_ACTIVE">UI_ACTIVE</a></span> - Static variable in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#updateEntities-com.rabbit.map_container.EntityMap-">updateEntities(EntityMap)</a></span> - Static method in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#updateEnergy-float-">updateEnergy(float)</a></span> - Method in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#updateForeground-com.rabbit.ui.MapPane-">updateForeground(MapPane)</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/InfoWindow.html#updateInfo--">updateInfo()</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/InfoWindow.html" title="class in com.rabbit.ui">InfoWindow</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#updateInfo--">updateInfo()</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/SimulationWindow.html#updateLayer-java.awt.Dimension-com.rabbit.ui.MapPane-int-">updateLayer(Dimension, MapPane, int)</a></span> - Method in class com.rabbit.ui.<a href="com/rabbit/ui/SimulationWindow.html" title="class in com.rabbit.ui">SimulationWindow</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#updateStats--">updateStats()</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Entity.html#updateStats--">updateStats()</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/rabbit/entities/Rabbit.html#updateStats--">updateStats()</a></span> - Method in class com.rabbit.entities.<a href="com/rabbit/entities/Rabbit.html" title="class in com.rabbit.entities">Rabbit</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/main/Main.html#updateTimeout-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.NumberWrapper-">updateTimeout(NumberWrapper, NumberWrapper)</a></span> - Static method in class com.rabbit.main.<a href="com/rabbit/main/Main.html" title="class in com.rabbit.main">Main</a></dt>
 <dd>&nbsp;</dd>
@@ -721,7 +927,7 @@
 <div class="block">Returns an array containing the constants of this enum type, in
 the order they are declared.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/entities/Animal.html#vision">vision</a></span> - Variable in class com.rabbit.entities.<a href="com/rabbit/entities/Animal.html" title="class in com.rabbit.entities">Animal</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/stats/AnimalStats.html#vision">vision</a></span> - Variable in class com.rabbit.stats.<a href="com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></dt>
 <dd>
 <div class="block">The range at which an animal can see another entity</div>
 </dd>
@@ -739,7 +945,7 @@ the order they are declared.</div>
 <dd>&nbsp;</dd>
 <dt><a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui"><span class="typeNameLink">Window</span></a> - Class in <a href="com/rabbit/ui/package-summary.html">com.rabbit.ui</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#Window-com.rabbit.ui.MapPane-com.rabbit.ui.MapPane-com.rabbit.wrapper.NumberWrapper-">Window(MapPane, MapPane, NumberWrapper)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
+<dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#Window-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-com.rabbit.wrapper.NumberWrapper-">Window(TerrainMap, EntityMap, NumberWrapper)</a></span> - Constructor for class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/rabbit/ui/Window.html#WINDOW_HEIGHT">WINDOW_HEIGHT</a></span> - Static variable in class com.rabbit.ui.<a href="com/rabbit/ui/Window.html" title="class in com.rabbit.ui">Window</a></dt>
 <dd>&nbsp;</dd>

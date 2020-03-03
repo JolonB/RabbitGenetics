@@ -150,8 +150,9 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Plant.html#Plant-int-int-">Plant</a></span>(int&nbsp;xPos,
-     int&nbsp;yPos)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Plant.html#Plant-int-int-com.rabbit.stats.PlantStats-">Plant</a></span>(int&nbsp;xPos,
+     int&nbsp;yPos,
+     <a href="../../../com/rabbit/stats/PlantStats.html" title="class in com.rabbit.stats">PlantStats</a>&nbsp;stats)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -167,14 +168,14 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.rabbit.entities.<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></h3>
-<code><a href="../../../com/rabbit/entities/Entity.html#calculateAction-com.rabbit.terrain.Terrain:A:A-">calculateAction</a>, <a href="../../../com/rabbit/entities/Entity.html#getPos--">getPos</a>, <a href="../../../com/rabbit/entities/Entity.html#getX--">getX</a>, <a href="../../../com/rabbit/entities/Entity.html#getY--">getY</a>, <a href="../../../com/rabbit/entities/Entity.html#performAction-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">performAction</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-int-int-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-java.awt.Point-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setX-int-">setX</a>, <a href="../../../com/rabbit/entities/Entity.html#setY-int-">setY</a></code></li>
+<code><a href="../../../com/rabbit/entities/Entity.html#calculateAction-com.rabbit.terrain.Terrain:A:A-">calculateAction</a>, <a href="../../../com/rabbit/entities/Entity.html#doMove-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doMove</a>, <a href="../../../com/rabbit/entities/Entity.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/entities/Entity.html#getPos--">getPos</a>, <a href="../../../com/rabbit/entities/Entity.html#getScaledImage-int-">getScaledImage</a>, <a href="../../../com/rabbit/entities/Entity.html#getStats--">getStats</a>, <a href="../../../com/rabbit/entities/Entity.html#getX--">getX</a>, <a href="../../../com/rabbit/entities/Entity.html#getY--">getY</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-int-int-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-java.awt.Point-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setX-int-">setX</a>, <a href="../../../com/rabbit/entities/Entity.html#setY-int-">setY</a>, <a href="../../../com/rabbit/entities/Entity.html#updateStats--">updateStats</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.com.rabbit.map_container.MapComponent">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.rabbit.map_container.<a href="../../../com/rabbit/map_container/MapComponent.html" title="class in com.rabbit.map_container">MapComponent</a></h3>
-<code><a href="../../../com/rabbit/map_container/MapComponent.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage-int-">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getScaledImage-java.lang.String-int-">getScaledImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#hashCode--">hashCode</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#toChar--">toChar</a></code></li>
+<code><a href="../../../com/rabbit/map_container/MapComponent.html#getImage--">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getImage-int-">getImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#getScaledImage-java.lang.String-int-">getScaledImage</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#hashCode--">hashCode</a>, <a href="../../../com/rabbit/map_container/MapComponent.html#toChar--">toChar</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -214,14 +215,15 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Plant-int-int-">
+<a name="Plant-int-int-com.rabbit.stats.PlantStats-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Plant</h4>
 <pre>public&nbsp;Plant(int&nbsp;xPos,
-             int&nbsp;yPos)</pre>
+             int&nbsp;yPos,
+             <a href="../../../com/rabbit/stats/PlantStats.html" title="class in com.rabbit.stats">PlantStats</a>&nbsp;stats)</pre>
 </li>
 </ul>
 </li>
