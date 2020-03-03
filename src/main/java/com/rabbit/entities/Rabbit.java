@@ -1,7 +1,6 @@
 package com.rabbit.entities;
 
 import java.awt.Image;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.rabbit.entities.Action.Act;
@@ -60,5 +59,4 @@ public class Rabbit extends Animal {
 		final Action act = new Action(this, Act.MOVE, this.getX() + 1, this.getY() + 1);
 		return act;
 	}
-
 }

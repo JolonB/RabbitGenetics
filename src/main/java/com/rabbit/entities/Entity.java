@@ -58,6 +58,11 @@ public abstract class Entity extends MapComponent {
 		stats.incrementTimeAlive();
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		return this == obj;
+	}
+
 	public abstract Action calculateAction(final Terrain[][] terrain); // TODO do we need entities here too?
 
 	public abstract boolean doMove(final Action action, Entity[][] newEntities);
