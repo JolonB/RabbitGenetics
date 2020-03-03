@@ -2,12 +2,18 @@ package com.rabbit.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import java.util.logging.Logger;
 
 import javax.swing.*;
 
 import com.rabbit.map_container.EntityMap;
 import com.rabbit.map_container.MapComponent;
+import com.rabbit.map_container.MapContainer;
+import com.rabbit.map_container.TerrainMap;
 import com.rabbit.wrapper.NumberWrapper;
 
 public class Window {
@@ -16,15 +22,19 @@ public class Window {
 
 	public static final int WINDOW_HEIGHT = 1000;
 	public static final int MAP_WIDTH = 1000;
-	private static final Dimension DIM = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
 	public static final int CONTROL_WIDTH = 200;
-	private transient final SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
-	private transient final NumberWrapper timer;
+	private static final Dimension DIM = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
+	private final MouseListener mouseListener;
+	private final SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
+	private final InfoWindow info;
+	private final NumberWrapper timer;
 
-	public Window(MapPane background, MapPane foreground, NumberWrapper timer) {
-		simWindow = new SimulationWindow(DIM, background, foreground);
+	public Window(TerrainMap background, EntityMap foreground, NumberWrapper timer) {
+		this.simWindow = new SimulationWindow(DIM, newMapPane(background), newMapPane(foreground));
+		this.info = new InfoWindow(CONTROL_WIDTH);
+		this.mouseListener = new InfoListener(info);
 		this.timer = timer;
-		checkMaps(background.getMapContents(), foreground.getMapContents());
+		checkMaps(background.getContentsImmutable(), foreground.getContentsImmutable());
 		createAndShowGUI();
 	}
 
@@ -33,10 +43,11 @@ public class Window {
 		JFrame frame = new JFrame("Rabbit Breeding");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(MAP_WIDTH + CONTROL_WIDTH, WINDOW_HEIGHT);
+		frame.setResizable(false);
 
 		/* Set up the map and the controls */
 		frame.getContentPane().add(this.simWindow, BorderLayout.CENTER);
-		JPanel controls = new ControlPane(this.timer);
+		JPanel controls = new ControlPane(this.info, this.timer, CONTROL_WIDTH);
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
 
 		/* Display the window */
@@ -58,16 +69,12 @@ public class Window {
 		this.simWindow.updateLayer(DIM, foreground, 1);
 	}
 
-	public static void updateEntities(EntityMap entities) {
-		/* Update the currently inactive MapPane */
-		// if (foreground1Visible) {
-		// foreground2.updateContents(entities);
-		// } else {
-		// foreground1.updateContents(entities);
-		// }
-		// foreground1Visible = !foreground1Visible;
-		// foreground1.setVisible(foreground1Visible);
-		// foreground2.setVisible(!foreground1Visible);
+	public void updateInfo() {
+		this.info.updateInfo();
+	}
+
+	public MapPane newMapPane(MapContainer<? extends MapComponent> map) {
+		return new MapPane(map, DIM, mouseListener);
 	}
 
 	public static Dimension getDimensions() {

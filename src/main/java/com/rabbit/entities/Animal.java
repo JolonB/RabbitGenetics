@@ -2,28 +2,33 @@ package com.rabbit.entities;
 
 import java.util.logging.Logger;
 
+import com.rabbit.stats.AnimalStats;
+
 public abstract class Animal extends Entity {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Animal.class.getName());
 
-	/** Desire to eat */
-	private double hunger;
-	/** Desire to move */
-	private double activeness;
-	/** Minimum activeness */
-	private double speed;
-	/** Energy lost during movement */
-	private double movementEnergy;
-	/** Energy lost while stationary */
-	private double idleEnergy;
-	/** Energy level at which death occurs */
-	private double minEnergy;
-	/** The maximum energy before no more energy can be gained */
-	private double maxEnergy;
-	/** The range at which an animal can see another entity */
-	private double vision;
-	
-	public Animal(final int xPos, final int yPos) {
-		super(xPos, yPos);
+	protected Animal(final int xPos, final int yPos, AnimalStats stats) {
+		super(xPos, yPos, stats);
+	}
+
+	private AnimalStats getAnimalStats() {
+		return (AnimalStats) this.getStats();
+	}
+
+	public void updateStats() {
+		super.updateStats();
+		this.getAnimalStats().increaseHunger();
+	}
+
+	@Override
+	public boolean doMove(final Action action, Entity[][] entities) {
+		entities[action.getX()][action.getY()] = this;
+		this.setPos(action.getX(), action.getY());
+		/* Decrease the energy by the amount required to move */
+		AnimalStats stats = this.getAnimalStats();
+		stats.decreaseEnergy(stats.getMovementEnergy());
+		stats.decreaseActiveness();
+		return true;
 	}
 }

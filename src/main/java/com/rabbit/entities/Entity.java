@@ -1,19 +1,23 @@
 package com.rabbit.entities;
 
+import java.awt.Image;
 import java.awt.Point;
 import java.util.logging.Logger;
 
 import com.rabbit.map_container.MapComponent;
+import com.rabbit.stats.EntityStats;
 import com.rabbit.terrain.Terrain;
 
 public abstract class Entity extends MapComponent {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Entity.class.getName());
 
+	private final EntityStats stats;
 	private Point pos;
 
-	public Entity(final int xPos, final int yPos) {
+	protected Entity(final int xPos, final int yPos, EntityStats stats) {
 		super();
+		this.stats = stats;
 		this.pos = new Point(xPos, yPos);
 	}
 
@@ -46,8 +50,22 @@ public abstract class Entity extends MapComponent {
 		return this.pos.y;
 	}
 
-	public abstract Action calculateAction(final Terrain[][] terrain); // TODO do we need entities here too?
-	
-	public abstract boolean performAction(final Action action, Entity[][] entities);
+	public EntityStats getStats() {
+		return this.stats;
+	}
 
+	public void updateStats() {
+		stats.incrementTimeAlive();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this == obj;
+	}
+
+	public abstract Action calculateAction(final Terrain[][] terrain); // TODO do we need entities here too?
+
+	public abstract boolean doMove(final Action action, Entity[][] newEntities);
+
+	public abstract Image getScaledImage(final int dimension);
 }

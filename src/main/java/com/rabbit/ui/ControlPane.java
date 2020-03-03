@@ -1,5 +1,6 @@
 package com.rabbit.ui;
 
+import java.awt.GridLayout;
 import java.util.logging.Logger;
 
 import javax.swing.BoxLayout;
@@ -15,25 +16,30 @@ public class ControlPane extends JPanel {
 
 	private static final long serialVersionUID = 1010021733256440598L;
 
-	public ControlPane(NumberWrapper num) {
+	public ControlPane(InfoWindow info, NumberWrapper num, int windowSize) {
 		super();
 		/* Set vertical layout of components */
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		JButton but1 = new JButton("1");
-		JButton but2 = new JButton("2");
+		JPanel controlPanel = new JPanel(new GridLayout(0, 1));
+		JButton pauseButton = new JButton("Pause");
+		JButton stopButton = new JButton("Stop");
 		JButton but3 = new JButton("3");
 		JButton but4 = new JButton("4");
-		JSlider timeSlider = new JSlider(1000, 5000, 2000);
+		JSlider timeSlider = new JSlider(500, 5000, num.getValueInteger());
 		timeSlider.addChangeListener(new SliderListener(num));
 
-		this.add(but1);
-		this.add(but2);
-		this.add(but3);
-		this.add(but4);
-		this.add(timeSlider);
+		controlPanel.add(pauseButton);
+		controlPanel.add(stopButton);
+		controlPanel.add(but3);
+		controlPanel.add(but4);
+		controlPanel.add(timeSlider);
 
-		this.setSize(this.getWidth(), this.getHeight());
+		this.add(info);
+		this.add(controlPanel);
+
+		info.setAlignmentX(JPanel.RIGHT_ALIGNMENT);
+		controlPanel.setAlignmentX(JPanel.RIGHT_ALIGNMENT);
 	}
 
 }

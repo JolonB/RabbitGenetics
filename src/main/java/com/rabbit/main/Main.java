@@ -1,12 +1,14 @@
 package com.rabbit.main;
 
-import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.rabbit.entities.Action;
 import com.rabbit.entities.Entity;
 import com.rabbit.entities.EntityParam;
+import com.rabbit.entities.Null;
 import com.rabbit.map_container.EntityMap;
 import com.rabbit.map_container.MapContainer;
 import com.rabbit.map_container.TerrainMap;
@@ -26,7 +28,7 @@ public class Main {
 	private static final int NUM_CABBAGE = 0;
 	private static final int NUM_FOX = 0;
 	private static final boolean UI_ACTIVE = true;
-	private static final long STEP_DURATION = 3000;
+	private static final long STEP_DURATION = 1000;
 	private transient boolean running;
 
 	public Main() {
@@ -36,6 +38,10 @@ public class Main {
 	private void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
 		NumberWrapper timeoutUntil = new NumberWrapper();
+
+		/* Calculate next frame outside of loop */
+		/* Calculate next buffer */
+		entities = doCalculate(terrain, entities);
 
 		updateTimeout(timeoutUntil, stepDuration);
 		while (running) {
@@ -51,10 +57,13 @@ public class Main {
 	private void beginSimulation(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
 		NumberWrapper timeoutUntil = new NumberWrapper();
-		Dimension dim = Window.getDimensions();
-		MapPane background = new MapPane(terrain, dim);
-		MapPane foreground = new MapPane(entities, dim);
-		Window window = new Window(background, foreground, stepDuration);
+		Window window = new Window(terrain, entities, stepDuration);
+
+		/* Calculate next frame outside of loop */
+		/* Calculate next buffer */
+		entities = doCalculate(terrain, entities);
+		/* Update next buffer */
+		MapPane foreground = window.newMapPane(entities);
 
 		updateTimeout(timeoutUntil, stepDuration);
 		while (running) {
@@ -65,7 +74,9 @@ public class Main {
 				/* Calculate next buffer */
 				entities = doCalculate(terrain, entities);
 				/* Update next buffer */
-				foreground = new MapPane(entities, dim);
+				foreground = window.newMapPane(entities);
+				/* Update stats if something is selected */
+				window.updateInfo();
 			}
 		}
 		running = false; // TODO link this to a button
@@ -76,7 +87,7 @@ public class Main {
 		int cols = entities.getContents()[0].length;
 
 		/* Calculate actions */
-		Action[][] actions = calculateMovement(terrain, entities);
+		List<Action> actions = calculateMovement(terrain, entities);
 
 		/* Parse actions into new entity map */
 		EntityMap newEntities = new EntityMap(EntityMap.generateEmptyEntityMap(rows, cols));
@@ -107,45 +118,42 @@ public class Main {
 		return false;
 	}
 
-	private static Action[][] calculateMovement(TerrainMap terrain, EntityMap entities) {
+	private static List<Action> calculateMovement(TerrainMap terrain, EntityMap entities) {
 		Terrain[][] terrainArray = terrain.getContentsImmutable();
-		Entity[][] oldEntities = entities.getContentsImmutable();
+		Entity[][] entityArray = entities.getContentsImmutable();
 		int rows = terrainArray.length;
 		int cols = terrainArray[0].length;
 
-		Action[][] actions = new Action[rows][cols];
+		List<Action> actions = new ArrayList<>();
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				actions[i][j] = oldEntities[i][j].calculateAction(terrainArray);
+				// Don't bother recording an action for Null
+				if (!(entityArray[i][j] instanceof Null)) {
+					actions.add(entityArray[i][j].calculateAction(terrainArray));
+				}
 			}
 		}
 
 		return actions;
 	}
 
-	private static void parseActions(Action[][] actions, Entity[][] newEntities) {
-		int rows = actions.length;
-		int cols = actions[0].length;
-
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				Action act = actions[i][j];
-				switch (act.getAction()) {
-					case EAT:
-						break;
-					case BREED:
-						break;
-					case MOVE:
-						newEntities[act.getX()][act.getY()] = act.getEntity();
-						act.getEntity().setPos(act.getX(), act.getY());
-						break;
-					case DIE:
-						break;
-					case NOTHING:
-						break;
-					default:
-						throw new UnsupportedOperationException("Action must be EAT, BREED, MOVE, DIE, or NOTHING.");
-				}
+	private static void parseActions(List<Action> actions, Entity[][] newEntities) {
+		for (Action act : actions) {
+			act.getEntity().updateStats();
+			switch (act.getAction()) {
+				case EAT:
+					break;
+				case BREED:
+					break;
+				case MOVE:
+					act.getEntity().doMove(act, newEntities);
+					break;
+				case DIE:
+					break;
+				case NOTHING:
+					break;
+				default:
+					throw new UnsupportedOperationException("Action must be EAT, BREED, MOVE, DIE, or NOTHING.");
 			}
 		}
 	}
