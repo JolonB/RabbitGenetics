@@ -49,9 +49,10 @@ public class BreedingSimulation {
 		float prob = RAND.nextFloat(); // get normally distributed value from 0 to 1
 		// Just trust me on these. Feel free to plot it yourself with prob ranging from
 		// 0 to 1. I recommend Desmos
-		float biasScale = 0.25f - prob / 2.0f;
-		float biasIntercept = 0.25f + prob / 2.0f;
+		float biasScale = 0.5f - prob;
 		// sx^2 + (s+i)x + i
-		return biasScale * bias * bias + (biasScale + biasIntercept) * bias + biasIntercept;
+		float biasedProb = biasScale * bias * bias + 0.5f * bias + prob;
+		// return 0 or 1 if the value is out of bounds
+		return Math.max(0, Math.min(1, biasedProb));
 	}
 }
