@@ -28,7 +28,6 @@ public class TerrainMap extends MapContainer<Terrain> {
 	 * Create a map object. This should not be changed once it is first generated.
 	 * 
 	 * @param terrain The layout of the ground.
-	 * @throws Error
 	 */
 	public TerrainMap(Terrain[][] terrain) {
 		super(terrain);
@@ -45,17 +44,17 @@ public class TerrainMap extends MapContainer<Terrain> {
 			for (int j = 0; j < this.contents[0].length; j++) {
 				point = new Point(i, j);
 				switch (this.contents[i][j].toChar()) {
-				case 'G':
-					grass.add(point);
-					break;
-				case 'S':
-					sand.add(point);
-					break;
-				case 'W':
-					water.add(point);
-					break;
-				default:
-					throw new IllegalArgumentException("Did not expect " + this.contents[i][j].toChar());
+					case 'G':
+						grass.add(point);
+						break;
+					case 'S':
+						sand.add(point);
+						break;
+					case 'W':
+						water.add(point);
+						break;
+					default:
+						throw new IllegalArgumentException("Did not expect " + this.contents[i][j].toChar());
 				}
 			}
 		}

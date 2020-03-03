@@ -25,7 +25,7 @@ public class AnimalStats extends EntityStats {
     private final float minEnergy;
     /** The range at which an animal can see another entity */
     private final float vision;
-    /** Food to energy conversion efficiency. Higher -> more energy/food */
+    /** Food to energy conversion efficiency. Higher means more energy/food */
     private final float metabolism;
     /** The generation of the animal (longest line of ancestors + 1) */
     private final int generation;
