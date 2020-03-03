@@ -21,6 +21,8 @@ public class SimulationWindow extends JLayeredPane {
 		foreground.setBounds(0, 0, dim.width, dim.height);
 		foreground.setOpaque(false);
 		this.add(foreground, 1); // add foreground in front of background
+
+		this.setPreferredSize(dim);
 	}
 
 	private void redraw() {

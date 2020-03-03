@@ -9,9 +9,12 @@ import java.awt.Component;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.rabbit.entities.Entity;
+import com.rabbit.entities.Null;
 import com.rabbit.map_container.MapComponent;
 
 class InfoWindow extends JPanel { // TODO extends some swing component
@@ -29,13 +32,14 @@ class InfoWindow extends JPanel { // TODO extends some swing component
         this.imgSize = windowSize - BORDER_WIDTH * 2;
         this.imgWindow = new JLabel();
         imgWindow.setBorder(BorderFactory.createLineBorder(Color.BLACK, BORDER_WIDTH));
-        imgWindow.setPreferredSize(new Dimension(this.imgSize, this.imgSize));
+        this.imgWindow.setIcon(new ImageIcon(new Null().getScaledImage(this.imgSize)));
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(imgWindow);
 
         for (int i = 0; i < this.labels.length; i++) {
             this.labels[i] = new JLabel();
+            this.labels[i].setPreferredSize(new Dimension(this.imgSize, 30));
             this.add(this.labels[i]);
         }
     }
@@ -52,13 +56,13 @@ class InfoWindow extends JPanel { // TODO extends some swing component
         if (this.currentEntity == null) {
             return;
         }
-        
+
         this.imgWindow.setIcon(new ImageIcon(this.currentEntity.getScaledImage(this.imgSize)));
-        int index = 0;
-        for (Map.Entry<String, Number> entry : this.currentEntity.getStats().getStats().entrySet()) {
-            this.labels[index].setText(entry.getKey() + ": " + entry.getValue());
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-            index++;
+        Map<String, Number> statsMap = this.currentEntity.getStats().getStats();
+        List<String> keys = new ArrayList<>(statsMap.keySet());
+        List<Number> values = new ArrayList<>(statsMap.values());
+        for (int i = 0; i < this.labels.length; i++) {
+            this.labels[i].setText(i < keys.size() ? keys.get(i) + ": " + values.get(i) : "");
         }
 
         this.repaint();

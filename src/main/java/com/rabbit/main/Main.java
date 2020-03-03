@@ -28,7 +28,7 @@ public class Main {
 	private static final int NUM_CABBAGE = 0;
 	private static final int NUM_FOX = 0;
 	private static final boolean UI_ACTIVE = true;
-	private static final long STEP_DURATION = 3000;
+	private static final long STEP_DURATION = 1000;
 	private transient boolean running;
 
 	public Main() {

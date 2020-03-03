@@ -24,12 +24,7 @@ public class Window {
 	public static final int MAP_WIDTH = 1000;
 	public static final int CONTROL_WIDTH = 200;
 	private static final Dimension DIM = new Dimension(MAP_WIDTH, WINDOW_HEIGHT);
-	private final MouseListener mouseListener = new MouseAdapter() {
-		@Override
-		public void mouseClicked(MouseEvent event) {
-			info.showInfo(((Cell) event.getSource()).getComponent());
-		}
-	};
+	private final MouseListener mouseListener;
 	private final SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
 	private final InfoWindow info;
 	private final NumberWrapper timer;
@@ -37,6 +32,7 @@ public class Window {
 	public Window(TerrainMap background, EntityMap foreground, NumberWrapper timer) {
 		this.simWindow = new SimulationWindow(DIM, newMapPane(background), newMapPane(foreground));
 		this.info = new InfoWindow(CONTROL_WIDTH);
+		this.mouseListener = new InfoListener(info);
 		this.timer = timer;
 		checkMaps(background.getContentsImmutable(), foreground.getContentsImmutable());
 		createAndShowGUI();
@@ -47,10 +43,11 @@ public class Window {
 		JFrame frame = new JFrame("Rabbit Breeding");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(MAP_WIDTH + CONTROL_WIDTH, WINDOW_HEIGHT);
+		frame.setResizable(false);
 
 		/* Set up the map and the controls */
 		frame.getContentPane().add(this.simWindow, BorderLayout.CENTER);
-		JPanel controls = new ControlPane(this.info, this.timer);
+		JPanel controls = new ControlPane(this.info, this.timer, CONTROL_WIDTH);
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
 
 		/* Display the window */

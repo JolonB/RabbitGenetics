@@ -50,7 +50,7 @@ public class Null extends Entity {
 
 	@Override
 	public Image getScaledImage(int dimension) {
-		return Null.image;
+		return getScaledImage(IMG_NAME, dimension);
 	}
 
 }
