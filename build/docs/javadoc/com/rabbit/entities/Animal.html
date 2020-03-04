@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../com/rabbit/entities/Cabbage.html" title="class in com.rabbit.entities"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?com/rabbit/entities/Animal.html" target="_top">Frames</a></li>
@@ -183,14 +183,29 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#doBreed-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doBreed</a></span>(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
+       <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;newEntities)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#doDie-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doDie</a></span>(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
+     <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;newEntities)</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#doEat-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doEat</a></span>(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
+     <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;newEntities)</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#doMove-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doMove</a></span>(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
       <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;entities)</code>&nbsp;</td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>private <a href="../../../com/rabbit/stats/AnimalStats.html" title="class in com.rabbit.stats">AnimalStats</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#getAnimalStats--">getAnimalStats</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/entities/Animal.html#updateStats--">updateStats</a></span>()</code>&nbsp;</td>
 </tr>
@@ -200,7 +215,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.rabbit.entities.<a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></h3>
-<code><a href="../../../com/rabbit/entities/Entity.html#calculateAction-com.rabbit.terrain.Terrain:A:A-">calculateAction</a>, <a href="../../../com/rabbit/entities/Entity.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/entities/Entity.html#getPos--">getPos</a>, <a href="../../../com/rabbit/entities/Entity.html#getScaledImage-int-">getScaledImage</a>, <a href="../../../com/rabbit/entities/Entity.html#getStats--">getStats</a>, <a href="../../../com/rabbit/entities/Entity.html#getX--">getX</a>, <a href="../../../com/rabbit/entities/Entity.html#getY--">getY</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-int-int-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-java.awt.Point-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setX-int-">setX</a>, <a href="../../../com/rabbit/entities/Entity.html#setY-int-">setY</a></code></li>
+<code><a href="../../../com/rabbit/entities/Entity.html#calculateAction-com.rabbit.terrain.Terrain:A:A-">calculateAction</a>, <a href="../../../com/rabbit/entities/Entity.html#doNothing-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doNothing</a>, <a href="../../../com/rabbit/entities/Entity.html#equals-java.lang.Object-">equals</a>, <a href="../../../com/rabbit/entities/Entity.html#getAlive--">getAlive</a>, <a href="../../../com/rabbit/entities/Entity.html#getPos--">getPos</a>, <a href="../../../com/rabbit/entities/Entity.html#getScaledImage-int-">getScaledImage</a>, <a href="../../../com/rabbit/entities/Entity.html#getStats--">getStats</a>, <a href="../../../com/rabbit/entities/Entity.html#getX--">getX</a>, <a href="../../../com/rabbit/entities/Entity.html#getY--">getY</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-int-int-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setPos-java.awt.Point-">setPos</a>, <a href="../../../com/rabbit/entities/Entity.html#setX-int-">setX</a>, <a href="../../../com/rabbit/entities/Entity.html#setY-int-">setY</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.com.rabbit.map_container.MapComponent">
@@ -288,6 +303,48 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 </dl>
 </li>
 </ul>
+<a name="doEat-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>doEat</h4>
+<pre>public&nbsp;boolean&nbsp;doEat(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
+                     <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;newEntities)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../com/rabbit/entities/Entity.html#doEat-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doEat</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="doBreed-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>doBreed</h4>
+<pre>public&nbsp;boolean&nbsp;doBreed(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
+                       <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;newEntities)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../com/rabbit/entities/Entity.html#doBreed-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doBreed</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="doDie-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>doDie</h4>
+<pre>public&nbsp;boolean&nbsp;doDie(<a href="../../../com/rabbit/entities/Action.html" title="class in com.rabbit.entities">Action</a>&nbsp;action,
+                     <a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a>[][]&nbsp;newEntities)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../com/rabbit/entities/Entity.html#doDie-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">doDie</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities">Entity</a></code></dd>
+</dl>
+</li>
+</ul>
 <a name="doMove-com.rabbit.entities.Action-com.rabbit.entities.Entity:A:A-">
 <!--   -->
 </a>
@@ -330,7 +387,7 @@ extends <a href="../../../com/rabbit/entities/Entity.html" title="class in com.r
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../com/rabbit/entities/Action.Act.html" title="enum in com.rabbit.entities"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../com/rabbit/entities/Entity.html" title="class in com.rabbit.entities"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../com/rabbit/entities/Cabbage.html" title="class in com.rabbit.entities"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?com/rabbit/entities/Animal.html" target="_top">Frames</a></li>

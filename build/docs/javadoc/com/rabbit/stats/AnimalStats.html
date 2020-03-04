@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../com/rabbit/stats/CabbageStats.html" title="class in com.rabbit.stats"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?com/rabbit/stats/AnimalStats.html" target="_top">Frames</a></li>
@@ -197,12 +197,16 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 </td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>private short</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#orientation">orientation</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>private float</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#speed">speed</a></span></code>
 <div class="block">Minimum activeness.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>private float</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#vision">vision</a></span></code>
 <div class="block">The range at which an animal can see another entity</div>
@@ -314,29 +318,37 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#getMovementEnergy--">getMovementEnergy</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i13" class="rowColor">
+<td class="colFirst"><code>short</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#getOrientation--">getOrientation</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>java.awt.Point</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#getPositionDelta--">getPositionDelta</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#getSpeed--">getSpeed</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>java.util.SortedMap&lt;java.lang.String,java.lang.Number&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#getStats--">getStats</a></span>()</code>
 <div class="block">Returns a map containing the fields that may be relevant to show on a user
  interface.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#getVision--">getVision</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#increaseEnergy-float-">increaseEnergy</a></span>(float&nbsp;increaseBy)</code>&nbsp;</td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#increaseHunger--">increaseHunger</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>private void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/AnimalStats.html#updateEnergy-float-">updateEnergy</a></span>(float&nbsp;updateBy)</code>&nbsp;</td>
 </tr>
@@ -397,6 +409,15 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 <h4>energy</h4>
 <pre>private&nbsp;float energy</pre>
 <div class="block">The animal's current energy level</div>
+</li>
+</ul>
+<a name="orientation">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>orientation</h4>
+<pre>private&nbsp;short orientation</pre>
 </li>
 </ul>
 <a name="hungerIncrease">
@@ -615,6 +636,24 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 <pre>public&nbsp;float&nbsp;getMetabolism()</pre>
 </li>
 </ul>
+<a name="getOrientation--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOrientation</h4>
+<pre>public&nbsp;short&nbsp;getOrientation()</pre>
+</li>
+</ul>
+<a name="getPositionDelta--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPositionDelta</h4>
+<pre>public&nbsp;java.awt.Point&nbsp;getPositionDelta()</pre>
+</li>
+</ul>
 <a name="getGeneration--">
 <!--   -->
 </a>
@@ -746,7 +785,7 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../com/rabbit/stats/CabbageStats.html" title="class in com.rabbit.stats"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?com/rabbit/stats/AnimalStats.html" target="_top">Frames</a></li>

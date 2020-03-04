@@ -17,6 +17,12 @@
     catch(err) {
     }
 //-->
+var methods = {"i0":10,"i1":10,"i2":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 </script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -67,15 +73,15 @@
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.com.rabbit.stats.EntityStats">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.com.rabbit.stats.EntityStats">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.top">
@@ -104,6 +110,10 @@
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../com/rabbit/stats/CabbageStats.html" title="class in com.rabbit.stats">CabbageStats</a></dd>
+</dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">PlantStats</span>
@@ -120,6 +130,19 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 <!--   -->
 </a>
 <h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/PlantStats.html#lifespan">lifespan</a></span></code>
+<div class="block">The number of steps the plant will live for</div>
+</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.com.rabbit.stats.EntityStats">
 <!--   -->
@@ -154,12 +177,36 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 <!--   -->
 </a>
 <h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>java.util.Map&lt;java.lang.String,java.lang.Number&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/PlantStats.html#getAllStats--">getAllStats</a></span>()</code>
+<div class="block">Returns a map containing all of the fields indexed by their names.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/PlantStats.html#getLifespan--">getLifespan</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.SortedMap&lt;java.lang.String,java.lang.Number&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/stats/PlantStats.html#getStats--">getStats</a></span>()</code>
+<div class="block">Returns a map containing the fields that may be relevant to show on a user
+ interface.</div>
+</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.com.rabbit.stats.EntityStats">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.rabbit.stats.<a href="../../../com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></h3>
-<code><a href="../../../com/rabbit/stats/EntityStats.html#getAllStats--">getAllStats</a>, <a href="../../../com/rabbit/stats/EntityStats.html#getStats--">getStats</a>, <a href="../../../com/rabbit/stats/EntityStats.html#getTimeAlive--">getTimeAlive</a>, <a href="../../../com/rabbit/stats/EntityStats.html#incrementTimeAlive--">incrementTimeAlive</a>, <a href="../../../com/rabbit/stats/EntityStats.html#randomFloat-float-float-">randomFloat</a></code></li>
+<code><a href="../../../com/rabbit/stats/EntityStats.html#getTimeAlive--">getTimeAlive</a>, <a href="../../../com/rabbit/stats/EntityStats.html#incrementTimeAlive--">incrementTimeAlive</a>, <a href="../../../com/rabbit/stats/EntityStats.html#randomFloat-float-float-">randomFloat</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -176,6 +223,24 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="lifespan">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>lifespan</h4>
+<pre>private&nbsp;int lifespan</pre>
+<div class="block">The number of steps the plant will live for</div>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -189,6 +254,58 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 <li class="blockList">
 <h4>PlantStats</h4>
 <pre>protected&nbsp;PlantStats()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getLifespan--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLifespan</h4>
+<pre>public&nbsp;int&nbsp;getLifespan()</pre>
+</li>
+</ul>
+<a name="getStats--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getStats</h4>
+<pre>public&nbsp;java.util.SortedMap&lt;java.lang.String,java.lang.Number&gt;&nbsp;getStats()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../com/rabbit/stats/EntityStats.html#getStats--">EntityStats</a></code></span></div>
+<div class="block">Returns a map containing the fields that may be relevant to show on a user
+ interface. The map is sorted by the name of the field.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../com/rabbit/stats/EntityStats.html#getStats--">getStats</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a sorted map of relevant information</dd>
+</dl>
+</li>
+</ul>
+<a name="getAllStats--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getAllStats</h4>
+<pre>public&nbsp;java.util.Map&lt;java.lang.String,java.lang.Number&gt;&nbsp;getAllStats()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../com/rabbit/stats/EntityStats.html#getAllStats--">EntityStats</a></code></span></div>
+<div class="block">Returns a map containing all of the fields indexed by their names.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../com/rabbit/stats/EntityStats.html#getAllStats--">getAllStats</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/rabbit/stats/EntityStats.html" title="class in com.rabbit.stats">EntityStats</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a map containing all of the fields</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -244,15 +361,15 @@ extends <a href="../../../com/rabbit/stats/EntityStats.html" title="class in com
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.com.rabbit.stats.EntityStats">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.com.rabbit.stats.EntityStats">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.bottom">

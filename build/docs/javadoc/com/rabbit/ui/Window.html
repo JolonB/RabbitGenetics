@@ -152,6 +152,14 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#mouseListener">mouseListener</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>private <a href="../../../com/rabbit/wrapper/BooleanWrapper.html" title="class in com.rabbit.wrapper">BooleanWrapper</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#paused">paused</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private <a href="../../../com/rabbit/wrapper/BooleanWrapper.html" title="class in com.rabbit.wrapper">BooleanWrapper</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#running">running</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>private <a href="../../../com/rabbit/ui/SimulationWindow.html" title="class in com.rabbit.ui">SimulationWindow</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#simWindow">simWindow</a></span></code>&nbsp;</td>
 </tr>
@@ -178,9 +186,11 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#Window-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-com.rabbit.wrapper.NumberWrapper-">Window</a></span>(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;background,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/rabbit/ui/Window.html#Window-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.BooleanWrapper-com.rabbit.wrapper.BooleanWrapper-">Window</a></span>(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;background,
       <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;foreground,
-      <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timer)</code>&nbsp;</td>
+      <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timer,
+      <a href="../../../com/rabbit/wrapper/BooleanWrapper.html" title="class in com.rabbit.wrapper">BooleanWrapper</a>&nbsp;running,
+      <a href="../../../com/rabbit/wrapper/BooleanWrapper.html" title="class in com.rabbit.wrapper">BooleanWrapper</a>&nbsp;paused)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -331,10 +341,28 @@ extends java.lang.Object</pre>
 <a name="timer">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>timer</h4>
 <pre>private final&nbsp;<a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a> timer</pre>
+</li>
+</ul>
+<a name="running">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>running</h4>
+<pre>private final&nbsp;<a href="../../../com/rabbit/wrapper/BooleanWrapper.html" title="class in com.rabbit.wrapper">BooleanWrapper</a> running</pre>
+</li>
+</ul>
+<a name="paused">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>paused</h4>
+<pre>private final&nbsp;<a href="../../../com/rabbit/wrapper/BooleanWrapper.html" title="class in com.rabbit.wrapper">BooleanWrapper</a> paused</pre>
 </li>
 </ul>
 </li>
@@ -345,7 +373,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Window-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-com.rabbit.wrapper.NumberWrapper-">
+<a name="Window-com.rabbit.map_container.TerrainMap-com.rabbit.map_container.EntityMap-com.rabbit.wrapper.NumberWrapper-com.rabbit.wrapper.BooleanWrapper-com.rabbit.wrapper.BooleanWrapper-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -353,7 +381,9 @@ extends java.lang.Object</pre>
 <h4>Window</h4>
 <pre>public&nbsp;Window(<a href="../../../com/rabbit/map_container/TerrainMap.html" title="class in com.rabbit.map_container">TerrainMap</a>&nbsp;background,
               <a href="../../../com/rabbit/map_container/EntityMap.html" title="class in com.rabbit.map_container">EntityMap</a>&nbsp;foreground,
-              <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timer)</pre>
+              <a href="../../../com/rabbit/wrapper/NumberWrapper.html" title="class in com.rabbit.wrapper">NumberWrapper</a>&nbsp;timer,
+              <a href="../../../com/rabbit/wrapper/BooleanWrapper.html" title="class in com.rabbit.wrapper">BooleanWrapper</a>&nbsp;running,
+              <a href="../../../com/rabbit/wrapper/BooleanWrapper.html" title="class in com.rabbit.wrapper">BooleanWrapper</a>&nbsp;paused)</pre>
 </li>
 </ul>
 </li>
