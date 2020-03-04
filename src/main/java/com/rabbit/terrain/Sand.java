@@ -7,7 +7,7 @@ public class Sand extends Terrain {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Sand.class.getName());
 	
-	private static final String IMG_NAME = "img/sand.png";
+	private static final String IMG_NAME = "sand.png";
 	private static Image image = null;
 
 	@Override

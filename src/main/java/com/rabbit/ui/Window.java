@@ -3,8 +3,6 @@ package com.rabbit.ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import java.util.logging.Logger;
 

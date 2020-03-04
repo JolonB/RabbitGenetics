@@ -1,6 +1,7 @@
 package com.rabbit.entities;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.util.logging.Logger;
 
 import com.rabbit.entities.Action.Act;
@@ -11,7 +12,7 @@ public class Rabbit extends Animal {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Rabbit.class.getName());
 
-	private static final String IMG_NAME = "img/rabbit.png";
+	private static final String IMG_NAME = "rabbit.png";
 	private static Image image = null;
 
 	public Rabbit(final int xPos, final int yPos) {
@@ -48,6 +49,7 @@ public class Rabbit extends Animal {
 		return (RabbitStats) this.getStats();
 	}
 
+	@Override
 	public void updateStats() {
 		super.updateStats();
 		this.getRabbitStats().increaseLibido();
@@ -56,7 +58,8 @@ public class Rabbit extends Animal {
 	@Override
 	public Action calculateAction(final Terrain[][] terrain) {
 		// TODO improve action taking
-		final Action act = new Action(this, Act.MOVE, this.getX() + 1, this.getY() + 1);
+		Point nextPos = this.getRabbitStats().getPositionDelta();
+		final Action act = new Action(this, Act.MOVE, this.getX() + nextPos.x, this.getY() + nextPos.y);
 		return act;
 	}
 }

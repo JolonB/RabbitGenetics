@@ -12,6 +12,8 @@ public abstract class MapComponent {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(MapComponent.class.getName());
 
+	private static final String FILE_PATH = "img/";
+
 	/**
 	 * Sets the image to the one provided by imgName. Returns the Image object.
 	 * 
@@ -21,6 +23,7 @@ public abstract class MapComponent {
 	 */
 	protected static Image getScaledImage(String imgName, int dim) {
 		Image image = null;
+		imgName = FILE_PATH + imgName;
 		try {
 			image = ImageIO.read(new File(imgName)).getScaledInstance(dim, dim, Image.SCALE_FAST);
 		} catch (IOException e) {

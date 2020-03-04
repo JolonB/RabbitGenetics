@@ -65,7 +65,18 @@ public abstract class Entity extends MapComponent {
 
 	public abstract Action calculateAction(final Terrain[][] terrain); // TODO do we need entities here too?
 
+	public abstract boolean doEat(final Action action, Entity[][] newEntities);
+
+	public abstract boolean doBreed(final Action action, Entity[][] newEntities);
+
 	public abstract boolean doMove(final Action action, Entity[][] newEntities);
+
+	public abstract boolean doDie(final Action action, Entity[][] newEntities);
+
+	public boolean doNothing(final Action action, Entity[][] newEntities) {
+		newEntities[action.getX()][action.getY()] = this;
+		return true;
+	}
 
 	public abstract Image getScaledImage(final int dimension);
 }

@@ -22,6 +22,24 @@ public abstract class Animal extends Entity {
 	}
 
 	@Override
+	public boolean doEat(Action action, Entity[][] newEntities) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean doBreed(Action action, Entity[][] newEntities) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean doDie(Action action, Entity[][] newEntities) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public boolean doMove(final Action action, Entity[][] entities) {
 		entities[action.getX()][action.getY()] = this;
 		this.setPos(action.getX(), action.getY());
