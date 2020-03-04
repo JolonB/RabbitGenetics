@@ -15,6 +15,7 @@ import com.rabbit.map_container.TerrainMap;
 import com.rabbit.terrain.Terrain;
 import com.rabbit.ui.MapPane;
 import com.rabbit.ui.Window;
+import com.rabbit.wrapper.BooleanWrapper;
 import com.rabbit.wrapper.NumberWrapper;
 
 public class Main {
@@ -29,10 +30,10 @@ public class Main {
 	private static final int NUM_FOX = 0;
 	private static final boolean UI_ACTIVE = true;
 	private static final long STEP_DURATION = 1000;
-	private transient boolean running;
+	private final BooleanWrapper running;
 
 	public Main() {
-		running = true;
+		running = new BooleanWrapper(true);
 	}
 
 	private void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
@@ -44,7 +45,7 @@ public class Main {
 		entities = doCalculate(terrain, entities);
 
 		updateTimeout(timeoutUntil, stepDuration);
-		while (running) {
+		while (running.getValue()) {
 			if (checkTimeout(timeoutUntil, stepDuration)) {
 				/* Print map */
 				System.out.println(MapContainer.toLayeredString(entities, terrain));
@@ -57,7 +58,7 @@ public class Main {
 	private void beginSimulation(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
 		NumberWrapper timeoutUntil = new NumberWrapper();
-		Window window = new Window(terrain, entities, stepDuration);
+		Window window = new Window(terrain, entities, stepDuration, running);
 
 		/* Calculate next frame outside of loop */
 		/* Calculate next buffer */
@@ -66,7 +67,7 @@ public class Main {
 		MapPane foreground = window.newMapPane(entities);
 
 		updateTimeout(timeoutUntil, stepDuration);
-		while (running) {
+		while (running.getValue()) {
 			/* If the timeout period has elapsed */
 			if (checkTimeout(timeoutUntil, stepDuration)) {
 				/* Redraw buffer */
@@ -79,7 +80,6 @@ public class Main {
 				window.updateInfo();
 			}
 		}
-		running = false; // TODO link this to a button
 	}
 
 	private EntityMap doCalculate(TerrainMap terrain, EntityMap entities) {
