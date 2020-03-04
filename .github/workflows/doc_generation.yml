@@ -24,6 +24,7 @@ jobs:
           fi
           chmod +x gradlew
           ./gradlew javadoc
+          rm -rf docs/
           mv build/docs/javadoc/ docs/
           git add docs/
       - name: Commit files
