@@ -11,7 +11,7 @@ public class Null extends Entity {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Null.class.getName());
 
-	private static final String IMG_NAME = "img/null.png";
+	private static final String IMG_NAME = "null.png";
 	private static Image image = null;
 
 	public Null() {
@@ -24,6 +24,11 @@ public class Null extends Entity {
 			Null.image = getScaledImage(IMG_NAME, dim);
 		}
 		return Null.image;
+	}
+
+	@Override
+	public Image getScaledImage(int dimension) {
+		return getScaledImage(IMG_NAME, dimension);
 	}
 
 	@Override
@@ -43,14 +48,32 @@ public class Null extends Entity {
 	}
 
 	@Override
-	public boolean doMove(final Action action, final Entity[][] entities) {
+	public boolean doEat(Action action, Entity[][] newEntities) {
 		/* Do nothing. This should never be called */
-		return true;
+		throw new IllegalArgumentException("Cannot call doEat on Null");
 	}
 
 	@Override
-	public Image getScaledImage(int dimension) {
-		return getScaledImage(IMG_NAME, dimension);
+	public boolean doBreed(Action action, Entity[][] newEntities) {
+		/* Do nothing. This should never be called */
+		throw new IllegalArgumentException("Cannot call doBreed on Null");
 	}
 
+	@Override
+	public boolean doDie(Action action, Entity[][] newEntities) {
+		/* Do nothing. This should never be called */
+		throw new IllegalArgumentException("Cannot call doDie on Null");
+	}
+
+	@Override
+	public boolean doMove(final Action action, final Entity[][] entities) {
+		/* Do nothing. This should never be called */
+		throw new IllegalArgumentException("Cannot call doMove on Null");
+	}
+
+	@Override
+	public boolean doNothing(Action action, Entity[][] newEntities) {
+		/* Do nothing. This should never be called */
+		throw new IllegalArgumentException("Cannot call doNothing on Null");
+	}
 }

@@ -7,7 +7,7 @@ public class Grass extends Terrain {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(Grass.class.getName());
 	
-	private static final String IMG_NAME = "img/grass.png";
+	private static final String IMG_NAME = "grass.png";
 	private static Image image = null;
 
 	@Override

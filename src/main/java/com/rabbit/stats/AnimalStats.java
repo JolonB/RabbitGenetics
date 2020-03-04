@@ -3,6 +3,7 @@ package com.rabbit.stats;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.awt.Point;
 
 public class AnimalStats extends EntityStats {
     /** Desire to eat */
@@ -11,6 +12,8 @@ public class AnimalStats extends EntityStats {
     private float activeness = 1; // newborn animals want to move immediately
     /** The animal's current energy level */
     private float energy = 1; // begins with full energy, but will immediately be set to maxEnergy
+    /* Direction animal is facing (0 is right) */
+    private short orientation = (short) RAND.nextInt(360);;
     /** Rate of change of hunger per step */
     private final float hungerIncrease;
     /** Minimum activeness. Activeness will drop to this value after movement */
@@ -97,6 +100,16 @@ public class AnimalStats extends EntityStats {
 
     public float getMetabolism() {
         return this.metabolism;
+    }
+
+    public short getOrientation() {
+        return this.orientation;
+    }
+
+    public Point getPositionDelta() {
+        double deltaX = Math.cos(Math.PI * this.orientation / 180.0);
+        double deltaY = Math.sin(Math.PI * this.orientation / 180.0);
+        return new Point(deltaX >= 0.5 ? 1 : (deltaX <= -0.5 ? -1 : 0), deltaY >= 0.5 ? 1 : (deltaY <= -0.5 ? -1 : 0));
     }
 
     public int getGeneration() {

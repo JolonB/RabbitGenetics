@@ -24,8 +24,8 @@ public class Main {
 	private static final int ROWS = 50;
 	private static final int COLS = 50;
 	private static final int PERCENT_WATER = 40;
-	private static final int NUM_RABBIT = 1;
-	private static final int NUM_CABBAGE = 0;
+	private static final int NUM_RABBIT = 5;
+	private static final int NUM_CABBAGE = 10;
 	private static final int NUM_FOX = 0;
 	private static final boolean UI_ACTIVE = true;
 	private static final long STEP_DURATION = 1000;
@@ -151,6 +151,7 @@ public class Main {
 				case DIE:
 					break;
 				case NOTHING:
+				act.getEntity().doNothing(act, newEntities);
 					break;
 				default:
 					throw new UnsupportedOperationException("Action must be EAT, BREED, MOVE, DIE, or NOTHING.");

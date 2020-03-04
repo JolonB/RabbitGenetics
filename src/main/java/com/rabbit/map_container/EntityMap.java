@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 
+import com.rabbit.entities.Cabbage;
 import com.rabbit.entities.Entity;
 import com.rabbit.entities.EntityParam;
 import com.rabbit.entities.Null;
 import com.rabbit.entities.Rabbit;
-
 
 public class EntityMap extends MapContainer<Entity> {
 	@SuppressWarnings("unused")
@@ -36,22 +36,20 @@ public class EntityMap extends MapContainer<Entity> {
 		Point point;
 		for (int i = 0; i < params.numRabbit; i++) {
 			randIndex = rand.nextInt(grassCopy.size());
-			point = grassCopy.get(randIndex);
-			grassCopy.remove(randIndex);
+			point = grassCopy.remove(randIndex);
 			entities[point.x][point.y] = new Rabbit(point.x, point.y);
 		}
-//		for (int i = 0; i < params.numCabbage; i++) {
-//			randIndex = rand.nextInt(grassCopy.size());
-//			p = grassCopy.get(randIndex);
-//			grassCopy.remove(randIndex);
-//			entities[p.x][p.y] = new Cabbage(p.x, p.y); 
-//		}
-//		for (int i = 0; i < params.numFox; i++) {
-//			randIndex = rand.nextInt(grassCopy.size());
-//			p = grassCopy.get(randIndex);
-//			grassCopy.remove(randIndex);
-//			entities[p.x][p.y] = new Fox(p.x, p.y); 
-//		}
+		for (int i = 0; i < params.numCabbage; i++) {
+			randIndex = rand.nextInt(grassCopy.size());
+			point = grassCopy.remove(randIndex);
+			entities[point.x][point.y] = new Cabbage(point.x, point.y);
+		}
+		// for (int i = 0; i < params.numFox; i++) {
+		// randIndex = rand.nextInt(grassCopy.size());
+		// p = grassCopy.get(randIndex);
+		// grassCopy.remove(randIndex);
+		// entities[p.x][p.y] = new Fox(p.x, p.y);
+		// }
 
 		return entities;
 	}
