@@ -24,7 +24,8 @@ jobs:
           fi
           chmod +x gradlew
           ./gradlew javadoc
-          git add build/docs/javadoc/
+          mv build/docs/javadoc/ docs/
+          git add docs/
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
