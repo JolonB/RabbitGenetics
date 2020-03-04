@@ -20,13 +20,14 @@ public class ControlPane extends JPanel {
 	private static final long serialVersionUID = 1010021733256440598L;
 
 	public ControlPane(final InfoWindow info, final NumberWrapper num, final BooleanWrapper running,
-			final int windowSize) {
+			final BooleanWrapper paused, final int windowSize) {
 		super();
 		/* Set vertical layout of components */
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		JPanel controlPanel = new JPanel(new GridLayout(0, 1));
 		JButton pauseButton = new JButton("Pause");
+		pauseButton.addActionListener(e -> paused.invertValue());
 		JButton stopButton = new JButton("Stop");
 		stopButton.addActionListener(e -> running.setValue(false));
 		JButton but3 = new JButton("3");
