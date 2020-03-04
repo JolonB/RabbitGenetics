@@ -53,7 +53,8 @@ class InfoWindow extends JPanel { // TODO extends some swing component
     }
 
     public void updateInfo() {
-        if (this.currentEntity == null) {
+        if (this.currentEntity == null || !this.currentEntity.getAlive()) {
+            reset();
             return;
         }
 
@@ -66,5 +67,12 @@ class InfoWindow extends JPanel { // TODO extends some swing component
         }
 
         this.repaint();
+    }
+
+    private void reset() {
+        this.imgWindow.setIcon(new ImageIcon(new Null().getScaledImage(this.imgSize)));
+        for (int i = 0; i < this.labels.length; i++) {
+            this.labels[i].setText("");
+        }
     }
 }

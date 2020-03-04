@@ -15,6 +15,7 @@ import com.rabbit.map_container.TerrainMap;
 import com.rabbit.terrain.Terrain;
 import com.rabbit.ui.MapPane;
 import com.rabbit.ui.Window;
+import com.rabbit.wrapper.BooleanWrapper;
 import com.rabbit.wrapper.NumberWrapper;
 
 public class Main {
@@ -24,15 +25,15 @@ public class Main {
 	private static final int ROWS = 50;
 	private static final int COLS = 50;
 	private static final int PERCENT_WATER = 40;
-	private static final int NUM_RABBIT = 5;
-	private static final int NUM_CABBAGE = 10;
+	private static final int NUM_RABBIT = 0;
+	private static final int NUM_CABBAGE = 1;
 	private static final int NUM_FOX = 0;
 	private static final boolean UI_ACTIVE = true;
 	private static final long STEP_DURATION = 1000;
-	private transient boolean running;
+	private final BooleanWrapper running;
 
 	public Main() {
-		running = true;
+		running = new BooleanWrapper(true);
 	}
 
 	private void beginSimulationNoUI(TerrainMap terrain, EntityMap entities) {
@@ -44,7 +45,7 @@ public class Main {
 		entities = doCalculate(terrain, entities);
 
 		updateTimeout(timeoutUntil, stepDuration);
-		while (running) {
+		while (running.getValue()) {
 			if (checkTimeout(timeoutUntil, stepDuration)) {
 				/* Print map */
 				System.out.println(MapContainer.toLayeredString(entities, terrain));
@@ -57,7 +58,8 @@ public class Main {
 	private void beginSimulation(TerrainMap terrain, EntityMap entities) {
 		NumberWrapper stepDuration = new NumberWrapper(Long.valueOf(STEP_DURATION));
 		NumberWrapper timeoutUntil = new NumberWrapper();
-		Window window = new Window(terrain, entities, stepDuration);
+		final BooleanWrapper paused = new BooleanWrapper(false);
+		Window window = new Window(terrain, entities, stepDuration, running, paused);
 
 		/* Calculate next frame outside of loop */
 		/* Calculate next buffer */
@@ -66,20 +68,18 @@ public class Main {
 		MapPane foreground = window.newMapPane(entities);
 
 		updateTimeout(timeoutUntil, stepDuration);
-		while (running) {
-			/* If the timeout period has elapsed */
-			if (checkTimeout(timeoutUntil, stepDuration)) {
+		while (running.getValue()) {
+			if (!paused.getValue() && checkTimeout(timeoutUntil, stepDuration)) {
+				/* Update stats if something is selected */
+				window.updateInfo();
 				/* Redraw buffer */
 				window.updateForeground(foreground);
 				/* Calculate next buffer */
 				entities = doCalculate(terrain, entities);
 				/* Update next buffer */
 				foreground = window.newMapPane(entities);
-				/* Update stats if something is selected */
-				window.updateInfo();
 			}
 		}
-		running = false; // TODO link this to a button
 	}
 
 	private EntityMap doCalculate(TerrainMap terrain, EntityMap entities) {
@@ -129,6 +129,7 @@ public class Main {
 			for (int j = 0; j < cols; j++) {
 				// Don't bother recording an action for Null
 				if (!(entityArray[i][j] instanceof Null)) {
+					entityArray[i][j].updateStats();
 					actions.add(entityArray[i][j].calculateAction(terrainArray));
 				}
 			}
@@ -139,19 +140,21 @@ public class Main {
 
 	private static void parseActions(List<Action> actions, Entity[][] newEntities) {
 		for (Action act : actions) {
-			act.getEntity().updateStats();
 			switch (act.getAction()) {
 				case EAT:
+					act.getEntity().doEat(act, newEntities);
 					break;
 				case BREED:
+					act.getEntity().doBreed(act, newEntities);
 					break;
 				case MOVE:
 					act.getEntity().doMove(act, newEntities);
 					break;
 				case DIE:
+					act.getEntity().doDie(act, newEntities);
 					break;
 				case NOTHING:
-				act.getEntity().doNothing(act, newEntities);
+					act.getEntity().doNothing(act, newEntities);
 					break;
 				default:
 					throw new UnsupportedOperationException("Action must be EAT, BREED, MOVE, DIE, or NOTHING.");

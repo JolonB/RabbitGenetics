@@ -12,6 +12,7 @@ import com.rabbit.map_container.EntityMap;
 import com.rabbit.map_container.MapComponent;
 import com.rabbit.map_container.MapContainer;
 import com.rabbit.map_container.TerrainMap;
+import com.rabbit.wrapper.BooleanWrapper;
 import com.rabbit.wrapper.NumberWrapper;
 
 public class Window {
@@ -26,12 +27,17 @@ public class Window {
 	private final SimulationWindow simWindow; // TODO fix the mix of static and non-static methods/fields
 	private final InfoWindow info;
 	private final NumberWrapper timer;
+	private final BooleanWrapper running;
+	private final BooleanWrapper paused;
 
-	public Window(TerrainMap background, EntityMap foreground, NumberWrapper timer) {
+	public Window(TerrainMap background, EntityMap foreground, NumberWrapper timer, BooleanWrapper running,
+			BooleanWrapper paused) {
 		this.simWindow = new SimulationWindow(DIM, newMapPane(background), newMapPane(foreground));
 		this.info = new InfoWindow(CONTROL_WIDTH);
 		this.mouseListener = new InfoListener(info);
 		this.timer = timer;
+		this.running = running;
+		this.paused = paused;
 		checkMaps(background.getContentsImmutable(), foreground.getContentsImmutable());
 		createAndShowGUI();
 	}
@@ -45,7 +51,7 @@ public class Window {
 
 		/* Set up the map and the controls */
 		frame.getContentPane().add(this.simWindow, BorderLayout.CENTER);
-		JPanel controls = new ControlPane(this.info, this.timer, CONTROL_WIDTH);
+		JPanel controls = new ControlPane(this.info, this.timer, this.running, this.paused, CONTROL_WIDTH);
 		frame.getContentPane().add(controls, BorderLayout.LINE_END);
 
 		/* Display the window */

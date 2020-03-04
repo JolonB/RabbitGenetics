@@ -5,7 +5,7 @@ import java.util.SortedMap;
 
 public class PlantStats extends EntityStats {
     /** The number of steps the plant will live for */
-    private int lifespan = 5 + RAND.nextInt(5);
+    private int lifespan = 25 + RAND.nextInt(50);
 
     protected PlantStats() {
         super();

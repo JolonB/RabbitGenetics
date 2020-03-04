@@ -14,6 +14,7 @@ public abstract class Entity extends MapComponent {
 
 	private final EntityStats stats;
 	private Point pos;
+	private boolean alive = true;
 
 	protected Entity(final int xPos, final int yPos, EntityStats stats) {
 		super();
@@ -58,6 +59,10 @@ public abstract class Entity extends MapComponent {
 		stats.incrementTimeAlive();
 	}
 
+	public boolean getAlive() {
+		return this.alive;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		return this == obj;
@@ -71,7 +76,10 @@ public abstract class Entity extends MapComponent {
 
 	public abstract boolean doMove(final Action action, Entity[][] newEntities);
 
-	public abstract boolean doDie(final Action action, Entity[][] newEntities);
+	public boolean doDie(final Action action, Entity[][] newEntities) {
+		this.alive = false;
+		return true;
+	}
 
 	public boolean doNothing(final Action action, Entity[][] newEntities) {
 		newEntities[action.getX()][action.getY()] = this;
