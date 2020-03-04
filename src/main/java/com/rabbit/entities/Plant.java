@@ -45,8 +45,7 @@ public abstract class Plant extends Entity {
 
 	@Override
 	public boolean doDie(Action action, Entity[][] newEntities) {
-		// TODO Auto-generated method stub
-		return false;
+		return super.doDie(action, newEntities);
 	}
 
 	@Override

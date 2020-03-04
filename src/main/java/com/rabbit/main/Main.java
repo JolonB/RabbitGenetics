@@ -129,6 +129,7 @@ public class Main {
 			for (int j = 0; j < cols; j++) {
 				// Don't bother recording an action for Null
 				if (!(entityArray[i][j] instanceof Null)) {
+					entityArray[i][j].updateStats();
 					actions.add(entityArray[i][j].calculateAction(terrainArray));
 				}
 			}
@@ -139,16 +140,18 @@ public class Main {
 
 	private static void parseActions(List<Action> actions, Entity[][] newEntities) {
 		for (Action act : actions) {
-			act.getEntity().updateStats();
 			switch (act.getAction()) {
 				case EAT:
+					act.getEntity().doEat(act, newEntities);
 					break;
 				case BREED:
+					act.getEntity().doBreed(act, newEntities);
 					break;
 				case MOVE:
 					act.getEntity().doMove(act, newEntities);
 					break;
 				case DIE:
+					act.getEntity().doDie(act, newEntities);
 					break;
 				case NOTHING:
 					act.getEntity().doNothing(act, newEntities);
