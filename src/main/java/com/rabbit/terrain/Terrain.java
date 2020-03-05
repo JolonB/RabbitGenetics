@@ -11,6 +11,10 @@ public abstract class Terrain extends MapComponent {
 
 	public abstract void draw(int xPos, int yPos);
 
+	public Terrain(final int xPos, final int yPos) {
+		super(xPos, yPos);
+	}
+
 	@Override
 	public String toString() {
 		throw new UnsupportedOperationException("toString has not been implemented");

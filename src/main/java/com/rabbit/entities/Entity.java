@@ -13,42 +13,11 @@ public abstract class Entity extends MapComponent {
 	private static final Logger LOGGER = Logger.getLogger(Entity.class.getName());
 
 	private final EntityStats stats;
-	private Point pos;
 	private boolean alive = true;
 
 	protected Entity(final int xPos, final int yPos, EntityStats stats) {
-		super();
+		super(xPos, yPos);
 		this.stats = stats;
-		this.pos = new Point(xPos, yPos);
-	}
-
-	public void setPos(final int xPos, final int yPos) {
-		this.pos.x = xPos;
-		this.pos.y = yPos;
-	}
-
-	public void setPos(final Point pos) {
-		this.pos = pos;
-	}
-
-	public void setX(final int xPos) {
-		this.pos.x = xPos;
-	}
-
-	public void setY(final int yPos) {
-		this.pos.y = yPos;
-	}
-
-	public Point getPos() {
-		return this.pos;
-	}
-
-	public int getX() {
-		return this.pos.x;
-	}
-
-	public int getY() {
-		return this.pos.y;
 	}
 
 	public EntityStats getStats() {
@@ -63,12 +32,16 @@ public abstract class Entity extends MapComponent {
 		return this.alive;
 	}
 
+	public void kill() {
+		this.alive = false;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		return this == obj;
 	}
 
-	public abstract Action calculateAction(final Terrain[][] terrain); // TODO do we need entities here too?
+	public abstract Action calculateAction(final Terrain[][] terrain, final Entity[][] entities); // TODO do we need entities here too?
 
 	public abstract boolean doEat(final Action action, Entity[][] newEntities);
 
@@ -77,8 +50,8 @@ public abstract class Entity extends MapComponent {
 	public abstract boolean doMove(final Action action, Entity[][] newEntities);
 
 	public boolean doDie(final Action action, Entity[][] newEntities) {
-		this.alive = false;
-		return true;
+		kill();
+		return !this.alive;
 	}
 
 	public boolean doNothing(final Action action, Entity[][] newEntities) {

@@ -11,12 +11,14 @@ public class Action {
 	}
 
 	private transient final Entity entity;
+	private transient final Entity actUpon;
 	private transient final Act nextAction;
 	private transient final int newX;
 	private transient final int newY;
 
-	public Action(final Entity entity, final Act nextAction, final int newX, final int newY) {
+	public Action(final Entity entity, final Entity actUpon, final Act nextAction, final int newX, final int newY) {
 		this.entity = entity;
+		this.actUpon = actUpon;
 		this.nextAction = nextAction;
 		this.newX = newX;
 		this.newY = newY;
@@ -24,6 +26,10 @@ public class Action {
 
 	public Entity getEntity() {
 		return this.entity;
+	}
+
+	public Entity getActUpon() {
+		return this.actUpon;
 	}
 
 	public Act getAction() {

@@ -1,6 +1,7 @@
 package com.rabbit.entities;
 
 import java.awt.Image;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.rabbit.stats.CabbageStats;
@@ -12,6 +13,11 @@ public class Cabbage extends Plant {
 
     private static final String IMG_NAME = "cabbage.png";
     private static Image image = null;
+
+    public Cabbage() {
+        this(0, 0);
+        LOGGER.warning("The constructor Cabbage() should only be used in tests");
+    }
 
     public Cabbage(final int xPos, final int yPos) {
         this(xPos, yPos, new CabbageStats());
@@ -53,7 +59,7 @@ public class Cabbage extends Plant {
     }
 
     @Override
-    public Action calculateAction(Terrain[][] terrain) {
+    public Action calculateAction(final Terrain[][] terrain, final Entity[][] entities) {
         // TODO Maybe change this if actions could be made specific to cabbage
         return super.calculateAction(terrain);
     }

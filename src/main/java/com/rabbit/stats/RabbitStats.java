@@ -35,7 +35,7 @@ public class RabbitStats extends AnimalStats {
     }
 
     public void increaseLibido() {
-        this.libido += this.libidoIncrement;
+        this.libido = Math.min(1.0f, this.libido + this.libidoIncrement);
     }
 
     @Override

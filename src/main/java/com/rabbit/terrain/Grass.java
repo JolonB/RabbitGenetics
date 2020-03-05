@@ -9,6 +9,10 @@ public class Grass extends Terrain {
 	
 	private static final String IMG_NAME = "grass.png";
 	private static Image image = null;
+	
+	public Grass(final int xPos, final int yPos) {
+		super(xPos, yPos);
+	}
 
 	@Override
 	public char toChar() {

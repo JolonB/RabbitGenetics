@@ -25,7 +25,7 @@ public class Main {
 	private static final int ROWS = 50;
 	private static final int COLS = 50;
 	private static final int PERCENT_WATER = 40;
-	private static final int NUM_RABBIT = 0;
+	private static final int NUM_RABBIT = 1;
 	private static final int NUM_CABBAGE = 1;
 	private static final int NUM_FOX = 0;
 	private static final boolean UI_ACTIVE = true;
@@ -130,7 +130,7 @@ public class Main {
 				// Don't bother recording an action for Null
 				if (!(entityArray[i][j] instanceof Null)) {
 					entityArray[i][j].updateStats();
-					actions.add(entityArray[i][j].calculateAction(terrainArray));
+					actions.add(entityArray[i][j].calculateAction(terrainArray, entityArray));
 				}
 			}
 		}

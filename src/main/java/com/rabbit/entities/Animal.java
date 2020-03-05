@@ -43,6 +43,7 @@ public abstract class Animal extends Entity {
 	public boolean doMove(final Action action, Entity[][] entities) {
 		entities[action.getX()][action.getY()] = this;
 		this.setPos(action.getX(), action.getY());
+
 		/* Decrease the energy by the amount required to move */
 		AnimalStats stats = this.getAnimalStats();
 		stats.decreaseEnergy(stats.getMovementEnergy());

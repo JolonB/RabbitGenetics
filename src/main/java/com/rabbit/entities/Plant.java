@@ -19,16 +19,13 @@ public abstract class Plant extends Entity {
 	}
 
 	public Action calculateAction(final Terrain[][] terrain) {
-		final Action act;
-		System.out.println(this.getStats().getAllStats());
-		System.out.println(this.getStats().getTimeAlive() + " > " + this.getPlantStats().getLifespan() + "?");
+		/* Die if it should die */
 		if (this.getStats().getTimeAlive() > this.getPlantStats().getLifespan()) {
-			System.out.println("time to die");
-			act = new Action(this, Act.DIE, this.getX(), this.getY());
-		} else {
-			act = new Action(this, Act.NOTHING, this.getX(), this.getY());
+			return new Action(this, null, Act.DIE, this.getX(), this.getY());
+		} 
+		else {
+			return new Action(this, null, Act.NOTHING, this.getX(), this.getY());
 		}
-		return act;
 	}
 
 	@Override

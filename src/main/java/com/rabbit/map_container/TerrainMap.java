@@ -112,11 +112,11 @@ public class TerrainMap extends MapContainer<Terrain> {
 			for (int j = 0; j < cols; j++) {
 				height = heightMap[i][j];
 				if (height < maxWater) {
-					terrain[i][j] = new Water();
+					terrain[i][j] = new Water(i, j);
 				} else if (height < percentile) {
-					terrain[i][j] = new Sand();
+					terrain[i][j] = new Sand(i, j);
 				} else {
-					terrain[i][j] = new Grass();
+					terrain[i][j] = new Grass(i, j);
 				}
 			}
 		}

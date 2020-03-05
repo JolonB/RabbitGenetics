@@ -10,6 +10,10 @@ public class Water extends Terrain {
 	private static final String IMG_NAME = "water.png";
 	private static Image image = null;
 
+	public Water(final int xPos, final int yPos) {
+		super(xPos, yPos);
+	}
+
 	@Override
 	public char toChar() {
 		return 'W';

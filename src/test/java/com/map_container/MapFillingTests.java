@@ -17,7 +17,7 @@ class MapFillingTests {
 		Terrain[][] terrain = new Terrain[dim][dim];
 		for (int i = 0; i < dim; i++) {
 			for (int j = 0; j < dim; j++) {
-				terrain[i][j] = new Grass();
+				terrain[i][j] = new Grass(i, j);
 			}
 		}
 		TerrainMap map = new TerrainMap(terrain);
@@ -40,7 +40,7 @@ class MapFillingTests {
 		String terrainString = map.toString();
 
 		int groundCount = 0;
-		char grassChar = new Grass().toChar();
+		char grassChar = new Grass(0, 0).toChar();
 		for (int i = 0; i < terrainString.length(); i++) {
 			if (terrainString.charAt(i) == grassChar) {
 				groundCount++;

@@ -9,6 +9,10 @@ public class Sand extends Terrain {
 	
 	private static final String IMG_NAME = "sand.png";
 	private static Image image = null;
+	
+	public Sand(int xPos, int yPos) {
+		super(xPos, yPos);
+	}
 
 	@Override
 	public char toChar() {

@@ -3,7 +3,6 @@ package com.rabbit.entities;
 import java.awt.Image;
 import java.util.logging.Logger;
 
-import com.rabbit.entities.Action.Act;
 import com.rabbit.stats.NullStats;
 import com.rabbit.terrain.Terrain;
 
@@ -42,38 +41,37 @@ public class Null extends Entity {
 	}
 
 	@Override
-	public Action calculateAction(final Terrain[][] terrain) {
-		// TODO Auto-generated method stub
-		return new Action(this, Act.NOTHING, this.getX(), this.getY());
+	public Action calculateAction(final Terrain[][] terrain, final Entity[][] entities) {
+		throw new IllegalStateException("Cannot call calculateAction on Null");
 	}
 
 	@Override
 	public boolean doEat(Action action, Entity[][] newEntities) {
 		/* Do nothing. This should never be called */
-		throw new IllegalArgumentException("Cannot call doEat on Null");
+		throw new IllegalStateException("Cannot call doEat on Null");
 	}
 
 	@Override
 	public boolean doBreed(Action action, Entity[][] newEntities) {
 		/* Do nothing. This should never be called */
-		throw new IllegalArgumentException("Cannot call doBreed on Null");
+		throw new IllegalStateException("Cannot call doBreed on Null");
 	}
 
 	@Override
 	public boolean doDie(Action action, Entity[][] newEntities) {
 		/* Do nothing. This should never be called */
-		throw new IllegalArgumentException("Cannot call doDie on Null");
+		throw new IllegalStateException("Cannot call doDie on Null");
 	}
 
 	@Override
 	public boolean doMove(final Action action, final Entity[][] entities) {
 		/* Do nothing. This should never be called */
-		throw new IllegalArgumentException("Cannot call doMove on Null");
+		throw new IllegalStateException("Cannot call doMove on Null");
 	}
 
 	@Override
 	public boolean doNothing(Action action, Entity[][] newEntities) {
 		/* Do nothing. This should never be called */
-		throw new IllegalArgumentException("Cannot call doNothing on Null");
+		throw new IllegalStateException("Cannot call doNothing on Null");
 	}
 }
