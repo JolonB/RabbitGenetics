@@ -51,8 +51,16 @@ class MapComponentTests {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void checkSortedCellsByVision() {
+        Entity[][] cells = setUpTestBoard();
+        // TODO actually write this test
+        System.out.println(MapComponent.convertPointsToCells(
+                MapComponent.getCellsWithinRangeWithinToleranceInBounds(2, -45, 45, new Point(3, 2), cells), cells));
+    }
+
     private Entity[][] setUpTestBoard() {
-        Entity[][] entities = new Entity[10][10];
+        Entity[][] entities = new Entity[5][5];
         for (int i = 0; i < entities.length; i++) {
             for (int j = 0; j < entities[0].length; j++) {
                 entities[i][j] = new Null();

@@ -17,7 +17,7 @@ public class EntityStats {
     protected EntityStats() {
     }
 
-    protected EntityStats(Map<String, Float> stats) {
+    protected EntityStats(Map<String, Number> stats) {
     }
 
     protected float randomFloat(float lowerBound, float upperBound) {

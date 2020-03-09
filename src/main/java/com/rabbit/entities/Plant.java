@@ -18,14 +18,21 @@ public abstract class Plant extends Entity {
 		return (PlantStats) this.getStats();
 	}
 
-	public Action calculateAction(final Terrain[][] terrain) {
-		/* Die if it should die */
-		if (this.getStats().getTimeAlive() > this.getPlantStats().getLifespan()) {
+	@Override
+	public Action calculateAction(final Terrain[][] terrain, final Entity[][] entities) {
+		/* Kill the plant in the next action */
+		if (!getAlive() || checkDeath() > 0) {
 			return new Action(this, null, Act.DIE, this.getX(), this.getY());
-		} 
-		else {
+		} else {
 			return new Action(this, null, Act.NOTHING, this.getX(), this.getY());
 		}
+	}
+
+	@Override
+	protected int checkDeath() {
+		int deaths = super.checkDeath();
+		deaths += this.getStats().getTimeAlive() > this.getPlantStats().getLifespan() ? 1 : 0;
+		return deaths;
 	}
 
 	@Override

@@ -61,6 +61,6 @@ public class Cabbage extends Plant {
     @Override
     public Action calculateAction(final Terrain[][] terrain, final Entity[][] entities) {
         // TODO Maybe change this if actions could be made specific to cabbage
-        return super.calculateAction(terrain);
+        return super.calculateAction(terrain, entities);
     }
 }

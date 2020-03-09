@@ -6,14 +6,19 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
+import com.rabbit.entities.Rabbit;
+
 public abstract class MapComponent {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(MapComponent.class.getName());
+	protected static final Random RAND = new Random();
 
 	private static final String FILE_PATH = "img/";
 
@@ -100,29 +105,184 @@ public abstract class MapComponent {
 		return this.toString().hashCode();
 	}
 
-	public static List<Point> checkSurroundingCells(MapComponent comp, MapComponent[][] cells,
-			Class<? extends MapComponent> cls) {
-
-		try {
-			return checkSurroundingCells(comp, cells, cls.newInstance().toChar());
-		} catch (InstantiationException | IllegalAccessException e) {
-			if (LOGGER.isLoggable(Level.SEVERE)) {
-				LOGGER.log(Level.SEVERE, "Unable to create an instance of " + cls.getName());
-			}
-			e.printStackTrace();
-		}
-		return new ArrayList<Point>();
+	public static double distanceTo(Point pnt1, Point pnt2) {
+		return Math.hypot(pnt1.getX() - pnt2.getX(), pnt1.getY() - pnt2.getY());
 	}
 
-	public static List<Point> checkSurroundingCells(MapComponent comp, MapComponent[][] cells, char chr) {
+	public double distanceTo(Point other) {
+		return distanceTo(this.getPos(), other);
+	}
+
+	public double distanceTo(MapComponent other) {
+		return distanceTo(this.getPos(), other.getPos());
+	}
+
+	public static List<Point> findPointsOfType(List<Point> points, MapComponent[][] cells,
+			Class<? extends MapComponent> cls) {
 		List<Point> found = new ArrayList<>();
-		Point currentCell = comp.getPos();
-		for (int i = Math.max(0, currentCell.x - 1); i <= Math.min(cells.length - 1, currentCell.x + 1); i++) {
-			for (int j = Math.max(0, currentCell.y - 1); j <= Math.min(cells[0].length - 1, currentCell.y + 1); j++) {
-				if (i == currentCell.x && j == currentCell.y) {
+		for (Point pnt : points) {
+			if (cls.isAssignableFrom(cells[pnt.x][pnt.y].getClass())) {
+				found.add(pnt);
+			}
+		}
+		return found;
+	}
+
+	public static List<MapComponent> convertPointsToCells(List<Point> points, MapComponent[][] cells) {
+		List<MapComponent> cellList = new ArrayList<>();
+		for (Point pnt : points) {
+			cellList.add(cells[pnt.x][pnt.y]);
+		}
+		return cellList;
+	}
+
+	public static List<Point> removeOutOfBounds(List<Point> points, Point center, MapComponent[][] cells) {
+		List<Point> inBounds = new ArrayList<>();
+		for (Point pnt : points) {
+			Point pntShifted = new Point(pnt.x + center.x, pnt.y + center.y);
+			/* Check that point is still in bounds even when shifted */
+			if (pntShifted.x >= 0 && pntShifted.x < cells.length && pntShifted.y >= 0
+					&& pntShifted.y < cells[0].length) {
+				inBounds.add(pntShifted);
+			}
+		}
+		return inBounds;
+	}
+
+	public static List<Point> getCellsWithinRangeWithinToleranceInBounds(int range, int direction, int tolerance,
+			Point center, MapComponent[][] cells) {
+		return removeOutOfBounds(getCellsWithinRangeWithinTolerance(range, direction, tolerance), center, cells);
+	}
+
+	public static List<Point> getCellsWithinRangeWithinTolerance(int range, int direction, int tolerance) {
+		List<Point> cells = new ArrayList<>();
+		for (int distance = 1; distance <= range; distance++) {
+			cells.addAll(getCellsAtDistanceWithinTolerance(distance, direction, tolerance));
+		}
+		return cells;
+	}
+
+	public static List<Point> getCellsAtDistanceWithinTolerance(int distance, int direction, int tolerance) {
+		PriorityQueue<PointAngle> orderedCells = queuePoints(getCellsAtDistanceGeneric(distance), direction);
+
+		List<Point> cells = new ArrayList<>();
+		while (!orderedCells.isEmpty()) {
+			PointAngle cell = orderedCells.poll();
+			if (Math.abs(cell.getAngle()) > tolerance) {
+				break;
+			}
+			cells.add(cell.getPoint());
+		}
+		return cells;
+	}
+
+	public static List<Point> getAngleCellsAtDistanceGeneric(int distance) {
+		return getAngleCellsAtDistanceGeneric(distance, 0);
+	}
+
+	/**
+	 * TODO fill this in
+	 * 
+	 * @param distance
+	 * @param direction
+	 * @return
+	 */
+	public static List<Point> getAngleCellsAtDistanceGeneric(int distance, int direction) {
+		return sortPointsByAngle(getCellsAtDistanceGeneric(distance), direction);
+	}
+
+	private static List<Point> sortPointsByAngle(List<Point> cells, int direction) {
+		PriorityQueue<PointAngle> orderedCells = queuePoints(cells, direction);
+
+		cells.clear();
+		while (!orderedCells.isEmpty()) {
+			cells.add(orderedCells.poll().getPoint());
+		}
+
+		return cells;
+	}
+
+	private static PriorityQueue<PointAngle> queuePoints(List<Point> cells, int direction) {
+		if (direction > 180) {
+			direction = direction - 180;
+		}
+
+		PriorityQueue<PointAngle> orderedCells = new PriorityQueue<>();
+		for (Point cell : cells) {
+			orderedCells.add(new PointAngle(cell, direction));
+		}
+		return orderedCells;
+	}
+
+	public static List<Point> getCellsAtDistanceGeneric(int distance) {
+		List<Point> cells = new ArrayList<>();
+		for (int i = -distance; i <= distance; i++) {
+			for (int j = -distance; j <= distance; j++) {
+				/* Skip if not looking around the circumference */
+				if (Math.abs(i) != distance && Math.abs(j) != distance) {
 					continue;
 				}
-				if (cells[i][j].toChar() == chr) {
+				cells.add(new Point(i, j));
+			}
+		}
+		return cells;
+	}
+
+	public static MapComponent getClosestComponent(MapComponent comp, MapComponent[][] cells, char chr, int range,
+			short direction) {
+		// iterate through cells beginning at the direction specified until all cells
+		// within the range have been checked
+		return null; // TODO return the closest component
+	}
+
+	@SafeVarargs
+	public static List<Point> checkSurroundingCells(MapComponent comp, MapComponent[][] cells,
+			Class<? extends MapComponent>... cls) {
+		return checkSurroundingCells(comp, cells, 1, cls);
+	}
+
+	public static List<Point> checkSurroundingCells(MapComponent comp, MapComponent[][] cells, char... chr) {
+		return checkSurroundingCells(comp, cells, 1, chr);
+	}
+
+	public static List<Point> checkSurroundingCells(int xPos, int yPos, MapComponent[][] cells, char... chr) {
+		return checkSurroundingCells(xPos, yPos, cells, 1, chr);
+	}
+
+	@SafeVarargs
+	public static List<Point> checkSurroundingCells(MapComponent comp, MapComponent[][] cells, int range,
+			Class<? extends MapComponent>... classes) {
+
+		char[] chars = new char[classes.length];
+		for (int i = 0; i < classes.length; i++) {
+			try {
+				chars[i] = classes[i].newInstance().toChar();
+			} catch (InstantiationException | IllegalAccessException e) {
+				if (LOGGER.isLoggable(Level.SEVERE)) {
+					LOGGER.log(Level.SEVERE, "Unable to create an instance of " + classes[i].getName());
+				}
+				e.printStackTrace();
+				return new ArrayList<Point>();
+			}
+		}
+		return checkSurroundingCells(comp, cells, range, chars);
+	}
+
+	public static List<Point> checkSurroundingCells(MapComponent comp, MapComponent[][] cells, int range, char... chr) {
+		return checkSurroundingCells(comp.getX(), comp.getY(), cells, range, chr);
+	}
+
+	public static List<Point> checkSurroundingCells(int xPos, int yPos, MapComponent[][] cells, int range,
+			char... chars) {
+		List<Point> found = new ArrayList<>();
+		String charStr = new String(chars);
+		for (int i = Math.max(0, xPos - range); i <= Math.min(cells.length - 1, xPos + range); i++) {
+			for (int j = Math.max(0, yPos - range); j <= Math.min(cells[0].length - 1, yPos + range); j++) {
+				/* Skip if looking at itself */
+				if (i == xPos && j == yPos) {
+					continue;
+				}
+				if (charStr.indexOf(cells[i][j].toChar()) != -1) {
 					found.add(new Point(i, j));
 				}
 			}
@@ -131,5 +291,54 @@ public abstract class MapComponent {
 	}
 
 	public abstract char toChar();
+
+	static class PointAngle implements Comparable<PointAngle> {
+		private final Point pnt;
+		private final int naturalAngle;
+		private int angle;
+
+		public PointAngle(int x, int y) {
+			this(x, y, 0);
+		}
+
+		public PointAngle(int x, int y, int angleOffset) {
+			this(new Point(x, y), angleOffset);
+		}
+
+		public PointAngle(Point pnt) {
+			this(pnt, 0);
+		}
+
+		public PointAngle(Point pnt, int angleOffset) {
+			this.pnt = pnt;
+			this.naturalAngle = (int) (180 * Math.atan2(pnt.y, pnt.x) / Math.PI);
+			changeOffset(angleOffset);
+		}
+
+		public int getAngle() {
+			return this.angle;
+		}
+
+		public Point getPoint() {
+			return this.pnt;
+		}
+
+		public void changeOffset(int angleOffset) {
+			int angle = this.naturalAngle;
+			angle -= angleOffset;
+			if (angle > 180) {
+				angle = angle - 360;
+			} else if (angle < -180) {
+				angle = angle + 360;
+			}
+			this.angle = angle;
+		}
+
+		@Override
+		public int compareTo(PointAngle other) {
+			return Math.abs(this.getAngle()) - Math.abs(other.getAngle());
+		}
+
+	}
 
 }

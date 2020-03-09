@@ -22,6 +22,13 @@ public abstract class Animal extends Entity {
 	}
 
 	@Override
+	protected int checkDeath() {
+		int deaths = super.checkDeath();
+		deaths += this.getAnimalStats().getEnergy() < 0.0f ? 1 : 0;
+		return deaths;
+	}
+
+	@Override
 	public boolean doEat(Action action, Entity[][] newEntities) {
 		// TODO Auto-generated method stub
 		return false;
