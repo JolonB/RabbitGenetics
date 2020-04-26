@@ -42,7 +42,7 @@ public class TerrainMap extends MapContainer<Terrain> {
 		Point point;
 		for (int i = 0; i < this.contents.length; i++) {
 			for (int j = 0; j < this.contents[0].length; j++) {
-				point = new Point(i, j);
+				point = new Point(j, i);
 				switch (this.contents[i][j].toChar()) {
 					case 'G':
 						grass.add(point);

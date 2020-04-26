@@ -84,11 +84,11 @@ public class Rabbit extends Animal {
 
 		if (shouldEat) {
 			Point cabbagePos = adjacentCabbage.get(RAND.nextInt(adjacentCabbage.size()));
-			return new Action(this, (Cabbage) entities[cabbagePos.x][cabbagePos.y], Act.EAT, this.getX(), this.getY());
+			return new Action(this, (Cabbage) entities[cabbagePos.y][cabbagePos.x], Act.EAT, this.getX(), this.getY());
 		}
 		if (shouldBreed) {
 			for (Point pnt : adjacentRabbit) {
-				Rabbit potentialMate = (Rabbit) entities[pnt.x][pnt.y];
+				Rabbit potentialMate = (Rabbit) entities[pnt.y][pnt.x];
 				if (potentialMate.getRabbitStats().canBreed()) {
 					return new Action(this, potentialMate, Act.BREED, this.getX(), this.getY());
 				}
@@ -96,7 +96,7 @@ public class Rabbit extends Animal {
 		}
 		/* If no action has been returned yet, just eat */ // TODO is there a better way to write this?
 		Point cabbagePos = adjacentCabbage.get(RAND.nextInt(adjacentCabbage.size()));
-		return new Action(this, (Cabbage) entities[cabbagePos.x][cabbagePos.y], Act.EAT, this.getX(), this.getY());
+		return new Action(this, (Cabbage) entities[cabbagePos.y][cabbagePos.x], Act.EAT, this.getX(), this.getY());
 	}
 
 	private Action selectNearby(Terrain[][] terrain, Entity[][] entities) {
@@ -108,16 +108,16 @@ public class Rabbit extends Animal {
 		PointAngle closestPlant = null;
 		PointAngle closestWater = null;
 		for (PointAngle pnt : viewRegion) {
-			if (closestRabbit == null && entities[pnt.x][pnt.y] instanceof Rabbit) {
+			if (closestRabbit == null && entities[pnt.y][pnt.x] instanceof Rabbit) {
 				/* Find the closest breedable rabbit */
-				if (((Rabbit) entities[pnt.x][pnt.y]).getRabbitStats().canBreed()) {
+				if (((Rabbit) entities[pnt.y][pnt.x]).getRabbitStats().canBreed()) {
 					closestRabbit = pnt;
 				}
 			}
-			if (closestPlant == null && entities[pnt.x][pnt.y] instanceof Plant) {
+			if (closestPlant == null && entities[pnt.y][pnt.x] instanceof Plant) {
 				closestPlant = pnt;
 			}
-			if (closestWater == null && terrain[pnt.x][pnt.y] instanceof Water) {
+			if (closestWater == null && terrain[pnt.y][pnt.x] instanceof Water) {
 				closestWater = pnt;
 			}
 			if (closestRabbit != null && closestPlant != null && closestWater != null) {
@@ -128,6 +128,11 @@ public class Rabbit extends Animal {
 
 		if (closestWater != null && stats.getWaterAversion(distanceTo(closestWater))) {
 			// get angle to water
+			System.out.println("start");
+			System.out.println(closestWater.getAngle());
+			int waterAngle = closestWater.changeOffset(stats.getOrientation());
+			System.out.println("end");
+			System.out.println("Angle to: " + closestWater.x + " " + closestWater.y + " >> " + waterAngle);
 			// if positive, decrease orientation
 			// if negative, increase orientation
 			// calculate next movement away from water

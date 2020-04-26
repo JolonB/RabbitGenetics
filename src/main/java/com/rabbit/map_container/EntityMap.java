@@ -37,18 +37,18 @@ public class EntityMap extends MapContainer<Entity> {
 		for (int i = 0; i < params.numRabbit; i++) {
 			randIndex = rand.nextInt(grassCopy.size());
 			point = grassCopy.remove(randIndex);
-			entities[point.x][point.y] = new Rabbit(point.x, point.y);
+			entities[point.y][point.x] = new Rabbit(point.x, point.y);
 		}
 		for (int i = 0; i < params.numCabbage; i++) {
 			randIndex = rand.nextInt(grassCopy.size());
 			point = grassCopy.remove(randIndex);
-			entities[point.x][point.y] = new Cabbage(point.x, point.y);
+			entities[point.y][point.x] = new Cabbage(point.x, point.y);
 		}
 		// for (int i = 0; i < params.numFox; i++) {
 		// randIndex = rand.nextInt(grassCopy.size());
 		// p = grassCopy.get(randIndex);
 		// grassCopy.remove(randIndex);
-		// entities[p.x][p.y] = new Fox(p.x, p.y);
+		// entities[p.y][p.x] = new Fox(p.x, p.y);
 		// }
 
 		return entities;

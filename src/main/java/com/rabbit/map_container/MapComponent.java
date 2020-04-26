@@ -122,7 +122,7 @@ public abstract class MapComponent {
 			Class<? extends MapComponent> cls) {
 		List<Point> found = new ArrayList<>();
 		for (Point pnt : points) {
-			if (cls.isAssignableFrom(cells[pnt.x][pnt.y].getClass())) {
+			if (cls.isAssignableFrom(cells[pnt.y][pnt.x].getClass())) {
 				found.add(pnt);
 			}
 		}
@@ -132,7 +132,7 @@ public abstract class MapComponent {
 	public static List<MapComponent> convertPointsToCells(List<PointAngle> points, MapComponent[][] cells) {
 		List<MapComponent> cellList = new ArrayList<>();
 		for (Point pnt : points) {
-			cellList.add(cells[pnt.x][pnt.y]);
+			cellList.add(cells[pnt.y][pnt.x]);
 		}
 		return cellList;
 	}
@@ -206,7 +206,7 @@ public abstract class MapComponent {
 
 	private static PriorityQueue<PointAngle> queuePoints(List<PointAngle> cells, int direction) {
 		if (direction > 180) {
-			direction = direction - 180;
+			direction -= 180;
 		}
 
 		PriorityQueue<PointAngle> orderedCells = new PriorityQueue<>();
@@ -327,7 +327,7 @@ public abstract class MapComponent {
 			return this.angle;
 		}
 
-		public void changeOffset(int angleOffset) {
+		public int changeOffset(int angleOffset) {
 			int angle = this.naturalAngle;
 			angle -= angleOffset;
 			if (angle > 180) {
@@ -336,6 +336,7 @@ public abstract class MapComponent {
 				angle = angle + 360;
 			}
 			this.angle = angle;
+			return this.angle;
 		}
 
 		@Override

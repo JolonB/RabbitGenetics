@@ -190,6 +190,7 @@ public class AnimalStats extends EntityStats {
         map.put("Energy", this.energy);
         map.put("Orientation", this.orientation);
         map.put("Generation", this.generation);
+        map.put("vision", this.vision);
         return map;
     }
 

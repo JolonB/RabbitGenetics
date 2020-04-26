@@ -68,7 +68,7 @@ public abstract class Entity extends MapComponent {
 	}
 
 	public boolean doNothing(final Action action, Entity[][] newEntities) {
-		newEntities[action.getX()][action.getY()] = this;
+		newEntities[action.getY()][action.getX()] = this;
 		return true;
 	}
 
