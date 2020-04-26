@@ -102,12 +102,12 @@ public class Rabbit extends Animal {
 	private Action selectNearby(Terrain[][] terrain, Entity[][] entities) {
 		RabbitStats stats = getRabbitStats();
 		/* Check if rabbit should target something */
-		List<Point> viewRegion = MapComponent.getCellsWithinRangeWithinToleranceInBounds(stats.getVision(),
+		List<PointAngle> viewRegion = MapComponent.getCellsWithinRangeWithinToleranceInBounds(stats.getVision(),
 				stats.getOrientation(), stats.getFieldOfView(), this.getPos(), entities);
-		Point closestRabbit = null;
-		Point closestPlant = null;
-		Point closestWater = null;
-		for (Point pnt : viewRegion) {
+		PointAngle closestRabbit = null;
+		PointAngle closestPlant = null;
+		PointAngle closestWater = null;
+		for (PointAngle pnt : viewRegion) {
 			if (closestRabbit == null && entities[pnt.x][pnt.y] instanceof Rabbit) {
 				/* Find the closest breedable rabbit */
 				if (((Rabbit) entities[pnt.x][pnt.y]).getRabbitStats().canBreed()) {
@@ -120,9 +120,13 @@ public class Rabbit extends Animal {
 			if (closestWater == null && terrain[pnt.x][pnt.y] instanceof Water) {
 				closestWater = pnt;
 			}
+			if (closestRabbit != null && closestPlant != null && closestWater != null) {
+				/* Break early if the closest things have been found */
+				break;
+			}
 		}
 
-		if (stats.getWaterAversion(distanceTo(closestWater))) {
+		if (closestWater != null && stats.getWaterAversion(distanceTo(closestWater))) {
 			// get angle to water
 			// if positive, decrease orientation
 			// if negative, increase orientation

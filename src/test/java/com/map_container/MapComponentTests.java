@@ -15,6 +15,7 @@ import com.rabbit.entities.Entity;
 import com.rabbit.entities.Null;
 import com.rabbit.entities.Rabbit;
 import com.rabbit.map_container.MapComponent;
+import com.rabbit.map_container.MapComponent.PointAngle;
 import com.rabbit.terrain.Grass;
 import com.rabbit.terrain.Water;
 
@@ -56,7 +57,8 @@ class MapComponentTests {
         Entity[][] cells = setUpTestBoard();
         // TODO actually write this test
         System.out.println(MapComponent.convertPointsToCells(
-                MapComponent.getCellsWithinRangeWithinToleranceInBounds(2, -45, 45, new Point(3, 2), cells), cells));
+                MapComponent.getCellsWithinRangeWithinToleranceInBounds(2, -45, 45, new PointAngle(3, 2), cells),
+                cells));
     }
 
     private Entity[][] setUpTestBoard() {

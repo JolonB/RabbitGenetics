@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -128,7 +129,7 @@ public abstract class MapComponent {
 		return found;
 	}
 
-	public static List<MapComponent> convertPointsToCells(List<Point> points, MapComponent[][] cells) {
+	public static List<MapComponent> convertPointsToCells(List<PointAngle> points, MapComponent[][] cells) {
 		List<MapComponent> cellList = new ArrayList<>();
 		for (Point pnt : points) {
 			cellList.add(cells[pnt.x][pnt.y]);
@@ -136,10 +137,10 @@ public abstract class MapComponent {
 		return cellList;
 	}
 
-	public static List<Point> removeOutOfBounds(List<Point> points, Point center, MapComponent[][] cells) {
-		List<Point> inBounds = new ArrayList<>();
-		for (Point pnt : points) {
-			Point pntShifted = new Point(pnt.x + center.x, pnt.y + center.y);
+	public static List<PointAngle> removeOutOfBounds(List<PointAngle> points, Point center, MapComponent[][] cells) {
+		List<PointAngle> inBounds = new ArrayList<>();
+		for (PointAngle pnt : points) {
+			PointAngle pntShifted = new PointAngle(pnt.x + center.x, pnt.y + center.y);
 			/* Check that point is still in bounds even when shifted */
 			if (pntShifted.x >= 0 && pntShifted.x < cells.length && pntShifted.y >= 0
 					&& pntShifted.y < cells[0].length) {
@@ -149,34 +150,34 @@ public abstract class MapComponent {
 		return inBounds;
 	}
 
-	public static List<Point> getCellsWithinRangeWithinToleranceInBounds(int range, int direction, int tolerance,
+	public static List<PointAngle> getCellsWithinRangeWithinToleranceInBounds(int range, int direction, int tolerance,
 			Point center, MapComponent[][] cells) {
 		return removeOutOfBounds(getCellsWithinRangeWithinTolerance(range, direction, tolerance), center, cells);
 	}
 
-	public static List<Point> getCellsWithinRangeWithinTolerance(int range, int direction, int tolerance) {
-		List<Point> cells = new ArrayList<>();
+	public static List<PointAngle> getCellsWithinRangeWithinTolerance(int range, int direction, int tolerance) {
+		List<PointAngle> cells = new ArrayList<>();
 		for (int distance = 1; distance <= range; distance++) {
 			cells.addAll(getCellsAtDistanceWithinTolerance(distance, direction, tolerance));
 		}
 		return cells;
 	}
 
-	public static List<Point> getCellsAtDistanceWithinTolerance(int distance, int direction, int tolerance) {
+	public static List<PointAngle> getCellsAtDistanceWithinTolerance(int distance, int direction, int tolerance) {
 		PriorityQueue<PointAngle> orderedCells = queuePoints(getCellsAtDistanceGeneric(distance), direction);
 
-		List<Point> cells = new ArrayList<>();
+		List<PointAngle> cells = new ArrayList<>();
 		while (!orderedCells.isEmpty()) {
 			PointAngle cell = orderedCells.poll();
 			if (Math.abs(cell.getAngle()) > tolerance) {
 				break;
 			}
-			cells.add(cell.getPoint());
+			cells.add(cell);
 		}
 		return cells;
 	}
 
-	public static List<Point> getAngleCellsAtDistanceGeneric(int distance) {
+	public static List<PointAngle> getAngleCellsAtDistanceGeneric(int distance) {
 		return getAngleCellsAtDistanceGeneric(distance, 0);
 	}
 
@@ -187,22 +188,23 @@ public abstract class MapComponent {
 	 * @param direction
 	 * @return
 	 */
-	public static List<Point> getAngleCellsAtDistanceGeneric(int distance, int direction) {
+	public static List<PointAngle> getAngleCellsAtDistanceGeneric(int distance, int direction) {
 		return sortPointsByAngle(getCellsAtDistanceGeneric(distance), direction);
 	}
 
-	private static List<Point> sortPointsByAngle(List<Point> cells, int direction) {
+	private static List<PointAngle> sortPointsByAngle(List<PointAngle> cells, int direction) {
 		PriorityQueue<PointAngle> orderedCells = queuePoints(cells, direction);
 
+		/* Convert PriorityQueue to List */
 		cells.clear();
 		while (!orderedCells.isEmpty()) {
-			cells.add(orderedCells.poll().getPoint());
+			cells.add(orderedCells.poll());
 		}
 
 		return cells;
 	}
 
-	private static PriorityQueue<PointAngle> queuePoints(List<Point> cells, int direction) {
+	private static PriorityQueue<PointAngle> queuePoints(List<PointAngle> cells, int direction) {
 		if (direction > 180) {
 			direction = direction - 180;
 		}
@@ -214,15 +216,15 @@ public abstract class MapComponent {
 		return orderedCells;
 	}
 
-	public static List<Point> getCellsAtDistanceGeneric(int distance) {
-		List<Point> cells = new ArrayList<>();
+	public static List<PointAngle> getCellsAtDistanceGeneric(int distance) {
+		List<PointAngle> cells = new ArrayList<>();
 		for (int i = -distance; i <= distance; i++) {
 			for (int j = -distance; j <= distance; j++) {
 				/* Skip if not looking around the circumference */
 				if (Math.abs(i) != distance && Math.abs(j) != distance) {
 					continue;
 				}
-				cells.add(new Point(i, j));
+				cells.add(new PointAngle(i, j));
 			}
 		}
 		return cells;
@@ -256,8 +258,9 @@ public abstract class MapComponent {
 		char[] chars = new char[classes.length];
 		for (int i = 0; i < classes.length; i++) {
 			try {
-				chars[i] = classes[i].newInstance().toChar();
-			} catch (InstantiationException | IllegalAccessException e) {
+				chars[i] = classes[i].getDeclaredConstructor(int.class, int.class).newInstance(0, 0).toChar();
+			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+					| InvocationTargetException | NoSuchMethodException | SecurityException e) {
 				if (LOGGER.isLoggable(Level.SEVERE)) {
 					LOGGER.log(Level.SEVERE, "Unable to create an instance of " + classes[i].getName());
 				}
@@ -292,17 +295,18 @@ public abstract class MapComponent {
 
 	public abstract char toChar();
 
-	static class PointAngle implements Comparable<PointAngle> {
-		private final Point pnt;
+	public static class PointAngle extends Point implements Comparable<PointAngle> {
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = -3861204728432946494L;
+		/** The absolute angle with no consideration of the offset */
 		private final int naturalAngle;
+		/** The angle relative to some offset */
 		private int angle;
 
 		public PointAngle(int x, int y) {
 			this(x, y, 0);
-		}
-
-		public PointAngle(int x, int y, int angleOffset) {
-			this(new Point(x, y), angleOffset);
 		}
 
 		public PointAngle(Point pnt) {
@@ -310,17 +314,17 @@ public abstract class MapComponent {
 		}
 
 		public PointAngle(Point pnt, int angleOffset) {
-			this.pnt = pnt;
-			this.naturalAngle = (int) (180 * Math.atan2(pnt.y, pnt.x) / Math.PI);
+			this(pnt.x, pnt.y, angleOffset);
+		}
+
+		public PointAngle(int x, int y, int angleOffset) {
+			super(x, y);
+			this.naturalAngle = (int) (180 * Math.atan2(y, x) / Math.PI);
 			changeOffset(angleOffset);
 		}
 
 		public int getAngle() {
 			return this.angle;
-		}
-
-		public Point getPoint() {
-			return this.pnt;
 		}
 
 		public void changeOffset(int angleOffset) {
