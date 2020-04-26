@@ -24,7 +24,7 @@ public class Main {
 
 	private static final int ROWS = 50;
 	private static final int COLS = 50;
-	private static final int PERCENT_WATER = 40;
+	private static final int PERCENT_WATER = 90;
 	private static final int NUM_RABBIT = 1;
 	private static final int NUM_CABBAGE = 1;
 	private static final int NUM_FOX = 0;

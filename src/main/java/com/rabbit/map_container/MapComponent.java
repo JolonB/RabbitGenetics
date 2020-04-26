@@ -14,8 +14,6 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
-import com.rabbit.entities.Rabbit;
-
 public abstract class MapComponent {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = Logger.getLogger(MapComponent.class.getName());
@@ -118,6 +116,14 @@ public abstract class MapComponent {
 		return distanceTo(this.getPos(), other.getPos());
 	}
 
+	/**
+	 * Using a list of points, get a sublist which are of a specific class.
+	 * 
+	 * @param points
+	 * @param cells
+	 * @param cls
+	 * @return
+	 */
 	public static List<Point> findPointsOfType(List<Point> points, MapComponent[][] cells,
 			Class<? extends MapComponent> cls) {
 		List<Point> found = new ArrayList<>();
@@ -140,11 +146,11 @@ public abstract class MapComponent {
 	public static List<PointAngle> removeOutOfBounds(List<PointAngle> points, Point center, MapComponent[][] cells) {
 		List<PointAngle> inBounds = new ArrayList<>();
 		for (PointAngle pnt : points) {
-			PointAngle pntShifted = new PointAngle(pnt.x + center.x, pnt.y + center.y);
+			pnt.x += center.x;
+			pnt.y += center.y;
 			/* Check that point is still in bounds even when shifted */
-			if (pntShifted.x >= 0 && pntShifted.x < cells.length && pntShifted.y >= 0
-					&& pntShifted.y < cells[0].length) {
-				inBounds.add(pntShifted);
+			if (pnt.y >= 0 && pnt.y < cells.length && pnt.x >= 0 && pnt.x < cells[0].length) {
+				inBounds.add(pnt);
 			}
 		}
 		return inBounds;
@@ -205,8 +211,11 @@ public abstract class MapComponent {
 	}
 
 	private static PriorityQueue<PointAngle> queuePoints(List<PointAngle> cells, int direction) {
-		if (direction > 180) {
-			direction -= 180;
+		while (direction > 180) {
+			direction -= 360;
+		}
+		while (direction <= -180) {
+			direction += 360;
 		}
 
 		PriorityQueue<PointAngle> orderedCells = new PriorityQueue<>();
@@ -279,14 +288,14 @@ public abstract class MapComponent {
 			char... chars) {
 		List<Point> found = new ArrayList<>();
 		String charStr = new String(chars);
-		for (int i = Math.max(0, xPos - range); i <= Math.min(cells.length - 1, xPos + range); i++) {
-			for (int j = Math.max(0, yPos - range); j <= Math.min(cells[0].length - 1, yPos + range); j++) {
+		for (int i = Math.max(0, yPos - range); i <= Math.min(cells.length - 1, yPos + range); i++) {
+			for (int j = Math.max(0, xPos - range); j <= Math.min(cells[0].length - 1, xPos + range); j++) {
 				/* Skip if looking at itself */
-				if (i == xPos && j == yPos) {
+				if (i == yPos && j == xPos) {
 					continue;
 				}
 				if (charStr.indexOf(cells[i][j].toChar()) != -1) {
-					found.add(new Point(i, j));
+					found.add(new Point(j, i));
 				}
 			}
 		}

@@ -48,7 +48,6 @@ public abstract class Animal extends Entity {
 
 	@Override
 	public boolean doMove(final Action action, Entity[][] entities) {
-		System.out.println(action);
 		entities[action.getY()][action.getX()] = this;
 		this.setPos(action.getX(), action.getY());
 

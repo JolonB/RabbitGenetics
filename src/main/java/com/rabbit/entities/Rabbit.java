@@ -127,14 +127,12 @@ public class Rabbit extends Animal {
 		}
 
 		if (closestWater != null && stats.getWaterAversion(distanceTo(closestWater))) {
-			// get angle to water
-			System.out.println("start");
-			System.out.println(closestWater.getAngle());
-			int waterAngle = closestWater.changeOffset(stats.getOrientation());
-			System.out.println("end");
-			System.out.println("Angle to: " + closestWater.x + " " + closestWater.y + " >> " + waterAngle);
+			// get angle of rabbit from the perspective of the water (therefore -ve of what
+			// you'd expect)
+			int waterAngle = closestWater.getAngle();
 			// if positive, decrease orientation
 			// if negative, increase orientation
+			stats.changeOrientation((180 - waterAngle) * stats.getMaxRotation() / 180);
 			// calculate next movement away from water
 			// TODO try to move away from closest water source
 		}

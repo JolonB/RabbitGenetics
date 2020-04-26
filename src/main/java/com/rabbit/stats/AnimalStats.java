@@ -135,7 +135,7 @@ public class AnimalStats extends EntityStats {
         changeOrientation(-change);
     }
 
-    private void changeOrientation(int change) {
+    public void changeOrientation(int change) {
         this.orientation += change;
         checkOrientation();
     }
@@ -143,10 +143,10 @@ public class AnimalStats extends EntityStats {
     public void checkOrientation() {
         /* Ensure orientation remains between +180 (incl.) and -180 (excl.) */
         while (this.orientation > 180) {
-            this.orientation -= 180;
+            this.orientation -= 360;
         }
         while (this.orientation <= -180) {
-            this.orientation += 180;
+            this.orientation += 360;
         }
     }
 
@@ -190,7 +190,7 @@ public class AnimalStats extends EntityStats {
         map.put("Energy", this.energy);
         map.put("Orientation", this.orientation);
         map.put("Generation", this.generation);
-        map.put("vision", this.vision);
+        map.put("Vision", this.vision);
         return map;
     }
 

@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.SortedMap;
 
 public class RabbitStats extends AnimalStats {
+    private static final int AVERSION_START = 5;
+    private static final int AVERSION_END = 10;
     /** Desire to reproduce */
     private float libido;
     /** The level of importance of the rabbits libido in deciding actions */
@@ -55,10 +57,11 @@ public class RabbitStats extends AnimalStats {
     }
 
     public boolean getWaterAversion(double distance) {
-        if (distance <= 0) {
-            throw new IllegalArgumentException("distance to water can never be less than or equal to 0");
+        if (distance < 1) {
+            throw new IllegalArgumentException("distance to water can never be less than 1");
         }
-        return RAND.nextDouble() <= this.aversionToWater / distance;
+        return RAND.nextDouble() <= (distance + (AVERSION_START - AVERSION_END) * this.aversionToWater - AVERSION_START)
+                / (1 + (AVERSION_START - AVERSION_END) * this.aversionToWater - AVERSION_START);
     }
 
     @Override

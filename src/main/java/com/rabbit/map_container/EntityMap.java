@@ -58,7 +58,7 @@ public class EntityMap extends MapContainer<Entity> {
 		List<Point> points = new ArrayList<>();
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				points.add(new Point(i, j));
+				points.add(new Point(j, i));
 			}
 		}
 		return generateEntityMap(rows, cols, points, params);
